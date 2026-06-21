@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Login - Multi-Vendor Platform</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="vendor-login.css">
+</head>
+
+<body>
+
+    <!-- Minimal Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <i class="bi bi-shop fs-3 me-2 text-primary-glow"></i>
+                <span class="fw-bold brand-text">Multi-Vendor Platform</span>
+            </a>
+            
+            <div class="d-flex ms-auto">
+                <a href="index.html" class="btn btn-outline-light rounded-pill px-4 fw-medium transition-all btn-hover-info">
+                    <i class="bi bi-arrow-left me-2"></i>Back to Role Selection
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content wrapper -->
+    <div class="main-wrapper vendor-auth-wrapper">
+        
+        <!-- Auth Content -->
+        <div class="auth-content">
+            <div class="container">
+                <div class="row align-items-center justify-content-between g-5">
+                    
+                    <!-- Left Side: Welcome & Illustration -->
+                    <div class="col-lg-6 text-center text-lg-start fade-in-up delay-1">
+                        <div class="auth-illustration">
+                            <i class="bi bi-shop-window"></i>
+                        </div>
+                        <div class="vendor-welcome-text">
+                            <h1>Vendor Portal</h1>
+                            <p>Manage your products, inventory and customer orders from one centralized dashboard. Grow your business with our powerful tools.</p>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Login Card -->
+                    <div class="col-lg-5 col-xl-4 fade-in-up delay-2">
+                        <div class="auth-card">
+                            <div class="text-center mb-4">
+                                <h3 class="text-white fw-bold mb-1">Vendor Login</h3>
+                                <p class="text-white-50 small">Enter your credentials to access your store.</p>
+                            </div>
+
+                            <form id="vendorLoginForm" novalidate>
+                                <!-- Email -->
+                                <div class="form-floating mb-3 position-relative">
+                                    <input type="email" class="form-control" id="vendorEmail" placeholder="Email" required>
+                                    <label for="vendorEmail">Email</label>
+                                    <div class="validation-feedback invalid-feedback">Please enter a valid email.</div>
+                                </div>
+
+                                <!-- Password -->
+                                <div class="form-floating mb-4 position-relative">
+                                    <input type="password" class="form-control" id="vendorPassword" placeholder="Password" required>
+                                    <label for="vendorPassword">Password</label>
+                                    <button type="button" class="password-toggle" id="togglePassword">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <div class="validation-feedback invalid-feedback">Password is required.</div>
+                                </div>
+
+                                <!-- Options -->
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="rememberMe">
+                                        <label class="form-check-label text-white-50 small" for="rememberMe">Remember Me</label>
+                                    </div>
+                                    <a href="#" class="text-info text-decoration-none small transition-all text-hover-white">Forgot Password?</a>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <button type="submit" class="btn btn-primary w-100 rounded-pill py-3 fw-bold transition-all mb-4" id="loginBtn" style="background: linear-gradient(135deg, #3b82f6, #6366f1); border: none; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);">
+                                    Login to Dashboard
+                                </button>
+
+                                <!-- Login Success Placeholder (Hidden by default) -->
+                                <div id="loginSuccessMessage" class="alert alert-success d-none mb-4 py-2 small text-center" role="alert">
+                                    <i class="bi bi-check-circle-fill me-2"></i>Login successful! Redirecting...
+                                </div>
+
+                                <!-- Registration Link -->
+                                <div class="text-center">
+                                    <p class="text-white-50 small mb-2">New Vendor?</p>
+                                    <a href="vendor-signup.html" class="btn btn-outline-light w-100 rounded-pill py-2 fw-medium transition-all">
+                                        Create Seller Account
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Benefits Section -->
+        <div class="vendor-benefits fade-in-up delay-3">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="benefit-card">
+                            <i class="bi bi-box-seam benefit-icon"></i>
+                            <h5 class="text-white fw-bold mb-2">Product Management</h5>
+                            <p class="text-white-50 small mb-0">Easily add, edit, and categorize your entire product catalog.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="benefit-card">
+                            <i class="bi bi-list-check benefit-icon"></i>
+                            <h5 class="text-white fw-bold mb-2">Inventory Tracking</h5>
+                            <p class="text-white-50 small mb-0">Monitor stock levels in real-time and receive low stock alerts.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="benefit-card">
+                            <i class="bi bi-clipboard-data benefit-icon"></i>
+                            <h5 class="text-white fw-bold mb-2">Order Management</h5>
+                            <p class="text-white-50 small mb-0">Process customer orders, update tracking, and manage fulfillment.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="benefit-card">
+                            <i class="bi bi-graph-up-arrow benefit-icon"></i>
+                            <h5 class="text-white fw-bold mb-2">Sales Analytics</h5>
+                            <p class="text-white-50 small mb-0">Gain insights into your performance with detailed visual reports.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center text-white pb-4 pt-4 border-top border-light border-opacity-10 footer-section">
+            <div class="container">
+                <p class="small text-white-50 mb-1">Multi-Vendor E-Commerce Platform</p>
+                <p class="small text-white-50 mb-0">Department of Computer Science | Academic Year 2025-2026</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Supabase: must load BEFORE any script that calls signIn() etc. -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/auth.js"></script>
+
+    <!-- Simple JS for UI Interaction -->
+    <script>
+        // Password Toggle
+        const togglePassword = document.querySelector('#togglePassword');
+        const passwordInput = document.querySelector('#vendorPassword');
+
+        togglePassword.addEventListener('click', function (e) {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            
+            const icon = this.querySelector('i');
+            icon.classList.toggle('bi-eye');
+            icon.classList.toggle('bi-eye-slash');
+        });
+
+        // Real Supabase Vendor Login
+        const loginForm = document.querySelector('#vendorLoginForm');
+        const emailInput = document.querySelector('#vendorEmail');
+        const loginSuccess = document.querySelector('#loginSuccessMessage');
+        const loginBtn = document.querySelector('#loginBtn');
+
+        loginForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            let isValid = true;
+
+            // Email validation
+            if(emailInput.value.trim() === '') {
+                emailInput.classList.add('is-invalid');
+                isValid = false;
+            }
+
+            // Password validation
+            if(passwordInput.value.trim() === '') {
+                passwordInput.classList.add('is-invalid');
+                isValid = false;
+            }
+
+            if(!isValid) return;
+
+            try {
+                const email = emailInput.value;
+                const password = passwordInput.value;
+                
+                await signIn({ email, password });
+
+                // Verify that the user is actually a vendor
+                const profile = await getCurrentProfile();
+                if (!profile || (profile.role !== 'vendor' && profile.role !== 'admin')) {
+                    await signOut();
+                    alert('This account does not have vendor access. Please use the customer login.');
+                    return;
+                }
+                
+                loginSuccess.classList.remove('d-none');
+                loginBtn.disabled = true;
+                
+                setTimeout(() => {
+                    window.location.href = 'vendor-dashboard.html';
+                }, 1500);
+            } catch (error) {
+                console.error(error);
+                alert(error.message);
+                if (error.message.includes('Invalid login credentials') || error.message.includes('invalid_credentials')) {
+                    passwordInput.classList.add('is-invalid');
+                }
+            }
+        });
+
+        // Remove validation styling on input
+        [emailInput, passwordInput].forEach(input => {
+            if (input) {
+                input.addEventListener('input', function() {
+                    this.classList.remove('is-invalid', 'is-valid');
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

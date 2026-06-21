@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProX 15-inch Gaming Laptop - Multi-Vendor Platform</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="customer-dashboard.css">
+    <link rel="stylesheet" href="product-listing.css">
+    <link rel="stylesheet" href="product-details.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <i class="bi bi-shop fs-3 me-2 text-primary-glow"></i>
+                <span class="fw-bold brand-text d-none d-sm-inline">Multi-Vendor Platform</span>
+                <span class="fw-bold brand-text d-inline d-sm-none">MVP</span>
+            </a>
+            
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="bi bi-list fs-1 text-white"></i>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto fw-medium">
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="customer-dashboard.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active px-3" href="product-listing.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="cart.html">Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="#">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="#">Profile</a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+                    <!-- Notification -->
+                    <a href="#" class="notification-icon text-decoration-none">
+                        <i class="bi bi-bell-fill"></i>
+                        <span class="notification-badge">5</span>
+                    </a>
+                    
+                    <!-- Profile Dropdown -->
+                    <div class="dropdown">
+                        <button class="btn profile-dropdown-toggle dropdown-toggle border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="profile-avatar text-white">JD</div>
+                            <span class="d-none d-md-inline ms-1 text-white fw-medium">John Doe</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-glass mt-2">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>My Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-box-seam me-2"></i>My Orders</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="index.html"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content wrapper -->
+    <div class="main-wrapper details-content">
+        <div class="container">
+            
+            <!-- Breadcrumb Navigation -->
+            <nav aria-label="breadcrumb" class="glass-breadcrumb fade-in-up">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="customer-dashboard.html"><i class="bi bi-house-door me-1"></i>Home</a></li>
+                    <li class="breadcrumb-item"><a href="product-listing.html">Products</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">ProX 15-inch Gaming Laptop</li>
+                </ol>
+            </nav>
+
+            <!-- Product Section -->
+            <div class="row g-5 mb-5">
+                
+                <!-- Left Side: Product Gallery -->
+                <div class="col-lg-6 fade-in-up delay-1" id="productGallery">
+                    <div class="main-product-img" id="mainProductImg">
+                        <i class="bi bi-box-seam"></i>
+                    </div>
+                    <div class="thumbnail-container" id="thumbnailContainer"></div>
+                </div>
+
+                <!-- Right Side: Product Information -->
+                <div class="col-lg-6 fade-in-up delay-2" id="productInfo">
+                    <span class="product-category-label" id="productCategory">Loading...</span>
+                    <h1 class="product-title-large" id="productTitle">Loading product...</h1>
+                    
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <span class="status-badge" id="stockBadge"><i class="bi bi-check-circle-fill"></i> In Stock</span>
+                    </div>
+
+                    <div class="d-flex align-items-end gap-3 mb-4">
+                        <div class="product-price-large" id="productPrice"></div>
+                    </div>
+
+                    <p class="text-white-50 mb-4 lh-lg" id="productDesc"></p>
+
+                    <div class="quantity-wrapper mt-4">
+                        <div class="quantity-selector">
+                            <button class="qty-btn" onclick="changeQty(-1)"><i class="bi bi-dash"></i></button>
+                            <input type="text" class="qty-input" id="qtyInput" value="1" readonly>
+                            <button class="qty-btn" onclick="changeQty(1)"><i class="bi bi-plus"></i></button>
+                        </div>
+                        <span class="text-white-50 ms-3 small" id="stockQtyInfo"></span>
+                    </div>
+
+                    <div class="d-flex flex-wrap gap-3 mt-4">
+                        <button class="btn btn-primary btn-hover-info rounded-pill px-4 py-3 fw-bold flex-grow-1 transition-all" id="addToCartBtn">
+                            <i class="bi bi-cart-plus me-2"></i> Add to Cart
+                        </button>
+                        <button class="btn btn-outline-light rounded-pill px-4 py-3 fw-bold transition-all" title="Add to Wishlist">
+                            <i class="bi bi-heart"></i>
+                        </button>
+                    </div>
+
+                    <!-- Vendor Information Mini Block -->
+                    <div class="vendor-info-block mt-4 mt-lg-5" id="vendorBlock">
+                        <div class="vendor-info-avatar" id="vendorAvatar">V</div>
+                        <div class="flex-grow-1">
+                            <h6 class="text-white mb-0">Sold by: <a href="#" class="text-info text-decoration-none" id="vendorName">Loading...</a></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabbed Content Section -->
+            <div class="glass-panel p-4 p-md-5 rounded-4 mb-5 fade-in-up delay-3">
+                <ul class="nav nav-pills mb-4 gap-2 border-bottom border-light border-opacity-10 pb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active rounded-pill px-4" id="pills-desc-tab" data-bs-toggle="pill" data-bs-target="#pills-desc" type="button" role="tab" aria-controls="pills-desc" aria-selected="true">Description</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link rounded-pill px-4" id="pills-spec-tab" data-bs-toggle="pill" data-bs-target="#pills-spec" type="button" role="tab" aria-controls="pills-spec" aria-selected="false">Specifications</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link rounded-pill px-4" id="pills-vendor-tab" data-bs-toggle="pill" data-bs-target="#pills-vendor" type="button" role="tab" aria-controls="pills-vendor" aria-selected="false">Vendor Info</button>
+                    </li>
+                </ul>
+                
+                <div class="tab-content text-white-50 lh-lg" id="pills-tabContent">
+                    <!-- Description Tab -->
+                    <div class="tab-pane fade show active" id="pills-desc" role="tabpanel" aria-labelledby="pills-desc-tab">
+                        <h5 class="text-white fw-bold mb-3">Product Overview</h5>
+                        <p>The ProX 15 is built for gamers and creators who demand high performance. Encased in a premium aluminum chassis, it stays light while packing heavy-duty hardware. The Dual-Fan cooling system with 4 heat pipes ensures your system runs cool even during intense gaming sessions.</p>
+                        <p>Enjoy vibrant colors and fluid motion with the 15.6" Full HD 144Hz IPS display, perfectly matched with the RTX 3060 graphics card for high-FPS competitive gaming. The fully customizable RGB keyboard lets you express your style, while Wi-Fi 6 ensures ultra-low latency connections.</p>
+                    </div>
+                    
+                    <!-- Specifications Tab -->
+                    <div class="tab-pane fade" id="pills-spec" role="tabpanel" aria-labelledby="pills-spec-tab">
+                        <div class="spec-table-wrapper">
+                            <table class="table spec-table">
+                                <tbody>
+                                    <tr>
+                                        <th>Brand</th>
+                                        <td>ProX Gaming</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Model</th>
+                                        <td>ProX-15-RTX3060-12Gen</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Category</th>
+                                        <td>Electronics > Computers > Laptops</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Processor</th>
+                                        <td>Intel Core i7-12700H (14 Cores, up to 4.7GHz)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Display</th>
+                                        <td>15.6" FHD (1920x1080) IPS, 144Hz, 100% sRGB</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Weight</th>
+                                        <td>2.1 kg (4.6 lbs)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Manufacturer</th>
+                                        <td>ProX Technologies Inc.</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Warranty</th>
+                                        <td>1 Year Comprehensive Manufacturer Warranty</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Vendor Tab -->
+                    <div class="tab-pane fade" id="pills-vendor" role="tabpanel" aria-labelledby="pills-vendor-tab">
+                        <div class="row align-items-center">
+                            <div class="col-md-3 text-center border-end border-light border-opacity-10 py-3">
+                                <div class="vendor-info-avatar mx-auto mb-3" style="width: 80px; height: 80px; font-size: 2rem;">T</div>
+                                <h5 class="text-white fw-bold mb-1">TechHub Store</h5>
+                                <div class="text-warning mb-2">
+                                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-9 ps-md-4 mt-4 mt-md-0">
+                                <div class="row g-4 text-center text-md-start">
+                                    <div class="col-6 col-md-3">
+                                        <h6 class="text-white mb-1">Vendor Rating</h6>
+                                        <p class="fs-4 fw-bold text-info mb-0">4.9<small class="fs-6 text-white-50">/5</small></p>
+                                    </div>
+                                    <div class="col-6 col-md-3">
+                                        <h6 class="text-white mb-1">Performance</h6>
+                                        <p class="fs-4 fw-bold text-success mb-0">98%</p>
+                                    </div>
+                                    <div class="col-6 col-md-3">
+                                        <h6 class="text-white mb-1">Products Sold</h6>
+                                        <p class="fs-4 fw-bold text-white mb-0">12K+</p>
+                                    </div>
+                                    <div class="col-6 col-md-3 d-flex align-items-center">
+                                        <a href="#" class="btn btn-outline-info rounded-pill w-100 transition-all">View Store</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ratings & Reviews Section -->
+            <div id="reviews" class="glass-panel p-4 p-md-5 rounded-4 mb-5 fade-in-up delay-4">
+                <div class="d-flex justify-content-between align-items-end border-bottom border-light border-opacity-10 pb-3 mb-4">
+                    <h3 class="fw-bold text-white mb-0">Ratings & <span>Reviews</span></h3>
+                    <button class="btn btn-primary btn-hover-info rounded-pill px-4">Write a Review</button>
+                </div>
+                
+                <div class="row align-items-center mb-5">
+                    <div class="col-md-4 text-center border-end border-light border-opacity-10">
+                        <h1 class="display-3 fw-bold text-white mb-0">4.8</h1>
+                        <div class="text-warning fs-5 mb-2">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                        </div>
+                        <p class="text-white-50 mb-0">Based on 124 reviews</p>
+                    </div>
+                    <div class="col-md-8 ps-md-5 mt-4 mt-md-0">
+                        <!-- Progress bars for ratings -->
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="text-white-50 small me-2" style="width: 30px;">5 <i class="bi bi-star-fill text-warning small"></i></span>
+                            <div class="progress flex-grow-1 bg-white bg-opacity-10" style="height: 8px;">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <span class="text-white-50 small ms-2">80%</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="text-white-50 small me-2" style="width: 30px;">4 <i class="bi bi-star-fill text-warning small"></i></span>
+                            <div class="progress flex-grow-1 bg-white bg-opacity-10" style="height: 8px;">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <span class="text-white-50 small ms-2">15%</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="text-white-50 small me-2" style="width: 30px;">3 <i class="bi bi-star-fill text-warning small"></i></span>
+                            <div class="progress flex-grow-1 bg-white bg-opacity-10" style="height: 8px;">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 3%" aria-valuenow="3" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <span class="text-white-50 small ms-2">3%</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="text-white-50 small me-2" style="width: 30px;">2 <i class="bi bi-star-fill text-warning small"></i></span>
+                            <div class="progress flex-grow-1 bg-white bg-opacity-10" style="height: 8px;">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 1%" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <span class="text-white-50 small ms-2">1%</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <span class="text-white-50 small me-2" style="width: 30px;">1 <i class="bi bi-star-fill text-warning small"></i></span>
+                            <div class="progress flex-grow-1 bg-white bg-opacity-10" style="height: 8px;">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 1%" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <span class="text-white-50 small ms-2">1%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reviews-list">
+                    <!-- Review 1 -->
+                    <div class="review-card">
+                        <div class="d-flex gap-3">
+                            <div class="reviewer-avatar">AJ</div>
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <h6 class="text-white fw-bold mb-1">Alex Johnson <i class="bi bi-patch-check-fill text-success ms-1 small" title="Verified Buyer"></i></h6>
+                                        <div class="text-warning small mb-2">
+                                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                                        </div>
+                                    </div>
+                                    <span class="review-date">Oct 12, 2025</span>
+                                </div>
+                                <p class="text-white-50 mb-0">Absolutely beast of a machine! Runs Cyberpunk on ultra settings without breaking a sweat. The display is super crisp and the 144Hz makes a huge difference in competitive games. Worth every penny.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Review 2 -->
+                    <div class="review-card">
+                        <div class="d-flex gap-3">
+                            <div class="reviewer-avatar" style="background: linear-gradient(135deg, #f43f5e, #fb923c);">SM</div>
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <h6 class="text-white fw-bold mb-1">Sarah Mitchell <i class="bi bi-patch-check-fill text-success ms-1 small" title="Verified Buyer"></i></h6>
+                                        <div class="text-warning small mb-2">
+                                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                                        </div>
+                                    </div>
+                                    <span class="review-date">Sep 28, 2025</span>
+                                </div>
+                                <p class="text-white-50 mb-0">Great laptop for both video editing and gaming. The rendering speeds are fantastic thanks to the RTX 3060. Only reason I gave 4.5 is that the battery life could be a bit better when not plugged in, but expected for a gaming rig.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="review-card">
+                        <div class="d-flex gap-3">
+                            <div class="reviewer-avatar" style="background: linear-gradient(135deg, #10b981, #06b6d4);">RD</div>
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <h6 class="text-white fw-bold mb-1">Rajesh Desai <i class="bi bi-patch-check-fill text-success ms-1 small" title="Verified Buyer"></i></h6>
+                                        <div class="text-warning small mb-2">
+                                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i>
+                                        </div>
+                                    </div>
+                                    <span class="review-date">Sep 15, 2025</span>
+                                </div>
+                                <p class="text-white-50 mb-0">The build quality is premium and the cooling fans actually keep it quiet under normal load. Keyboard travel distance is nice. Seller shipped it very quickly, packaging was secure.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 4 -->
+                    <div class="review-card">
+                        <div class="d-flex gap-3">
+                            <div class="reviewer-avatar" style="background: linear-gradient(135deg, #a855f7, #ec4899);">KL</div>
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <h6 class="text-white fw-bold mb-1">Kevin Lee <i class="bi bi-patch-check-fill text-success ms-1 small" title="Verified Buyer"></i></h6>
+                                        <div class="text-warning small mb-2">
+                                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                                        </div>
+                                    </div>
+                                    <span class="review-date">Aug 02, 2025</span>
+                                </div>
+                                <p class="text-white-50 mb-0">Upgraded from an old GTX 1050 laptop and the jump in performance is unbelievable. The screen colors are very accurate right out of the box.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 5 -->
+                    <div class="review-card">
+                        <div class="d-flex gap-3">
+                            <div class="reviewer-avatar" style="background: linear-gradient(135deg, #eab308, #f97316);">EM</div>
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <h6 class="text-white fw-bold mb-1">Emily Moore</h6>
+                                        <div class="text-warning small mb-2">
+                                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                                        </div>
+                                    </div>
+                                    <span class="review-date">Jul 19, 2025</span>
+                                </div>
+                                <p class="text-white-50 mb-0">Got it on a discount. Super fast delivery by TechHub Store. The aesthetics are stealthy so I can even take it to office meetings without it screaming "gamer". Highly recommend.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <button class="btn btn-outline-light rounded-pill px-4 transition-all btn-hover-info">Load More Reviews</button>
+                </div>
+            </div>
+
+            <!-- Similar Products Section -->
+            <section class="similar-products-section mt-5 fade-in-up delay-4">
+                <div class="d-flex justify-content-between align-items-end mb-4">
+                    <h3 class="fw-bold mb-0 text-white">Similar <span>Products</span></h3>
+                    <a href="product-listing.html" class="text-info text-decoration-none fw-medium">View All <i class="bi bi-arrow-right"></i></a>
+                </div>
+                
+                <div class="row g-4">
+                    <!-- Product 1 -->
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="glass-card product-card rounded-4">
+                            <div class="product-img-wrapper">
+                                <span class="stock-badge">In Stock</span>
+                                <i class="bi bi-laptop product-img-placeholder"></i>
+                            </div>
+                            <div class="product-details">
+                                <a href="#" class="product-title">UltraBook Slim 14-inch</a>
+                                <div class="product-rating mb-2">
+                                    <i class="bi bi-star-fill text-warning"></i><span class="text-light opacity-75 ms-1 small">4.6 (120)</span>
+                                </div>
+                                <div class="product-price mb-3">₹75,500</div>
+                                <div class="product-actions mt-auto">
+                                    <button class="btn btn-light btn-hover-info rounded-pill btn-cart fw-medium transition-all w-100"><i class="bi bi-cart-plus me-1"></i> Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="glass-card product-card rounded-4">
+                            <div class="product-img-wrapper">
+                                <span class="discount-badge">-10% OFF</span>
+                                <i class="bi bi-display product-img-placeholder"></i>
+                            </div>
+                            <div class="product-details">
+                                <a href="#" class="product-title">UltraWide 34-inch Monitor</a>
+                                <div class="product-rating mb-2">
+                                    <i class="bi bi-star-fill text-warning"></i><span class="text-light opacity-75 ms-1 small">4.9 (18)</span>
+                                </div>
+                                <div class="product-price mb-3">₹32,499</div>
+                                <div class="product-actions mt-auto">
+                                    <button class="btn btn-light btn-hover-info rounded-pill btn-cart fw-medium transition-all w-100"><i class="bi bi-cart-plus me-1"></i> Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="glass-card product-card rounded-4">
+                            <div class="product-img-wrapper">
+                                <span class="stock-badge bg-danger">Low Stock</span>
+                                <i class="bi bi-keyboard product-img-placeholder"></i>
+                            </div>
+                            <div class="product-details">
+                                <a href="#" class="product-title">Mechanical Gaming Keyboard</a>
+                                <div class="product-rating mb-2">
+                                    <i class="bi bi-star-fill text-warning"></i><span class="text-light opacity-75 ms-1 small">4.5 (189)</span>
+                                </div>
+                                <div class="product-price mb-3">₹4,499</div>
+                                <div class="product-actions mt-auto">
+                                    <button class="btn btn-light btn-hover-info rounded-pill btn-cart fw-medium transition-all w-100"><i class="bi bi-cart-plus me-1"></i> Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="glass-card product-card rounded-4">
+                            <div class="product-img-wrapper">
+                                <i class="bi bi-mouse3 product-img-placeholder"></i>
+                            </div>
+                            <div class="product-details">
+                                <a href="#" class="product-title">Wireless Gaming Mouse</a>
+                                <div class="product-rating mb-2">
+                                    <i class="bi bi-star-fill text-warning"></i><span class="text-light opacity-75 ms-1 small">4.7 (432)</span>
+                                </div>
+                                <div class="product-price mb-3">₹2,999</div>
+                                <div class="product-actions mt-auto">
+                                    <button class="btn btn-light btn-hover-info rounded-pill btn-cart fw-medium transition-all w-100"><i class="bi bi-cart-plus me-1"></i> Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center text-white pb-4 pt-5 mt-5 border-top border-light border-opacity-10 footer-section fade-in-up delay-4">
+            <div class="container">
+                <div class="row g-4 text-start mb-4">
+                    <div class="col-lg-4">
+                        <h5 class="fw-bold mb-3"><i class="bi bi-shop text-info me-2"></i>Multi-Vendor Platform</h5>
+                        <p class="small text-white-50 lh-lg">A centralized marketplace connecting customers, vendors, and administrators through a single unified platform. Discover quality products with confidence.</p>
+                        <div class="d-flex gap-3 mt-3">
+                            <a href="#" class="text-white-50 text-hover-white transition-all"><i class="bi bi-facebook fs-5"></i></a>
+                            <a href="#" class="text-white-50 text-hover-white transition-all"><i class="bi bi-twitter-x fs-5"></i></a>
+                            <a href="#" class="text-white-50 text-hover-white transition-all"><i class="bi bi-instagram fs-5"></i></a>
+                            <a href="#" class="text-white-50 text-hover-white transition-all"><i class="bi bi-linkedin fs-5"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4">
+                        <h6 class="fw-bold mb-3">Quick Links</h6>
+                        <ul class="list-unstyled small text-white-50">
+                            <li class="mb-2"><a href="customer-dashboard.html" class="text-white-50 text-decoration-none">Home</a></li>
+                            <li class="mb-2"><a href="product-listing.html" class="text-white-50 text-decoration-none">Products</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Vendors</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Categories</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-4">
+                        <h6 class="fw-bold mb-3">Customer Support</h6>
+                        <ul class="list-unstyled small text-white-50">
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Help Center</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Order Tracking</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Returns & Refunds</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <h6 class="fw-bold mb-3">Contact Info</h6>
+                        <ul class="list-unstyled small text-white-50">
+                            <li class="mb-2"><i class="bi bi-geo-alt me-2 text-info"></i> 123 Tech Park, Innovation City</li>
+                            <li class="mb-2"><i class="bi bi-envelope me-2 text-info"></i> support@multivendor.com</li>
+                            <li class="mb-2"><i class="bi bi-telephone me-2 text-info"></i> +1 (555) 123-4567</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr class="border-light border-opacity-10 mb-4">
+                <p class="small text-white-50 mb-0">&copy; Academic Year 2025-2026. All Rights Reserved.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Supabase integration -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/cart-checkout.js"></script>
+
+    <script>
+        let currentProductId = null;
+        
+        function changeQty(delta) {
+            const input = document.getElementById('qtyInput');
+            let val = parseInt(input.value) + delta;
+            if (val < 1) val = 1;
+            input.value = val;
+        }
+
+        async function loadProduct() {
+            const params = new URLSearchParams(window.location.search);
+            const productId = params.get('id');
+
+            if (!productId) return; // No ID = show static fallback
+
+            currentProductId = productId;
+
+            try {
+                const { product, images, reviews } = await fetchProductDetails(productId);
+
+                // Update page title & breadcrumb
+                document.title = product.name + ' - Multi-Vendor Platform';
+                document.querySelector('.breadcrumb .active').textContent = product.name;
+
+                // Category
+                document.getElementById('productCategory').textContent = product.category_name || 'Uncategorized';
+
+                // Title
+                document.getElementById('productTitle').textContent = product.name;
+
+                // Price
+                document.getElementById('productPrice').textContent = '₹' + product.price.toLocaleString();
+
+                // Description
+                document.getElementById('productDesc').textContent = product.description || '';
+
+                // Stock
+                const stockBadge = document.getElementById('stockBadge');
+                const qtyInfo = document.getElementById('stockQtyInfo');
+                if (product.stock_quantity > 0) {
+                    stockBadge.innerHTML = '<i class="bi bi-check-circle-fill"></i> In Stock';
+                    stockBadge.className = 'status-badge';
+                    qtyInfo.textContent = 'Only ' + product.stock_quantity + ' left in stock!';
+                } else {
+                    stockBadge.innerHTML = '<i class="bi bi-x-circle-fill"></i> Out of Stock';
+                    stockBadge.className = 'status-badge bg-danger';
+                    document.getElementById('addToCartBtn').disabled = true;
+                }
+
+                // Vendor
+                document.getElementById('vendorName').textContent = product.vendor_name || 'Unknown';
+                const avatarEl = document.getElementById('vendorAvatar');
+                avatarEl.textContent = (product.vendor_name || 'V')[0].toUpperCase();
+
+                // Product images
+                const mainImg = document.getElementById('mainProductImg');
+                const thumbContainer = document.getElementById('thumbnailContainer');
+                if (images && images.length > 0) {
+                    mainImg.innerHTML = `<img src="${images[0].image_url}" class="img-fluid" style="max-height:350px; object-fit:contain;" alt="${product.name}">`;
+                    thumbContainer.innerHTML = '';
+                    images.forEach((img, i) => {
+                        thumbContainer.innerHTML += `<div class="thumbnail-img ${i===0 ? 'active' : ''}" onclick="document.getElementById('mainProductImg').innerHTML = '<img src=\'${img.image_url}\' class=\'img-fluid\' style=\'max-height:350px; object-fit:contain;\' alt=\'img\'>'">
+                            <img src="${img.image_url}" class="img-fluid" style="max-height:60px; object-fit:contain;">
+                        </div>`;
+                    });
+                }
+
+                // Reviews
+                if (reviews && reviews.length > 0) {
+                    const reviewsList = document.querySelector('.reviews-list');
+                    reviewsList.innerHTML = '';
+                    reviews.forEach(r => {
+                        const name = r.profiles?.full_name || 'Customer';
+                        const initials = name.split(' ').map(w => w[0]).join('').toUpperCase().substring(0, 2);
+                        const stars = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
+                        reviewsList.innerHTML += `
+                            <div class="review-card">
+                                <div class="d-flex gap-3">
+                                    <div class="reviewer-avatar">${initials}</div>
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <h6 class="text-white fw-bold mb-1">${name}</h6>
+                                            <span class="review-date">${new Date(r.created_at).toLocaleDateString()}</span>
+                                        </div>
+                                        <div class="text-warning small mb-2">${stars}</div>
+                                        <p class="text-white-50 mb-0">${r.comment || ''}</p>
+                                    </div>
+                                </div>
+                            </div>`;
+                    });
+                }
+
+                // Add to cart handler
+                document.getElementById('addToCartBtn').addEventListener('click', async () => {
+                    try {
+                        const qty = parseInt(document.getElementById('qtyInput').value);
+                        await addToCart(productId, qty);
+                        alert('Added to cart successfully!');
+                    } catch (err) {
+                        console.error(err);
+                        alert('Please log in to add items to cart.');
+                    }
+                });
+
+            } catch (err) {
+                console.error('Failed to load product', err);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadProduct);
+    </script>
+</body>
+
+</html>

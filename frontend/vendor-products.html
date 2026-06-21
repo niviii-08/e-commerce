@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Management - Multi-Vendor Platform</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="vendor-dashboard.css">
+    <link rel="stylesheet" href="vendor-products.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <i class="bi bi-shop fs-3 me-2 text-primary-glow"></i>
+                <span class="fw-bold brand-text d-none d-sm-inline">Vendor Central</span>
+                <span class="fw-bold brand-text d-inline d-sm-none">VC</span>
+            </a>
+            
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="bi bi-list fs-1 text-white"></i>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto fw-medium">
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="vendor-dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active px-3" href="vendor-products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="vendor-inventory.html">Inventory</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="vendor-orders.html">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="#">Analytics</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="#">Settings</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content wrapper -->
+    <div class="main-wrapper products-content">
+        <div class="container-fluid px-4">
+
+            <!-- Page Header -->
+            <div class="vendor-header fade-in-up">
+                <div class="vendor-profile">
+                    <div class="vendor-avatar">
+                        TS
+                    </div>
+                    <div>
+                        <h2 class="fw-bold text-white mb-1">Product Management</h2>
+                        <h6 class="text-white-50 mb-2">TechStore Hub</h6>
+                        <p class="text-white-50 small mb-0">Manage all your products, update inventory, and add new listings from one place.</p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center gap-3 mt-3 mt-md-0">
+                    <a href="#" class="btn btn-outline-light rounded-circle position-relative p-2" style="width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;">
+                        <i class="bi bi-bell fs-5"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            3
+                            <span class="visually-hidden">unread messages</span>
+                        </span>
+                    </a>
+                    <a href="index.html" class="btn btn-danger btn-hover-danger rounded-pill px-4 fw-medium transition-all shadow-sm">
+                        <i class="bi bi-box-arrow-right me-2"></i>Logout
+                    </a>
+                </div>
+            </div>
+
+            <!-- Statistics Cards -->
+            <div class="row g-4 mb-4 fade-in-up delay-1">
+                <!-- Card 1 -->
+                <div class="col-sm-6 col-xl-3">
+                    <div class="stat-card">
+                        <div class="stat-icon bg-icon-primary">
+                            <i class="bi bi-box-seam"></i>
+                        </div>
+                        <div class="stat-value">120</div>
+                        <div class="stat-label">Total Products</div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="col-sm-6 col-xl-3">
+                    <div class="stat-card">
+                        <div class="stat-icon bg-icon-success">
+                            <i class="bi bi-check-circle"></i>
+                        </div>
+                        <div class="stat-value text-success">105</div>
+                        <div class="stat-label">Active Products</div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="col-sm-6 col-xl-3">
+                    <div class="stat-card">
+                        <div class="stat-icon bg-icon-warning">
+                            <i class="bi bi-exclamation-triangle"></i>
+                        </div>
+                        <div class="stat-value text-warning">15</div>
+                        <div class="stat-label">Out of Stock</div>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="col-sm-6 col-xl-3">
+                    <div class="stat-card">
+                        <div class="stat-icon bg-icon-info">
+                            <i class="bi bi-tags"></i>
+                        </div>
+                        <div class="stat-value text-info">8</div>
+                        <div class="stat-label">Categories</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Action Bar -->
+            <div class="action-bar fade-in-up delay-2">
+                <div class="row align-items-center g-3">
+                    <!-- Search & Filters -->
+                    <div class="col-lg-8">
+                        <div class="d-flex flex-wrap gap-3">
+                            <div class="search-wrapper flex-grow-1" style="max-width: 300px;">
+                                <i class="bi bi-search"></i>
+                                <input type="text" class="form-control search-input" placeholder="Search products...">
+                            </div>
+                            <select class="form-select filter-select" style="max-width: 200px;">
+                                <option value="" selected>All Categories</option>
+                                <option value="electronics">Electronics</option>
+                                <option value="audio">Audio</option>
+                                <option value="computers">Computers</option>
+                            </select>
+                            <select class="form-select filter-select" style="max-width: 180px;">
+                                <option value="" selected>Stock Status</option>
+                                <option value="in-stock">In Stock</option>
+                                <option value="low-stock">Low Stock</option>
+                                <option value="out-of-stock">Out of Stock</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Actions & View Toggle -->
+                    <div class="col-lg-4">
+                        <div class="d-flex justify-content-lg-end gap-3">
+                            <div class="btn-group" role="group">
+                                <button type="button" class="view-toggle-btn active" id="tableViewBtn" title="List View"><i class="bi bi-list-task fs-5"></i></button>
+                                <button type="button" class="view-toggle-btn" id="gridViewBtn" title="Grid View"><i class="bi bi-grid fs-5"></i></button>
+                            </div>
+                            <button class="btn btn-primary rounded-pill fw-medium transition-all px-4" data-bs-toggle="modal" data-bs-target="#addProductModal" style="background: linear-gradient(135deg, #3b82f6, #6366f1); border: none; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);">
+                                <i class="bi bi-plus-lg me-1"></i> Add Product
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Table View (Active by default) -->
+            <div id="productsTableView" class="fade-in-up delay-3">
+                <div class="products-table-wrapper">
+                    <!-- Bulk Actions -->
+                    <div class="d-flex justify-content-between align-items-center mb-3 border-bottom border-light border-opacity-10 pb-3">
+                        <div class="bulk-actions">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="selectAll">
+                                <label class="form-check-label text-white-50" for="selectAll">Select All</label>
+                            </div>
+                            <span class="text-white-50 opacity-25 px-2">|</span>
+                            <button class="btn btn-sm btn-outline-danger rounded-pill"><i class="bi bi-trash me-1"></i> Delete Selected</button>
+                            <button class="btn btn-sm btn-outline-info rounded-pill ms-2"><i class="bi bi-pencil-square me-1"></i> Update Stock</button>
+                        </div>
+                        <button class="btn btn-sm btn-light btn-hover-info rounded-pill"><i class="bi bi-download me-1"></i> Export Products</button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-borderless align-middle">
+                            <thead>
+                                <tr>
+                                    <th style="width: 40px;"></th>
+                                    <th>ID</th>
+                                    <th>Product</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Stock</th>
+                                    <th>Status</th>
+                                    <th class="text-end">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Product 1 -->
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <input class="form-check-input product-check" type="checkbox">
+                                        </div>
+                                    </td>
+                                    <td class="text-white-50">#PRD-001</td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="product-thumbnail"><i class="bi bi-laptop"></i></div>
+                                            <div>
+                                                <h6 class="text-white mb-0">ProX 15-inch Gaming Laptop</h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-white-50">Computers</td>
+                                    <td class="fw-bold text-white">₹89,999</td>
+                                    <td>45</td>
+                                    <td><span class="status-badge status-delivered">Active</span></td>
+                                    <td class="text-end table-actions">
+                                        <button class="btn btn-outline-info me-1" title="View Details"><i class="bi bi-eye"></i></button>
+                                        <button class="btn btn-outline-warning me-1" title="Edit Product"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-outline-danger" title="Delete Product"><i class="bi bi-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <!-- Product 2 -->
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <input class="form-check-input product-check" type="checkbox">
+                                        </div>
+                                    </td>
+                                    <td class="text-white-50">#PRD-002</td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="product-thumbnail"><i class="bi bi-headphones"></i></div>
+                                            <div>
+                                                <h6 class="text-white mb-0">Noise Cancelling Headphones</h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-white-50">Audio</td>
+                                    <td class="fw-bold text-white">₹16,998</td>
+                                    <td class="text-danger fw-bold">2</td>
+                                    <td><span class="status-badge status-low-stock">Low Stock</span></td>
+                                    <td class="text-end table-actions">
+                                        <button class="btn btn-outline-info me-1"><i class="bi bi-eye"></i></button>
+                                        <button class="btn btn-outline-warning me-1"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <!-- Product 3 -->
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <input class="form-check-input product-check" type="checkbox">
+                                        </div>
+                                    </td>
+                                    <td class="text-white-50">#PRD-003</td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="product-thumbnail"><i class="bi bi-mouse3"></i></div>
+                                            <div>
+                                                <h6 class="text-white mb-0">Ergonomic Wireless Mouse</h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-white-50">Accessories</td>
+                                    <td class="fw-bold text-white">₹2,999</td>
+                                    <td>120</td>
+                                    <td><span class="status-badge status-delivered">Active</span></td>
+                                    <td class="text-end table-actions">
+                                        <button class="btn btn-outline-info me-1"><i class="bi bi-eye"></i></button>
+                                        <button class="btn btn-outline-warning me-1"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <!-- Product 4 -->
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <input class="form-check-input product-check" type="checkbox">
+                                        </div>
+                                    </td>
+                                    <td class="text-white-50">#PRD-004</td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="product-thumbnail"><i class="bi bi-display"></i></div>
+                                            <div>
+                                                <h6 class="text-white mb-0">UltraWide 34-inch Monitor</h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-white-50">Computers</td>
+                                    <td class="fw-bold text-white">₹32,499</td>
+                                    <td>32</td>
+                                    <td><span class="status-badge status-delivered">Active</span></td>
+                                    <td class="text-end table-actions">
+                                        <button class="btn btn-outline-info me-1"><i class="bi bi-eye"></i></button>
+                                        <button class="btn btn-outline-warning me-1"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <!-- Product 5 -->
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <input class="form-check-input product-check" type="checkbox">
+                                        </div>
+                                    </td>
+                                    <td class="text-white-50">#PRD-005</td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="product-thumbnail"><i class="bi bi-keyboard"></i></div>
+                                            <div>
+                                                <h6 class="text-white mb-0">Mechanical Gaming Keyboard</h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-white-50">Accessories</td>
+                                    <td class="fw-bold text-white">₹4,499</td>
+                                    <td class="text-warning fw-bold">3</td>
+                                    <td><span class="status-badge status-low-stock">Low Stock</span></td>
+                                    <td class="text-end table-actions">
+                                        <button class="btn btn-outline-info me-1"><i class="bi bi-eye"></i></button>
+                                        <button class="btn btn-outline-warning me-1"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <!-- Product 6 -->
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <input class="form-check-input product-check" type="checkbox">
+                                        </div>
+                                    </td>
+                                    <td class="text-white-50">#PRD-006</td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="product-thumbnail"><i class="bi bi-camera"></i></div>
+                                            <div>
+                                                <h6 class="text-white mb-0">Mirrorless Digital Camera 4K</h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-white-50">Photography</td>
+                                    <td class="fw-bold text-white">₹45,999</td>
+                                    <td>18</td>
+                                    <td><span class="status-badge status-delivered">Active</span></td>
+                                    <td class="text-end table-actions">
+                                        <button class="btn btn-outline-info me-1"><i class="bi bi-eye"></i></button>
+                                        <button class="btn btn-outline-warning me-1"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <!-- Product 7 -->
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <input class="form-check-input product-check" type="checkbox">
+                                        </div>
+                                    </td>
+                                    <td class="text-white-50">#PRD-007</td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="product-thumbnail"><i class="bi bi-phone"></i></div>
+                                            <div>
+                                                <h6 class="text-white mb-0">Smartphone Ultra 5G</h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-white-50">Mobile</td>
+                                    <td class="fw-bold text-white">₹64,999</td>
+                                    <td class="text-secondary fw-bold">0</td>
+                                    <td><span class="status-badge status-pending">Out of Stock</span></td>
+                                    <td class="text-end table-actions">
+                                        <button class="btn btn-outline-info me-1"><i class="bi bi-eye"></i></button>
+                                        <button class="btn btn-outline-warning me-1"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <!-- Product 8 -->
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <input class="form-check-input product-check" type="checkbox">
+                                        </div>
+                                    </td>
+                                    <td class="text-white-50">#PRD-008</td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="product-thumbnail"><i class="bi bi-smartwatch"></i></div>
+                                            <div>
+                                                <h6 class="text-white mb-0">SmartWatch Series 7 Pro</h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-white-50">Wearables</td>
+                                    <td class="fw-bold text-white">₹14,999</td>
+                                    <td>56</td>
+                                    <td><span class="status-badge status-delivered">Active</span></td>
+                                    <td class="text-end table-actions">
+                                        <button class="btn btn-outline-info me-1"><i class="bi bi-eye"></i></button>
+                                        <button class="btn btn-outline-warning me-1"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <!-- Product 9 -->
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <input class="form-check-input product-check" type="checkbox">
+                                        </div>
+                                    </td>
+                                    <td class="text-white-50">#PRD-009</td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="product-thumbnail"><i class="bi bi-router"></i></div>
+                                            <div>
+                                                <h6 class="text-white mb-0">Wi-Fi 6 Mesh System</h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-white-50">Networking</td>
+                                    <td class="fw-bold text-white">₹18,500</td>
+                                    <td>24</td>
+                                    <td><span class="status-badge status-delivered">Active</span></td>
+                                    <td class="text-end table-actions">
+                                        <button class="btn btn-outline-info me-1"><i class="bi bi-eye"></i></button>
+                                        <button class="btn btn-outline-warning me-1"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <!-- Product 10 -->
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <input class="form-check-input product-check" type="checkbox">
+                                        </div>
+                                    </td>
+                                    <td class="text-white-50">#PRD-010</td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="product-thumbnail"><i class="bi bi-speaker"></i></div>
+                                            <div>
+                                                <h6 class="text-white mb-0">Portable Bluetooth Speaker</h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-white-50">Audio</td>
+                                    <td class="fw-bold text-white">₹3,499</td>
+                                    <td>89</td>
+                                    <td><span class="status-badge status-delivered">Active</span></td>
+                                    <td class="text-end table-actions">
+                                        <button class="btn btn-outline-info me-1"><i class="bi bi-eye"></i></button>
+                                        <button class="btn btn-outline-warning me-1"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Cards Grid View (Hidden by default) -->
+            <div id="productsGridView" class="d-none fade-in-up delay-3 mb-5">
+                <!-- Bulk Actions -->
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="bulk-actions">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="selectAllGrid">
+                            <label class="form-check-label text-white-50" for="selectAllGrid">Select All</label>
+                        </div>
+                        <span class="text-white-50 opacity-25 px-2">|</span>
+                        <button class="btn btn-sm btn-outline-danger rounded-pill"><i class="bi bi-trash me-1"></i> Delete</button>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <!-- Grid Item 1 -->
+                    <div class="col-sm-6 col-md-4 col-xl-3">
+                        <div class="product-grid-card">
+                            <div class="product-grid-img">
+                                <i class="bi bi-laptop"></i>
+                                <div class="product-grid-status">
+                                    <span class="status-badge status-delivered">Active</span>
+                                </div>
+                            </div>
+                            <div class="product-grid-body">
+                                <h6 class="product-grid-title">ProX 15-inch Gaming Laptop</h6>
+                                <span class="product-grid-category">Computers</span>
+                                <div class="d-flex justify-content-between align-items-end mb-3">
+                                    <span class="product-grid-price">₹89,999</span>
+                                    <span class="text-white-50 small">Stock: 45</span>
+                                </div>
+                                <div class="product-grid-actions">
+                                    <button class="btn btn-sm btn-outline-info flex-grow-1"><i class="bi bi-eye"></i> View</button>
+                                    <button class="btn btn-sm btn-outline-warning flex-grow-1"><i class="bi bi-pencil"></i> Edit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Grid Item 2 -->
+                    <div class="col-sm-6 col-md-4 col-xl-3">
+                        <div class="product-grid-card">
+                            <div class="product-grid-img">
+                                <i class="bi bi-headphones"></i>
+                                <div class="product-grid-status">
+                                    <span class="status-badge status-low-stock">Low Stock</span>
+                                </div>
+                            </div>
+                            <div class="product-grid-body">
+                                <h6 class="product-grid-title">Noise Cancelling Headphones</h6>
+                                <span class="product-grid-category">Audio</span>
+                                <div class="d-flex justify-content-between align-items-end mb-3">
+                                    <span class="product-grid-price">₹16,998</span>
+                                    <span class="text-danger fw-bold small">Stock: 2</span>
+                                </div>
+                                <div class="product-grid-actions">
+                                    <button class="btn btn-sm btn-outline-info flex-grow-1"><i class="bi bi-eye"></i> View</button>
+                                    <button class="btn btn-sm btn-outline-warning flex-grow-1"><i class="bi bi-pencil"></i> Edit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Grid Item 3 -->
+                    <div class="col-sm-6 col-md-4 col-xl-3">
+                        <div class="product-grid-card">
+                            <div class="product-grid-img">
+                                <i class="bi bi-mouse3"></i>
+                                <div class="product-grid-status">
+                                    <span class="status-badge status-delivered">Active</span>
+                                </div>
+                            </div>
+                            <div class="product-grid-body">
+                                <h6 class="product-grid-title">Ergonomic Wireless Mouse</h6>
+                                <span class="product-grid-category">Accessories</span>
+                                <div class="d-flex justify-content-between align-items-end mb-3">
+                                    <span class="product-grid-price">₹2,999</span>
+                                    <span class="text-white-50 small">Stock: 120</span>
+                                </div>
+                                <div class="product-grid-actions">
+                                    <button class="btn btn-sm btn-outline-info flex-grow-1"><i class="bi bi-eye"></i> View</button>
+                                    <button class="btn btn-sm btn-outline-warning flex-grow-1"><i class="bi bi-pencil"></i> Edit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Grid Item 4 -->
+                    <div class="col-sm-6 col-md-4 col-xl-3">
+                        <div class="product-grid-card">
+                            <div class="product-grid-img">
+                                <i class="bi bi-display"></i>
+                                <div class="product-grid-status">
+                                    <span class="status-badge status-delivered">Active</span>
+                                </div>
+                            </div>
+                            <div class="product-grid-body">
+                                <h6 class="product-grid-title">UltraWide 34-inch Monitor</h6>
+                                <span class="product-grid-category">Computers</span>
+                                <div class="d-flex justify-content-between align-items-end mb-3">
+                                    <span class="product-grid-price">₹32,499</span>
+                                    <span class="text-white-50 small">Stock: 32</span>
+                                </div>
+                                <div class="product-grid-actions">
+                                    <button class="btn btn-sm btn-outline-info flex-grow-1"><i class="bi bi-eye"></i> View</button>
+                                    <button class="btn btn-sm btn-outline-warning flex-grow-1"><i class="bi bi-pencil"></i> Edit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Low Stock Section & Pagination -->
+            <div class="row g-4 fade-in-up delay-4">
+                <!-- Low Stock Quick Alert -->
+                <div class="col-lg-6">
+                    <div class="dashboard-table-card">
+                        <h5 class="dashboard-section-title mb-3"><i class="bi bi-exclamation-circle text-danger"></i> Low Stock Priority</h5>
+                        <div class="table-responsive">
+                            <table class="table table-borderless table-sm mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Product Name</th>
+                                        <th class="text-center">Available Stock</th>
+                                        <th class="text-end">Alert Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Wireless Mouse</td>
+                                        <td class="text-center text-warning fw-bold">5 Units</td>
+                                        <td class="text-end"><span class="status-badge status-low-stock">Reorder Soon</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mechanical Keyboard</td>
+                                        <td class="text-center text-warning fw-bold">3 Units</td>
+                                        <td class="text-end"><span class="status-badge status-low-stock">Reorder Soon</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Noise Cancelling Headphones</td>
+                                        <td class="text-center text-danger fw-bold">2 Units</td>
+                                        <td class="text-end"><span class="status-badge status-low-stock">Critical</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="col-lg-6 d-flex align-items-center justify-content-lg-end mt-4 mt-lg-0">
+                    <nav aria-label="Product navigation">
+                        <ul class="pagination pagination-lg">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Add Product Modal -->
+        <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content glass-modal">
+                    <div class="modal-header border-light border-opacity-10">
+                        <h5 class="modal-title" id="addProductModalLabel"><i class="bi bi-box-seam me-2 text-info"></i>Add New Product</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body p-4">
+                        <form>
+                            <div class="row g-4">
+                                <div class="col-md-8">
+                                    <div class="mb-3">
+                                        <label class="form-label">Product Name</label>
+                                        <input type="text" class="form-control glass-input" placeholder="e.g. ProX 15-inch Gaming Laptop">
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-sm-6">
+                                            <label class="form-label">Category</label>
+                                            <select class="form-select glass-input">
+                                                <option selected disabled>Select Category</option>
+                                                <option value="electronics">Electronics</option>
+                                                <option value="audio">Audio</option>
+                                                <option value="computers">Computers</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label">Price (₹)</label>
+                                            <input type="number" class="form-control glass-input" placeholder="0.00">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label">Stock Quantity</label>
+                                            <input type="number" class="form-control glass-input" placeholder="0">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label">SKU (Optional)</label>
+                                            <input type="text" class="form-control glass-input" placeholder="e.g. LAP-001">
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <label class="form-label">Product Description</label>
+                                        <textarea class="form-control glass-input" rows="4" placeholder="Enter detailed product description..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Product Image</label>
+                                    <div class="image-upload-zone">
+                                        <i class="bi bi-cloud-arrow-up"></i>
+                                        <p class="text-white-50 small mb-1">Click or drag image to upload</p>
+                                        <small class="text-white-50 opacity-50">PNG, JPG up to 5MB</small>
+                                    </div>
+                                    <div class="form-check mt-4">
+                                        <input class="form-check-input" type="checkbox" id="publishDirectly" checked>
+                                        <label class="form-check-label text-white-50 small" for="publishDirectly">
+                                            Publish directly to store
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer border-light border-opacity-10">
+                        <button type="button" class="btn btn-outline-light rounded-pill px-4" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary rounded-pill px-4 fw-medium border-0" style="background: linear-gradient(135deg, #3b82f6, #6366f1); box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);">
+                            Save Product
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center text-white pb-4 pt-4 border-top border-light border-opacity-10 footer-section mt-5">
+            <div class="container">
+                <div class="d-flex justify-content-center gap-4 mb-3">
+                    <a href="#" class="text-white-50 text-hover-white text-decoration-none">Vendor Support</a>
+                    <a href="#" class="text-white-50 text-hover-white text-decoration-none">Terms of Service</a>
+                    <a href="#" class="text-white-50 text-hover-white text-decoration-none">Contact Us</a>
+                </div>
+                <p class="small text-white-50 mb-0">&copy; Multi-Vendor E-Commerce Platform | Academic Project 2025-2026</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- View Toggle Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const btnTable = document.getElementById('tableViewBtn');
+            const btnGrid = document.getElementById('gridViewBtn');
+            const tableView = document.getElementById('productsTableView');
+            const gridView = document.getElementById('productsGridView');
+
+            btnTable.addEventListener('click', function() {
+                btnTable.classList.add('active');
+                btnGrid.classList.remove('active');
+                tableView.classList.remove('d-none');
+                gridView.classList.add('d-none');
+            });
+
+            btnGrid.addEventListener('click', function() {
+                btnGrid.classList.add('active');
+                btnTable.classList.remove('active');
+                gridView.classList.remove('d-none');
+                tableView.classList.add('d-none');
+            });
+        });
+    </script>
+</body>
+
+</html>

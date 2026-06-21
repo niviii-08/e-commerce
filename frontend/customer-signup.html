@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Signup - Multi-Vendor E-Commerce Platform</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="customer-signup.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <i class="bi bi-shop fs-3 me-2 text-primary-glow"></i>
+                <span class="fw-bold brand-text">Multi-Vendor Platform</span>
+            </a>
+            <div class="d-flex ms-auto">
+                <a href="customer-login.html"
+                    class="btn btn-outline-light rounded-pill px-3 px-md-4 py-1 py-md-2 shadow-sm d-flex align-items-center gap-2 btn-back transition-all">
+                    <i class="bi bi-arrow-left"></i> <span class="d-none d-sm-inline">Back to Login</span><span
+                        class="d-inline d-sm-none">Back</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content wrapper for gradient background -->
+    <div class="main-wrapper d-flex flex-column min-vh-100">
+
+        <!-- Signup Section -->
+        <section class="flex-grow-1 d-flex align-items-center pt-5 mt-5 pb-5">
+            <div class="container">
+                <div class="row g-5 align-items-center justify-content-center">
+
+                    <!-- Left Side: Welcome & Illustration -->
+                    <div class="col-lg-5 text-white pe-lg-4 fade-in-up delay-1">
+                        <div class="mb-5 mb-lg-0 text-center text-lg-start">
+                            <div
+                                class="badge bg-white bg-opacity-10 text-white border border-light border-opacity-25 mb-4 px-3 py-2 rounded-pill shadow-sm animate-badge backdrop-blur">
+                                <i class="bi bi-person-plus-fill text-success me-1"></i> New Customer
+                            </div>
+                            <h1 class="display-4 fw-bold mb-3 hero-title">Join Our <span
+                                    class="text-gradient">Marketplace</span></h1>
+                            <p class="lead fw-light opacity-75 mb-5 pe-lg-4">
+                                Create your customer account and start shopping from trusted vendors. Experience seamless transactions, real-time tracking, and exclusive deals.
+                            </p>
+
+                            <!-- Ecommerce Illustration Placeholder -->
+                            <div
+                                class="illustration-area glass-panel p-5 rounded-4 d-inline-block position-relative shadow-lg mt-2">
+                                <div class="floating-icons">
+                                    <i class="bi bi-bag-plus-fill fs-1 text-success floating-icon-1"></i>
+                                    <i class="bi bi-gift-fill fs-1 text-warning floating-icon-2"></i>
+                                    <i class="bi bi-truck fs-1 text-info floating-icon-3"></i>
+                                    <i class="bi bi-star-fill fs-3 text-warning floating-icon-4"></i>
+                                </div>
+                                <i class="bi bi-cart4 display-1 opacity-50 text-white d-block mb-2"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Signup Card -->
+                    <div class="col-lg-7 col-xl-6 fade-in-up delay-2">
+                        <div class="glass-card p-4 p-md-5 rounded-4 position-relative overflow-hidden group">
+                            <div class="card-glow glow-success"></div>
+
+                            <div class="text-center mb-4 pb-2">
+                                <h3 class="fw-bold text-white mb-2">Customer Registration</h3>
+                                <p class="text-white-50 small mb-0">Create your customer account</p>
+                            </div>
+
+                            <!-- Validation Alerts (Placeholders) -->
+                            <div class="alert alert-danger alert-dismissible fade show d-none" role="alert"
+                                id="invalidEmailAlert">
+                                <i class="bi bi-exclamation-triangle-fill me-2"></i> Email already registered
+                                <button type="button" class="btn-close btn-close-white shadow-none"
+                                    data-bs-dismiss="alert"></button>
+                            </div>
+                            <div class="alert alert-danger alert-dismissible fade show d-none" role="alert"
+                                id="invalidPhoneAlert">
+                                <i class="bi bi-telephone-x-fill me-2"></i> Invalid Phone Number
+                                <button type="button" class="btn-close btn-close-white shadow-none"
+                                    data-bs-dismiss="alert"></button>
+                            </div>
+                            <div class="alert alert-warning alert-dismissible fade show d-none" role="alert"
+                                id="weakPasswordAlert">
+                                <i class="bi bi-shield-exclamation me-2"></i> Password is too weak
+                                <button type="button" class="btn-close btn-close-white shadow-none"
+                                    data-bs-dismiss="alert"></button>
+                            </div>
+                            <div class="alert alert-danger alert-dismissible fade show d-none" role="alert"
+                                id="passwordMismatchAlert">
+                                <i class="bi bi-key-fill me-2"></i> Passwords do not match
+                                <button type="button" class="btn-close btn-close-white shadow-none"
+                                    data-bs-dismiss="alert"></button>
+                            </div>
+                            <div class="alert alert-success alert-dismissible fade show d-none" role="alert"
+                                id="successAlert">
+                                <i class="bi bi-check-circle-fill me-2"></i> Registration Successful! Redirecting...
+                            </div>
+
+                            <form id="customerSignupForm">
+                                <div class="row g-3 mb-3">
+                                    <!-- Full Name Field -->
+                                    <div class="col-md-6">
+                                        <label class="form-label text-white-50 small fw-medium">Full Name</label>
+                                        <div class="input-group glass-input-group">
+                                            <span class="input-group-text bg-transparent border-end-0 text-white-50">
+                                                <i class="bi bi-person"></i>
+                                            </span>
+                                            <input type="text" id="fullNameInput" class="form-control bg-transparent border-start-0 text-white shadow-none ps-0" placeholder="John Doe" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Date of Birth Field -->
+                                    <div class="col-md-6">
+                                        <label class="form-label text-white-50 small fw-medium">Date of Birth</label>
+                                        <div class="input-group glass-input-group">
+                                            <span class="input-group-text bg-transparent border-end-0 text-white-50">
+                                                <i class="bi bi-calendar3"></i>
+                                            </span>
+                                            <input type="date" id="dobInput" class="form-control bg-transparent border-start-0 text-white shadow-none ps-0" style="color-scheme: dark;" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row g-3 mb-3">
+                                    <!-- Email Field -->
+                                    <div class="col-md-6">
+                                        <label class="form-label text-white-50 small fw-medium">Email Address</label>
+                                        <div class="input-group glass-input-group">
+                                            <span class="input-group-text bg-transparent border-end-0 text-white-50">
+                                                <i class="bi bi-envelope"></i>
+                                            </span>
+                                            <input type="email" id="emailInput" class="form-control bg-transparent border-start-0 text-white shadow-none ps-0" placeholder="john@example.com" required>
+                                        </div>
+                                    </div>
+
+                                    <!-- Phone Field -->
+                                    <div class="col-md-6">
+                                        <label class="form-label text-white-50 small fw-medium">Phone Number</label>
+                                        <div class="input-group glass-input-group">
+                                            <span class="input-group-text bg-transparent border-end-0 text-white-50">
+                                                <i class="bi bi-telephone"></i>
+                                            </span>
+                                            <input type="tel" id="phoneInput" class="form-control bg-transparent border-start-0 text-white shadow-none ps-0" placeholder="+1 234 567 8900" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row g-3 mb-3">
+                                    <!-- Password Field -->
+                                    <div class="col-md-6">
+                                        <label class="form-label text-white-50 small fw-medium">Password</label>
+                                        <div class="input-group glass-input-group mb-1">
+                                            <span class="input-group-text bg-transparent border-end-0 text-white-50">
+                                                <i class="bi bi-lock"></i>
+                                            </span>
+                                            <input type="password" class="form-control bg-transparent border-start-0 border-end-0 text-white shadow-none ps-0" id="passwordInput" placeholder="Password" required onkeyup="checkStrength()">
+                                            <span class="input-group-text bg-transparent border-start-0 text-white-50 cursor-pointer" id="togglePassword">
+                                                <i class="bi bi-eye-slash" id="toggleIcon"></i>
+                                            </span>
+                                        </div>
+                                        <!-- Password Strength Indicator -->
+                                        <div class="progress" style="height: 4px; background-color: rgba(255,255,255,0.1);">
+                                            <div id="strengthBar" class="progress-bar bg-danger" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                        <small id="strengthText" class="text-white-50 mt-1 d-block" style="font-size: 0.7rem;">Enter password</small>
+                                    </div>
+
+                                    <!-- Confirm Password Field -->
+                                    <div class="col-md-6">
+                                        <label class="form-label text-white-50 small fw-medium">Confirm Password</label>
+                                        <div class="input-group glass-input-group">
+                                            <span class="input-group-text bg-transparent border-end-0 text-white-50">
+                                                <i class="bi bi-lock-fill"></i>
+                                            </span>
+                                            <input type="password" class="form-control bg-transparent border-start-0 border-end-0 text-white shadow-none ps-0" id="confirmPasswordInput" placeholder="Confirm Password" required>
+                                            <span class="input-group-text bg-transparent border-start-0 text-white-50 cursor-pointer" id="toggleConfirmPassword">
+                                                <i class="bi bi-eye-slash" id="toggleConfirmIcon"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Address Field -->
+                                <div class="mb-4">
+                                    <label class="form-label text-white-50 small fw-medium">Address</label>
+                                    <div class="input-group glass-input-group">
+                                        <span class="input-group-text bg-transparent border-end-0 text-white-50 align-items-start pt-2">
+                                            <i class="bi bi-geo-alt"></i>
+                                        </span>
+                                        <textarea id="addressInput" class="form-control bg-transparent border-start-0 text-white shadow-none ps-0 pt-2" rows="2" placeholder="Enter your full address" required></textarea>
+                                    </div>
+                                </div>
+
+                                <!-- Signup Button -->
+                                <button type="submit" class="btn btn-success w-100 rounded-pill py-2 fw-semibold text-white shadow-sm mb-4 btn-signup transition-all" id="signupBtn">
+                                    Create Account <i class="bi bi-person-plus ms-1"></i>
+                                </button>
+                            </form>
+
+                            <!-- Login Link -->
+                            <div class="text-center mt-2 border-top border-light border-opacity-10 pt-4">
+                                <p class="text-white-50 small mb-3">Already have an account?</p>
+                                <a href="customer-login.html" class="btn btn-outline-light rounded-pill px-4 py-2 btn-sm fw-medium transition-all w-100">
+                                    Login Here
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer
+            class="text-center text-white pb-4 pt-4 mt-auto border-top border-light border-opacity-10 footer-section fade-in-up delay-4">
+            <div class="container">
+                <h5 class="fw-bold mb-2">Multi-Vendor E-Commerce Platform</h5>
+                <p class="small text-white-50 mb-1">Academic Project • Department of Computer Science</p>
+                <p class="small text-white-50 mb-0">&copy; Academic Year 2025-2026. All Rights Reserved.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Supabase: must load BEFORE any script that calls signUpCustomer() etc. -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/auth.js"></script>
+
+    <!-- Custom Script for Password Toggle and Validation -->
+    <script>
+        // Toggle Password Visibility
+        const togglePassword = document.querySelector('#togglePassword');
+        const passwordInput = document.querySelector('#passwordInput');
+        const toggleIcon = document.querySelector('#toggleIcon');
+
+        togglePassword.addEventListener('click', function (e) {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            toggleIcon.classList.toggle('bi-eye');
+            toggleIcon.classList.toggle('bi-eye-slash');
+        });
+
+        // Toggle Confirm Password Visibility
+        const toggleConfirmPassword = document.querySelector('#toggleConfirmPassword');
+        const confirmPasswordInput = document.querySelector('#confirmPasswordInput');
+        const toggleConfirmIcon = document.querySelector('#toggleConfirmIcon');
+
+        toggleConfirmPassword.addEventListener('click', function (e) {
+            const type = confirmPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            confirmPasswordInput.setAttribute('type', type);
+            toggleConfirmIcon.classList.toggle('bi-eye');
+            toggleConfirmIcon.classList.toggle('bi-eye-slash');
+        });
+
+        // Password Strength Indicator Simulator
+        function checkStrength() {
+            const val = passwordInput.value;
+            const bar = document.getElementById('strengthBar');
+            const text = document.getElementById('strengthText');
+            
+            if (val.length === 0) {
+                bar.style.width = '0%';
+                text.innerText = 'Enter password';
+                text.className = 'text-white-50 mt-1 d-block';
+            } else if (val.length < 5) {
+                bar.style.width = '33%';
+                bar.className = 'progress-bar bg-danger';
+                text.innerText = 'Weak';
+                text.className = 'text-danger mt-1 d-block';
+            } else if (val.length >= 5 && val.length < 8) {
+                bar.style.width = '66%';
+                bar.className = 'progress-bar bg-warning';
+                text.innerText = 'Medium';
+                text.className = 'text-warning mt-1 d-block';
+            } else {
+                bar.style.width = '100%';
+                bar.className = 'progress-bar bg-success';
+                text.innerText = 'Strong';
+                text.className = 'text-success mt-1 d-block';
+            }
+        }
+
+        // Real Supabase Validation & Signup
+        document.getElementById('customerSignupForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            
+            const fullName = document.getElementById('fullNameInput').value;
+            const email = document.getElementById('emailInput').value;
+            const phone = document.getElementById('phoneInput').value;
+            const dob = document.getElementById('dobInput').value;
+            const address = document.getElementById('addressInput').value;
+            const password = document.getElementById('passwordInput').value;
+            const confirmPassword = document.getElementById('confirmPasswordInput').value;
+            
+            const alerts = ['invalidEmailAlert', 'invalidPhoneAlert', 'weakPasswordAlert', 'passwordMismatchAlert', 'successAlert'];
+            alerts.forEach(id => document.getElementById(id).classList.add('d-none'));
+
+            if (password !== confirmPassword) {
+                document.getElementById('passwordMismatchAlert').classList.remove('d-none');
+                return;
+            }
+            if (password.length < 5) {
+                document.getElementById('weakPasswordAlert').classList.remove('d-none');
+                return;
+            }
+
+            try {
+                // Call the signUpCustomer function from auth.js
+                await signUpCustomer({ fullName, email, phone, dob, address, password });
+                document.getElementById('successAlert').classList.remove('d-none');
+                setTimeout(() => {
+                    window.location.href = 'customer-login.html';
+                }, 1500);
+            } catch (error) {
+                console.error(error);
+                if (error.message && error.message.includes('already registered')) {
+                    document.getElementById('invalidEmailAlert').classList.remove('d-none');
+                } else {
+                    alert(error.message);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management - Multi-Vendor Platform</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="vendor-dashboard.css">
+    <link rel="stylesheet" href="vendor-inventory.css">
+</head>
+
+<body>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <i class="bi bi-shop fs-3 me-2 text-primary-glow"></i>
+                <span class="fw-bold brand-text d-none d-sm-inline">Vendor Central</span>
+                <span class="fw-bold brand-text d-inline d-sm-none">VC</span>
+            </a>
+
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+                <i class="bi bi-list fs-1 text-white"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto fw-medium">
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="vendor-dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="vendor-products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active px-3" href="vendor-inventory.html">Inventory</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="vendor-orders.html">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="#">Analytics</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== MAIN WRAPPER ========== -->
+    <div class="main-wrapper inventory-content">
+        <div class="container-fluid px-4">
+
+            <!-- ===== 1. PAGE HEADER ===== -->
+            <div class="vendor-header fade-in-up">
+                <div class="vendor-profile">
+                    <div class="vendor-avatar">TS</div>
+                    <div>
+                        <h2 class="fw-bold text-white mb-1">Inventory Management</h2>
+                        <h6 class="text-white-50 mb-2">TechStore Hub</h6>
+                        <p class="text-white-50 small mb-0 d-none d-md-block">
+                            Monitor stock levels, receive low-stock alerts, and update inventory efficiently.
+                        </p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center gap-3 mt-3 mt-md-0">
+                    <a href="#" class="btn btn-outline-light rounded-circle position-relative p-2"
+                        style="width:45px;height:45px;display:flex;align-items:center;justify-content:center;">
+                        <i class="bi bi-bell fs-5"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            3<span class="visually-hidden">alerts</span>
+                        </span>
+                    </a>
+                    <a href="index.html"
+                        class="btn btn-danger rounded-pill px-4 fw-medium transition-all shadow-sm">
+                        <i class="bi bi-box-arrow-right me-2"></i>Logout
+                    </a>
+                </div>
+            </div>
+
+            <!-- ===== 2. OVERVIEW STAT CARDS ===== -->
+            <div class="row g-4 mb-4 fade-in-up delay-1">
+                <div class="col-sm-6 col-xl-3">
+                    <div class="stat-card">
+                        <div class="stat-icon bg-icon-primary"><i class="bi bi-box-seam"></i></div>
+                        <div class="stat-value">120</div>
+                        <div class="stat-label">Total Products</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="stat-card">
+                        <div class="stat-icon bg-icon-success"><i class="bi bi-check-circle"></i></div>
+                        <div class="stat-value text-success">98</div>
+                        <div class="stat-label">In Stock</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="stat-card">
+                        <div class="stat-icon bg-icon-warning"><i class="bi bi-exclamation-triangle"></i></div>
+                        <div class="stat-value text-warning">15</div>
+                        <div class="stat-label">Low Stock</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="stat-card">
+                        <div class="stat-icon bg-icon-info"><i class="bi bi-slash-circle"></i></div>
+                        <div class="stat-value text-danger">7</div>
+                        <div class="stat-label">Out of Stock</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== 3. SEARCH & FILTER BAR ===== -->
+            <div class="filter-bar fade-in-up delay-2">
+                <div class="row align-items-center g-3">
+                    <div class="col-lg-9">
+                        <div class="d-flex flex-wrap gap-3">
+                            <div class="search-wrapper flex-grow-1" style="max-width:320px;">
+                                <i class="bi bi-search"></i>
+                                <input type="text" class="form-control search-input"
+                                    placeholder="Search products...">
+                            </div>
+                            <select class="form-select filter-select" style="max-width:200px;">
+                                <option value="" selected>All Categories</option>
+                                <option>Electronics</option>
+                                <option>Audio</option>
+                                <option>Computers</option>
+                                <option>Accessories</option>
+                                <option>Wearables</option>
+                            </select>
+                            <select class="form-select filter-select" style="max-width:190px;">
+                                <option value="" selected>Stock Status</option>
+                                <option>In Stock</option>
+                                <option>Low Stock</option>
+                                <option>Out of Stock</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 d-flex justify-content-lg-end">
+                        <button class="btn btn-outline-light rounded-pill px-4">
+                            <i class="bi bi-download me-2"></i>Export CSV
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== 4. INVENTORY TABLE ===== -->
+            <div class="inventory-table-card mb-4 fade-in-up delay-3">
+                <div class="d-flex justify-content-between align-items-center mb-3 pb-3
+                    border-bottom border-light border-opacity-10">
+                    <h5 class="dashboard-section-title mb-0">
+                        <i class="bi bi-table text-info"></i> Inventory Table
+                    </h5>
+                    <span class="text-white-50 small">Showing 10 of 120 products</span>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-borderless align-middle">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Category</th>
+                                <th>Current Stock</th>
+                                <th>Min. Level</th>
+                                <th>Stock Level</th>
+                                <th>Status</th>
+                                <th class="text-end">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <!-- Row 1 — In Stock -->
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="product-thumb"><i class="bi bi-laptop"></i></div>
+                                        <div>
+                                            <h6 class="text-white mb-0">ProX Gaming Laptop</h6>
+                                            <small class="text-white-50">#PRD-001</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">Computers</td>
+                                <td class="fw-bold text-white">45</td>
+                                <td class="text-white-50">10</td>
+                                <td>
+                                    <div class="stock-bar-wrapper">
+                                        <div class="stock-bar">
+                                            <div class="stock-bar-fill fill-high" style="width:90%"></div>
+                                        </div>
+                                        <small class="text-white-50">90%</small>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge badge-in-stock">In Stock</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-warning me-1" title="Update Stock"
+                                        data-bs-toggle="modal" data-bs-target="#updateStockModal"
+                                        onclick="fillModal('ProX Gaming Laptop', 45)">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-outline-info" title="View Product">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Row 2 — Low Stock -->
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="product-thumb"><i class="bi bi-headphones"></i></div>
+                                        <div>
+                                            <h6 class="text-white mb-0">Noise Cancelling Headphones</h6>
+                                            <small class="text-white-50">#PRD-002</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">Audio</td>
+                                <td class="fw-bold text-danger">2</td>
+                                <td class="text-white-50">10</td>
+                                <td>
+                                    <div class="stock-bar-wrapper">
+                                        <div class="stock-bar">
+                                            <div class="stock-bar-fill fill-low" style="width:10%"></div>
+                                        </div>
+                                        <small class="text-danger">10%</small>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge badge-low-stock">Low Stock</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-warning me-1" data-bs-toggle="modal"
+                                        data-bs-target="#updateStockModal"
+                                        onclick="fillModal('Noise Cancelling Headphones', 2)">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-outline-info"><i class="bi bi-eye"></i></button>
+                                </td>
+                            </tr>
+
+                            <!-- Row 3 -->
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="product-thumb"><i class="bi bi-mouse3"></i></div>
+                                        <div>
+                                            <h6 class="text-white mb-0">Ergonomic Wireless Mouse</h6>
+                                            <small class="text-white-50">#PRD-003</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">Accessories</td>
+                                <td class="fw-bold text-warning">5</td>
+                                <td class="text-white-50">15</td>
+                                <td>
+                                    <div class="stock-bar-wrapper">
+                                        <div class="stock-bar">
+                                            <div class="stock-bar-fill fill-low" style="width:20%"></div>
+                                        </div>
+                                        <small class="text-danger">20%</small>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge badge-low-stock">Low Stock</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-warning me-1" data-bs-toggle="modal"
+                                        data-bs-target="#updateStockModal"
+                                        onclick="fillModal('Ergonomic Wireless Mouse', 5)">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-outline-info"><i class="bi bi-eye"></i></button>
+                                </td>
+                            </tr>
+
+                            <!-- Row 4 -->
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="product-thumb"><i class="bi bi-display"></i></div>
+                                        <div>
+                                            <h6 class="text-white mb-0">UltraWide 34-inch Monitor</h6>
+                                            <small class="text-white-50">#PRD-004</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">Computers</td>
+                                <td class="fw-bold text-white">32</td>
+                                <td class="text-white-50">8</td>
+                                <td>
+                                    <div class="stock-bar-wrapper">
+                                        <div class="stock-bar">
+                                            <div class="stock-bar-fill fill-high" style="width:75%"></div>
+                                        </div>
+                                        <small class="text-white-50">75%</small>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge badge-in-stock">In Stock</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-warning me-1" data-bs-toggle="modal"
+                                        data-bs-target="#updateStockModal"
+                                        onclick="fillModal('UltraWide 34-inch Monitor', 32)">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-outline-info"><i class="bi bi-eye"></i></button>
+                                </td>
+                            </tr>
+
+                            <!-- Row 5 — Out of Stock -->
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="product-thumb"><i class="bi bi-phone"></i></div>
+                                        <div>
+                                            <h6 class="text-white mb-0">Smartphone Ultra 5G</h6>
+                                            <small class="text-white-50">#PRD-005</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">Mobile</td>
+                                <td class="fw-bold text-secondary">0</td>
+                                <td class="text-white-50">5</td>
+                                <td>
+                                    <div class="stock-bar-wrapper">
+                                        <div class="stock-bar">
+                                            <div class="stock-bar-fill fill-low" style="width:0%"></div>
+                                        </div>
+                                        <small class="text-danger">0%</small>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge badge-out-stock">Out of Stock</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-warning me-1" data-bs-toggle="modal"
+                                        data-bs-target="#updateStockModal"
+                                        onclick="fillModal('Smartphone Ultra 5G', 0)">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-outline-info"><i class="bi bi-eye"></i></button>
+                                </td>
+                            </tr>
+
+                            <!-- Row 6 -->
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="product-thumb"><i class="bi bi-keyboard"></i></div>
+                                        <div>
+                                            <h6 class="text-white mb-0">Mechanical RGB Keyboard</h6>
+                                            <small class="text-white-50">#PRD-006</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">Accessories</td>
+                                <td class="fw-bold text-warning">3</td>
+                                <td class="text-white-50">10</td>
+                                <td>
+                                    <div class="stock-bar-wrapper">
+                                        <div class="stock-bar">
+                                            <div class="stock-bar-fill fill-low" style="width:15%"></div>
+                                        </div>
+                                        <small class="text-danger">15%</small>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge badge-low-stock">Low Stock</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-warning me-1" data-bs-toggle="modal"
+                                        data-bs-target="#updateStockModal"
+                                        onclick="fillModal('Mechanical RGB Keyboard', 3)">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-outline-info"><i class="bi bi-eye"></i></button>
+                                </td>
+                            </tr>
+
+                            <!-- Row 7 -->
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="product-thumb"><i class="bi bi-camera"></i></div>
+                                        <div>
+                                            <h6 class="text-white mb-0">Mirrorless Camera 4K</h6>
+                                            <small class="text-white-50">#PRD-007</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">Photography</td>
+                                <td class="fw-bold text-white">18</td>
+                                <td class="text-white-50">5</td>
+                                <td>
+                                    <div class="stock-bar-wrapper">
+                                        <div class="stock-bar">
+                                            <div class="stock-bar-fill fill-high" style="width:72%"></div>
+                                        </div>
+                                        <small class="text-white-50">72%</small>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge badge-in-stock">In Stock</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-warning me-1" data-bs-toggle="modal"
+                                        data-bs-target="#updateStockModal"
+                                        onclick="fillModal('Mirrorless Camera 4K', 18)">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-outline-info"><i class="bi bi-eye"></i></button>
+                                </td>
+                            </tr>
+
+                            <!-- Row 8 -->
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="product-thumb"><i class="bi bi-smartwatch"></i></div>
+                                        <div>
+                                            <h6 class="text-white mb-0">SmartWatch Series 7 Pro</h6>
+                                            <small class="text-white-50">#PRD-008</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">Wearables</td>
+                                <td class="fw-bold text-white">56</td>
+                                <td class="text-white-50">12</td>
+                                <td>
+                                    <div class="stock-bar-wrapper">
+                                        <div class="stock-bar">
+                                            <div class="stock-bar-fill fill-high" style="width:85%"></div>
+                                        </div>
+                                        <small class="text-white-50">85%</small>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge badge-in-stock">In Stock</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-warning me-1" data-bs-toggle="modal"
+                                        data-bs-target="#updateStockModal"
+                                        onclick="fillModal('SmartWatch Series 7 Pro', 56)">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-outline-info"><i class="bi bi-eye"></i></button>
+                                </td>
+                            </tr>
+
+                            <!-- Row 9 -->
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="product-thumb"><i class="bi bi-router"></i></div>
+                                        <div>
+                                            <h6 class="text-white mb-0">Wi-Fi 6 Mesh System</h6>
+                                            <small class="text-white-50">#PRD-009</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">Networking</td>
+                                <td class="fw-bold text-white">24</td>
+                                <td class="text-white-50">6</td>
+                                <td>
+                                    <div class="stock-bar-wrapper">
+                                        <div class="stock-bar">
+                                            <div class="stock-bar-fill fill-medium" style="width:55%"></div>
+                                        </div>
+                                        <small class="text-white-50">55%</small>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge badge-in-stock">In Stock</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-warning me-1" data-bs-toggle="modal"
+                                        data-bs-target="#updateStockModal"
+                                        onclick="fillModal('Wi-Fi 6 Mesh System', 24)">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-outline-info"><i class="bi bi-eye"></i></button>
+                                </td>
+                            </tr>
+
+                            <!-- Row 10 -->
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="product-thumb"><i class="bi bi-speaker"></i></div>
+                                        <div>
+                                            <h6 class="text-white mb-0">Bluetooth Portable Speaker</h6>
+                                            <small class="text-white-50">#PRD-010</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">Audio</td>
+                                <td class="fw-bold text-white">89</td>
+                                <td class="text-white-50">20</td>
+                                <td>
+                                    <div class="stock-bar-wrapper">
+                                        <div class="stock-bar">
+                                            <div class="stock-bar-fill fill-high" style="width:95%"></div>
+                                        </div>
+                                        <small class="text-white-50">95%</small>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge badge-in-stock">In Stock</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-warning me-1" data-bs-toggle="modal"
+                                        data-bs-target="#updateStockModal"
+                                        onclick="fillModal('Bluetooth Portable Speaker', 89)">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-outline-info"><i class="bi bi-eye"></i></button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="d-flex justify-content-between align-items-center mt-4 pt-3
+                    border-top border-light border-opacity-10">
+                    <small class="text-white-50">Showing 10 of 120 products</small>
+                    <nav>
+                        <ul class="pagination pagination-sm mb-0">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#">Previous</a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- ===== 5. LOW STOCK ALERT PANEL ===== -->
+            <div class="low-stock-panel mb-4 fade-in-up delay-2">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="dashboard-section-title mb-0">
+                        <i class="bi bi-exclamation-triangle-fill text-danger"></i> Low Stock Alerts
+                    </h5>
+                    <span class="badge rounded-pill bg-danger px-3">3 Items Need Attention</span>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-borderless align-middle mb-0">
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th class="text-center">Current Stock</th>
+                                <th class="text-center">Recommended Restock</th>
+                                <th class="text-end">Alert Status</th>
+                                <th class="text-end">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="alert-row-critical">
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <i class="bi bi-headphones text-danger"></i>
+                                        <span class="text-white">Noise Cancelling Headphones</span>
+                                    </div>
+                                </td>
+                                <td class="text-center text-danger fw-bold">2 Units</td>
+                                <td class="text-center text-white">+50 Units</td>
+                                <td class="text-end">
+                                    <span class="status-badge badge-out-stock">Critical</span>
+                                </td>
+                                <td class="text-end">
+                                    <button class="btn btn-sm btn-danger rounded-pill px-3"
+                                        data-bs-toggle="modal" data-bs-target="#updateStockModal"
+                                        onclick="fillModal('Noise Cancelling Headphones', 2)">
+                                        Restock Now
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr class="alert-row-warning">
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <i class="bi bi-keyboard text-warning"></i>
+                                        <span class="text-white">Mechanical RGB Keyboard</span>
+                                    </div>
+                                </td>
+                                <td class="text-center text-warning fw-bold">3 Units</td>
+                                <td class="text-center text-white">+30 Units</td>
+                                <td class="text-end">
+                                    <span class="status-badge badge-low-stock">Warning</span>
+                                </td>
+                                <td class="text-end">
+                                    <button class="btn btn-sm btn-warning rounded-pill px-3 text-dark"
+                                        data-bs-toggle="modal" data-bs-target="#updateStockModal"
+                                        onclick="fillModal('Mechanical RGB Keyboard', 3)">
+                                        Restock
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr class="alert-row-warning">
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <i class="bi bi-mouse3 text-warning"></i>
+                                        <span class="text-white">Ergonomic Wireless Mouse</span>
+                                    </div>
+                                </td>
+                                <td class="text-center text-warning fw-bold">5 Units</td>
+                                <td class="text-center text-white">+25 Units</td>
+                                <td class="text-end">
+                                    <span class="status-badge badge-low-stock">Warning</span>
+                                </td>
+                                <td class="text-end">
+                                    <button class="btn btn-sm btn-warning rounded-pill px-3 text-dark"
+                                        data-bs-toggle="modal" data-bs-target="#updateStockModal"
+                                        onclick="fillModal('Ergonomic Wireless Mouse', 5)">
+                                        Restock
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ===== 7. ANALYTICS CHARTS ===== -->
+            <div class="row g-4 mb-4 fade-in-up delay-3">
+                <div class="col-xl-7">
+                    <div class="chart-card">
+                        <h5 class="dashboard-section-title mb-4">
+                            <i class="bi bi-bar-chart-line text-info"></i> Stock Distribution by Status
+                        </h5>
+                        <div class="chart-canvas-wrapper">
+                            <canvas id="stockDistChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-5">
+                    <div class="chart-card">
+                        <h5 class="dashboard-section-title mb-4">
+                            <i class="bi bi-pie-chart text-warning"></i> Inventory by Category
+                        </h5>
+                        <div class="chart-canvas-wrapper">
+                            <canvas id="categoryChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== 8 & 9. ACTIVITY TIMELINE + ALERT SETTINGS ===== -->
+            <div class="row g-4 mb-4 fade-in-up delay-4">
+
+                <!-- Activity Timeline -->
+                <div class="col-lg-7">
+                    <div class="chart-card">
+                        <h5 class="dashboard-section-title mb-4">
+                            <i class="bi bi-clock-history text-info"></i> Recent Stock Activities
+                        </h5>
+                        <div class="activity-timeline">
+                            <div class="activity-item">
+                                <div class="activity-dot dot-add"></div>
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <p class="text-white mb-0 fw-medium">Added 50 units — Wireless Mouse</p>
+                                        <small class="text-white-50">Stock updated from 5 to 55 units</small>
+                                    </div>
+                                    <small class="text-white-50 text-nowrap ms-3">2 hrs ago</small>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-dot dot-update"></div>
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <p class="text-white mb-0 fw-medium">Updated — Headphones stock level</p>
+                                        <small class="text-white-50">Minimum threshold changed to 10 units</small>
+                                    </div>
+                                    <small class="text-white-50 text-nowrap ms-3">5 hrs ago</small>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-dot dot-add"></div>
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <p class="text-white mb-0 fw-medium">Restocked — Mechanical Keyboard</p>
+                                        <small class="text-white-50">Added 30 units to inventory</small>
+                                    </div>
+                                    <small class="text-white-50 text-nowrap ms-3">Yesterday</small>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-dot dot-remove"></div>
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <p class="text-white mb-0 fw-medium">Out of Stock — Smartphone Ultra 5G</p>
+                                        <small class="text-white-50">All 12 units fulfilled by customer orders</small>
+                                    </div>
+                                    <small class="text-white-50 text-nowrap ms-3">2 days ago</small>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-dot dot-add"></div>
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <p class="text-white mb-0 fw-medium">Added 20 units — Bluetooth Speaker</p>
+                                        <small class="text-white-50">New batch received from supplier</small>
+                                    </div>
+                                    <small class="text-white-50 text-nowrap ms-3">3 days ago</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alert Settings -->
+                <div class="col-lg-5">
+                    <div class="alert-settings-card">
+                        <h5 class="dashboard-section-title mb-4">
+                            <i class="bi bi-gear text-warning"></i> Alert Settings
+                        </h5>
+
+                        <div class="d-flex justify-content-between align-items-center mb-4 pb-3
+                            border-bottom border-light border-opacity-10">
+                            <div>
+                                <h6 class="text-white mb-1">Enable Low Stock Alerts</h6>
+                                <small class="text-white-50">Get notified when products run low</small>
+                            </div>
+                            <div class="form-check form-switch ms-3">
+                                <input class="form-check-input" type="checkbox" id="lowStockToggle" checked>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mb-4 pb-3
+                            border-bottom border-light border-opacity-10">
+                            <div>
+                                <h6 class="text-white mb-1">Email Notifications</h6>
+                                <small class="text-white-50">Receive alerts via email</small>
+                            </div>
+                            <div class="form-check form-switch ms-3">
+                                <input class="form-check-input" type="checkbox" id="emailToggle" checked>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mb-4 pb-3
+                            border-bottom border-light border-opacity-10">
+                            <div>
+                                <h6 class="text-white mb-1">Dashboard Notifications</h6>
+                                <small class="text-white-50">Show alerts in the dashboard panel</small>
+                            </div>
+                            <div class="form-check form-switch ms-3">
+                                <input class="form-check-input" type="checkbox" id="dashToggle" checked>
+                            </div>
+                        </div>
+
+                        <div class="mb-4 pb-3 border-bottom border-light border-opacity-10">
+                            <h6 class="text-white mb-1">Minimum Stock Threshold</h6>
+                            <small class="text-white-50 d-block mb-3">Alert when stock falls below this value</small>
+                            <div class="d-flex align-items-center gap-3">
+                                <input type="number" class="form-control glass-input threshold-input" value="10" min="1" max="999">
+                                <span class="text-white-50">units</span>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary w-100 rounded-pill py-2 fw-medium border-0"
+                            style="background: linear-gradient(135deg,#3b82f6,#6366f1);
+                                   box-shadow: 0 4px 15px rgba(59,130,246,0.3);">
+                            <i class="bi bi-save me-2"></i>Save Settings
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div><!-- /container -->
+
+        <!-- ===== 6. UPDATE STOCK MODAL ===== -->
+        <div class="modal fade" id="updateStockModal" tabindex="-1"
+            aria-labelledby="updateStockModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content glass-modal">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="updateStockModalLabel">
+                            <i class="bi bi-boxes me-2 text-warning"></i>Update Stock
+                        </h5>
+                        <button type="button" class="btn-close btn-close-white"
+                            data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body p-4">
+                        <div class="mb-3">
+                            <label class="form-label">Product Name</label>
+                            <input type="text" class="form-control glass-input" id="modalProductName" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Current Stock</label>
+                            <input type="number" class="form-control glass-input" id="modalCurrentStock" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Add Stock Quantity</label>
+                            <input type="number" class="form-control glass-input" id="modalAddStock"
+                                placeholder="Enter quantity to add" min="1">
+                        </div>
+                        <div class="alert rounded-3" style="background:rgba(16,185,129,0.1);
+                            border:1px solid rgba(16,185,129,0.2);" id="newTotalPreview">
+                            <small class="text-success">
+                                <i class="bi bi-info-circle me-1"></i>
+                                New total will be calculated on save.
+                            </small>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-light rounded-pill px-4"
+                            data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-warning rounded-pill px-4 fw-medium border-0 text-dark">
+                            <i class="bi bi-check-lg me-1"></i>Update Stock
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== FOOTER ========== -->
+        <footer class="text-center text-white pb-4 pt-4 mt-5
+            border-top border-light border-opacity-10 footer-section">
+            <div class="container">
+                <div class="d-flex justify-content-center gap-4 mb-3">
+                    <a href="#" class="text-white-50 text-decoration-none transition-all">Vendor Support</a>
+                    <a href="#" class="text-white-50 text-decoration-none transition-all">Terms of Service</a>
+                    <a href="#" class="text-white-50 text-decoration-none transition-all">Contact Us</a>
+                </div>
+                <p class="small text-white-50 mb-0">
+                    &copy; Multi-Vendor E-Commerce Platform | Academic Project 2025-2026
+                </p>
+            </div>
+        </footer>
+
+    </div><!-- /main-wrapper -->
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        /* ---- Modal pre-fill ---- */
+        function fillModal(name, currentStock) {
+            document.getElementById('modalProductName').value = name;
+            document.getElementById('modalCurrentStock').value = currentStock;
+            document.getElementById('modalAddStock').value = '';
+            document.getElementById('newTotalPreview').innerHTML =
+                `<small class="text-success"><i class="bi bi-info-circle me-1"></i>New total will be calculated on save.</small>`;
+        }
+
+        /* Live preview of new total */
+        document.getElementById('modalAddStock').addEventListener('input', function () {
+            const current = parseInt(document.getElementById('modalCurrentStock').value) || 0;
+            const add = parseInt(this.value) || 0;
+            const newTotal = current + add;
+            document.getElementById('newTotalPreview').innerHTML =
+                `<small class="text-success"><i class="bi bi-calculator me-1"></i>
+                 New total stock: <strong>${newTotal} units</strong></small>`;
+        });
+
+        /* ---- Chart.js defaults ---- */
+        document.addEventListener('DOMContentLoaded', function () {
+            Chart.defaults.color = 'rgba(255,255,255,0.5)';
+            Chart.defaults.borderColor = 'rgba(255,255,255,0.05)';
+            Chart.defaults.font.family = "'Poppins', sans-serif";
+
+            /* Bar chart — stock distribution */
+            const ctx1 = document.getElementById('stockDistChart').getContext('2d');
+            new Chart(ctx1, {
+                type: 'bar',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [
+                        {
+                            label: 'In Stock',
+                            data: [95, 98, 92, 100, 96, 98],
+                            backgroundColor: 'rgba(52, 211, 153, 0.7)',
+                            borderRadius: 6,
+                        },
+                        {
+                            label: 'Low Stock',
+                            data: [15, 12, 18, 10, 14, 15],
+                            backgroundColor: 'rgba(251, 191, 36, 0.7)',
+                            borderRadius: 6,
+                        },
+                        {
+                            label: 'Out of Stock',
+                            data: [10, 10, 10, 10, 10, 7],
+                            backgroundColor: 'rgba(248, 113, 113, 0.7)',
+                            borderRadius: 6,
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top', labels: { usePointStyle: true, padding: 16 } },
+                        tooltip: {
+                            backgroundColor: 'rgba(15,23,42,0.9)',
+                            padding: 12,
+                            borderColor: 'rgba(255,255,255,0.1)',
+                            borderWidth: 1
+                        }
+                    },
+                    scales: {
+                        y: { beginAtZero: true, grid: { drawBorder: false } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+
+            /* Doughnut chart — category breakdown */
+            const ctx2 = document.getElementById('categoryChart').getContext('2d');
+            new Chart(ctx2, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Computers', 'Audio', 'Accessories', 'Wearables', 'Mobile', 'Other'],
+                    datasets: [{
+                        data: [25, 20, 22, 12, 8, 13],
+                        backgroundColor: [
+                            'rgba(96,165,250,0.8)',
+                            'rgba(192,132,252,0.8)',
+                            'rgba(52,211,153,0.8)',
+                            'rgba(251,191,36,0.8)',
+                            'rgba(248,113,113,0.8)',
+                            'rgba(100,116,139,0.8)'
+                        ],
+                        borderWidth: 2,
+                        borderColor: 'rgba(15,23,42,0.5)',
+                        hoverOffset: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '68%',
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { usePointStyle: true, padding: 12, boxWidth: 10 }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(15,23,42,0.9)',
+                            padding: 12,
+                            borderColor: 'rgba(255,255,255,0.1)',
+                            borderWidth: 1,
+                            callbacks: {
+                                label: ctx => ` ${ctx.label}: ${ctx.parsed}%`
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

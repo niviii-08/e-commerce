@@ -1,0 +1,17 @@
+{
+  "name": "multi-vendor-ecommerce-platform-full",
+  "version": "1.0.0",
+  "description": "``` . ├── frontend/      ← your original UI, unchanged (HTML/CSS/Bootstrap) └── backend/       ← Supabase backend: schema, security, and JS wiring examples ```",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.108.2",
+    "pg": "^8.22.0"
+  }
+}

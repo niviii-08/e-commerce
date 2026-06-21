@@ -1,0 +1,280 @@
+/* Vendor Products Specific Styles */
+
+.products-content {
+    padding-top: 100px;
+    padding-bottom: 60px;
+}
+
+/* Action Bar */
+.action-bar {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+.search-wrapper {
+    position: relative;
+}
+.search-wrapper i {
+    position: absolute;
+    left: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.5);
+}
+.search-input {
+    padding-left: 2.75rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    color: white;
+    border-radius: 50px;
+    height: 45px;
+}
+.search-input:focus {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: #60a5fa;
+    color: white;
+    box-shadow: 0 0 15px rgba(96, 165, 250, 0.2);
+}
+.filter-select {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    color: white;
+    border-radius: 50px;
+    height: 45px;
+}
+.filter-select:focus {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: #60a5fa;
+    color: white;
+    box-shadow: 0 0 15px rgba(96, 165, 250, 0.2);
+}
+.filter-select option {
+    background: var(--primary-dark);
+    color: white;
+}
+.view-toggle-btn {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    color: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s;
+}
+.view-toggle-btn.active, .view-toggle-btn:hover {
+    background: #3b82f6;
+    color: white;
+    border-color: #3b82f6;
+}
+
+/* Products Table */
+.products-table-wrapper {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+.product-thumbnail {
+    width: 50px;
+    height: 50px;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.5);
+    border: 1px solid var(--glass-border);
+}
+
+.table-actions .btn {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    transition: all 0.3s;
+}
+.table-actions .btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Product Cards Grid View */
+.product-grid-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 1.25rem;
+    overflow: hidden;
+    transition: all 0.3s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.product-grid-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+.product-grid-img {
+    height: 180px;
+    background: rgba(255, 255, 255, 0.02);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid var(--glass-border);
+    position: relative;
+}
+.product-grid-status {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+.product-grid-body {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.product-grid-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.25rem;
+    line-height: 1.4;
+}
+.product-grid-category {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 1rem;
+}
+.product-grid-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #c084fc;
+    margin-bottom: 0;
+}
+.product-grid-actions {
+    margin-top: auto;
+    padding-top: 1.25rem;
+    border-top: 1px dashed var(--glass-border);
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Modal Styling */
+.modal-content.glass-modal {
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 1.5rem;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+.modal-header {
+    border-bottom: 1px solid var(--glass-border);
+    padding: 1.5rem;
+}
+.modal-footer {
+    border-top: 1px solid var(--glass-border);
+    padding: 1.5rem;
+}
+.modal-title {
+    color: white;
+    font-weight: 600;
+}
+.btn-close-white {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+.form-label {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+}
+.form-control.glass-input, .form-select.glass-input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    color: white;
+}
+.form-control.glass-input:focus, .form-select.glass-input:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #60a5fa;
+    box-shadow: 0 0 15px rgba(96, 165, 250, 0.2);
+}
+.image-upload-zone {
+    border: 2px dashed var(--glass-border);
+    border-radius: 1rem;
+    padding: 2.5rem 1rem;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.02);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.image-upload-zone:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: #60a5fa;
+}
+.image-upload-zone i {
+    font-size: 2.5rem;
+    color: #60a5fa;
+    margin-bottom: 0.5rem;
+}
+
+/* Pagination */
+.pagination {
+    margin-bottom: 0;
+}
+.page-link {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    color: white;
+    transition: all 0.3s;
+}
+.page-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #60a5fa;
+    border-color: #60a5fa;
+}
+.page-item.active .page-link {
+    background: #3b82f6;
+    border-color: #3b82f6;
+    color: white;
+}
+.page-item.disabled .page-link {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.3);
+    border-color: var(--glass-border);
+}
+
+/* Bulk Actions */
+.bulk-actions {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Form check adjustments for tables */
+.table .form-check-input {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--glass-border);
+    margin-top: 0;
+}
+.table .form-check-input:checked {
+    background-color: #3b82f6;
+    border-color: #3b82f6;
+}

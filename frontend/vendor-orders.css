@@ -1,0 +1,273 @@
+/* =============================================
+   Vendor Orders Management - Specific Styles
+   ============================================= */
+
+.orders-content {
+    padding-top: 100px;
+    padding-bottom: 60px;
+}
+
+/* ---- Filter Bar ---- */
+.filter-bar {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+.search-wrapper {
+    position: relative;
+}
+.search-wrapper i {
+    position: absolute;
+    left: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.4);
+    pointer-events: none;
+}
+.search-input {
+    padding-left: 2.75rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    color: white;
+    border-radius: 50px;
+    height: 45px;
+}
+.search-input:focus {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: #60a5fa;
+    color: white;
+    box-shadow: 0 0 15px rgba(96, 165, 250, 0.2);
+}
+.search-input::placeholder { color: rgba(255, 255, 255, 0.3); }
+.filter-select {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    color: white;
+    border-radius: 50px;
+    height: 45px;
+}
+.filter-select:focus {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: #60a5fa;
+    color: white;
+    box-shadow: 0 0 15px rgba(96, 165, 250, 0.2);
+}
+.filter-select option { background: #0f172a; color: white; }
+.date-input {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid var(--glass-border) !important;
+    color: white !important;
+    border-radius: 50px !important;
+    height: 45px;
+    color-scheme: dark;
+}
+.date-input:focus {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: #60a5fa !important;
+    box-shadow: 0 0 15px rgba(96, 165, 250, 0.2) !important;
+}
+
+/* ---- Orders Table ---- */
+.orders-table-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+/* ---- Status Badges ---- */
+.status-badge {
+    padding: 0.3rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    display: inline-block;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+}
+.badge-delivered  { background: rgba(16,185,129,0.15);  color:#34d399; border:1px solid rgba(16,185,129,0.3); }
+.badge-shipped    { background: rgba(96,165,250,0.15);  color:#60a5fa; border:1px solid rgba(96,165,250,0.3); }
+.badge-packed     { background: rgba(192,132,252,0.15); color:#c084fc; border:1px solid rgba(192,132,252,0.3); }
+.badge-pending    { background: rgba(251,191,36,0.15);  color:#fbbf24; border:1px solid rgba(251,191,36,0.3); }
+.badge-cancelled  { background: rgba(248,113,113,0.15); color:#f87171; border:1px solid rgba(248,113,113,0.3); }
+.badge-paid       { background: rgba(16,185,129,0.15);  color:#34d399; border:1px solid rgba(16,185,129,0.3); }
+.badge-failed     { background: rgba(248,113,113,0.15); color:#f87171; border:1px solid rgba(248,113,113,0.3); }
+.badge-ofd        { background: rgba(59,130,246,0.15);  color:#93c5fd; border:1px solid rgba(59,130,246,0.3); }
+
+.table-actions .btn {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    transition: all 0.3s;
+}
+.table-actions .btn:hover { transform: translateY(-2px); }
+
+/* ---- Recent Order Cards ---- */
+.recent-order-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--glass-border);
+    border-radius: 1rem;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s;
+    margin-bottom: 0.75rem;
+}
+.recent-order-card:last-child { margin-bottom: 0; }
+.recent-order-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateX(4px);
+}
+.order-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6, #6366f1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: white;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+
+/* ---- Sales Summary Cards ---- */
+.summary-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    height: 100%;
+    transition: all 0.3s;
+}
+.summary-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+}
+.summary-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+.bg-icon-primary { background: rgba(59,130,246,0.15); color:#60a5fa; }
+.bg-icon-success { background: rgba(16,185,129,0.15); color:#34d399; }
+.bg-icon-warning { background: rgba(245,158,11,0.15); color:#fbbf24; }
+.bg-icon-info    { background: rgba(168,85,247,0.15); color:#c084fc; }
+
+/* ---- Status Update Card ---- */
+.status-update-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    height: 100%;
+}
+.status-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--glass-border);
+    background: rgba(255,255,255,0.02);
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 0.75rem;
+}
+.status-option:last-child { margin-bottom: 0; }
+.status-option:hover,
+.status-option.active {
+    background: rgba(59,130,246,0.1);
+    border-color: #3b82f6;
+}
+.status-option input[type="radio"] { accent-color: #3b82f6; }
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+.dot-pending  { background: #fbbf24; box-shadow: 0 0 6px rgba(251,191,36,0.5); }
+.dot-packed   { background: #c084fc; box-shadow: 0 0 6px rgba(192,132,252,0.5); }
+.dot-shipped  { background: #60a5fa; box-shadow: 0 0 6px rgba(96,165,250,0.5); }
+.dot-ofd      { background: #93c5fd; box-shadow: 0 0 6px rgba(59,130,246,0.5); }
+.dot-delivered{ background: #34d399; box-shadow: 0 0 6px rgba(52,211,153,0.5); }
+
+/* ---- Order Timeline ---- */
+.order-timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+.order-timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, #3b82f6, #c084fc, transparent);
+    border-radius: 1px;
+}
+.timeline-item {
+    position: relative;
+    padding-bottom: 1.25rem;
+}
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-dot {
+    position: absolute;
+    left: -1.65rem;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #0f172a;
+}
+.tdot-received  { background: #60a5fa; box-shadow: 0 0 8px rgba(96,165,250,0.5); }
+.tdot-shipped   { background: #c084fc; box-shadow: 0 0 8px rgba(192,132,252,0.5); }
+.tdot-delivered { background: #34d399; box-shadow: 0 0 8px rgba(52,211,153,0.5); }
+.tdot-cancelled { background: #f87171; box-shadow: 0 0 8px rgba(248,113,113,0.5); }
+
+/* ---- Modal ---- */
+.modal-content.glass-modal {
+    background: rgba(15, 23, 42, 0.96);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 1.5rem;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+.modal-header { border-bottom: 1px solid rgba(255,255,255,0.08); padding: 1.5rem; }
+.modal-footer { border-top:  1px solid rgba(255,255,255,0.08); padding: 1.5rem; }
+.modal-title  { color: white; font-weight: 600; }
+.form-label   { color: rgba(255,255,255,0.8); font-weight: 500; }
+.detail-label { color: rgba(255,255,255,0.45); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 0.25rem; }
+.detail-value { color: white; font-weight: 500; }
+
+/* ---- Pagination ---- */
+.page-link {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--glass-border);
+    color: white;
+    transition: all 0.3s;
+}
+.page-link:hover { background: rgba(255,255,255,0.1); color: #60a5fa; border-color: #60a5fa; }
+.page-item.active .page-link  { background: #3b82f6; border-color: #3b82f6; }
+.page-item.disabled .page-link { background: transparent; color: rgba(255,255,255,0.25); }

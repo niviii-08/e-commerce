@@ -1,0 +1,213 @@
+/* Order Confirmation Specific Styles */
+
+.confirmation-content {
+    padding-top: 100px;
+    padding-bottom: 60px;
+}
+
+/* Success Banner */
+.success-banner {
+    text-align: center;
+    padding: 3rem 1rem;
+    margin-bottom: 2rem;
+}
+
+.success-icon-wrapper {
+    width: 100px;
+    height: 100px;
+    background: rgba(16, 185, 129, 0.15);
+    border: 2px solid rgba(16, 185, 129, 0.5);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    color: #10b981;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+    animation: scaleIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, pulseGreen 2s infinite 1s;
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+@keyframes scaleIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes pulseGreen {
+    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
+    70% { box-shadow: 0 0 0 20px rgba(16, 185, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+/* Info Cards */
+.info-card {
+    height: 100%;
+}
+.info-label {
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.25rem;
+    display: block;
+}
+.info-value {
+    color: white;
+    font-weight: 500;
+    margin-bottom: 1.25rem;
+    font-size: 1.05rem;
+    display: block;
+}
+.info-value:last-child {
+    margin-bottom: 0;
+}
+
+/* Ordered Products */
+.ordered-item {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.25rem;
+    border-bottom: 1px solid var(--glass-border);
+    transition: background 0.3s;
+}
+.ordered-item:last-child {
+    border-bottom: none;
+}
+.ordered-item:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+.ordered-item-img {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--glass-border);
+    flex-shrink: 0;
+}
+.ordered-item-img i {
+    font-size: 2rem;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Order Tracking */
+.tracking-wrapper {
+    position: relative;
+    padding: 2.5rem 0;
+    margin-top: 1rem;
+}
+.tracking-line {
+    position: absolute;
+    top: 50px; /* Aligned with center of icons */
+    left: 10%;
+    right: 10%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 1;
+}
+.tracking-line-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6, #10b981);
+    width: 25%; /* 25% for Payment Confirmed step */
+    transition: width 1s ease;
+}
+.tracking-steps {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+}
+.tracking-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 20%;
+}
+.step-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-dark);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.3);
+    margin-bottom: 1rem;
+    transition: all 0.3s;
+}
+.step-label {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 500;
+}
+.step-date {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.3);
+    margin-top: 0.25rem;
+}
+
+/* Tracking States */
+.tracking-step.completed .step-icon {
+    background: #3b82f6;
+    border-color: #3b82f6;
+    color: white;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+}
+.tracking-step.completed .step-label {
+    color: white;
+}
+.tracking-step.current .step-icon {
+    background: var(--primary-dark);
+    border-color: #10b981;
+    color: #10b981;
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+}
+.tracking-step.current .step-label {
+    color: #10b981;
+    font-weight: 600;
+}
+
+/* Payment Summary adjustments */
+.summary-card {
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+    .tracking-steps {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+    .tracking-line {
+        top: 25px;
+        bottom: 25px;
+        left: 24px;
+        width: 4px;
+        height: auto;
+    }
+    .tracking-line-progress {
+        width: 100%;
+        height: 25%;
+        background: linear-gradient(180deg, #3b82f6, #10b981);
+    }
+    .tracking-step {
+        flex-direction: row;
+        width: 100%;
+        text-align: left;
+    }
+    .step-icon {
+        margin-bottom: 0;
+        margin-right: 1.5rem;
+    }
+}

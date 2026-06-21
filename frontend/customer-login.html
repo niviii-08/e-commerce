@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Login - Multi-Vendor E-Commerce Platform</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="customer-login.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <i class="bi bi-shop fs-3 me-2 text-primary-glow"></i>
+                <span class="fw-bold brand-text">Multi-Vendor Platform</span>
+            </a>
+            <div class="d-flex ms-auto">
+                <a href="index.html"
+                    class="btn btn-outline-light rounded-pill px-3 px-md-4 py-1 py-md-2 shadow-sm d-flex align-items-center gap-2 btn-back transition-all">
+                    <i class="bi bi-arrow-left"></i> <span class="d-none d-sm-inline">Back to Roles</span><span
+                        class="d-inline d-sm-none">Back</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content wrapper for gradient background -->
+    <div class="main-wrapper d-flex flex-column min-vh-100">
+
+        <!-- Login Section -->
+        <section class="flex-grow-1 d-flex align-items-center pt-5 mt-5 pb-5">
+            <div class="container">
+                <div class="row g-5 align-items-center justify-content-center">
+
+                    <!-- Left Side: Welcome & Illustration -->
+                    <div class="col-lg-6 text-white pe-lg-5 fade-in-up delay-1">
+                        <div class="mb-5 mb-lg-0 text-center text-lg-start">
+                            <div
+                                class="badge bg-white bg-opacity-10 text-white border border-light border-opacity-25 mb-4 px-3 py-2 rounded-pill shadow-sm animate-badge backdrop-blur">
+                                <i class="bi bi-person-circle text-info me-1"></i> Customer Portal
+                            </div>
+                            <h1 class="display-4 fw-bold mb-3 hero-title">Welcome <span
+                                    class="text-gradient">Back!</span></h1>
+                            <p class="lead fw-light opacity-75 mb-5 pe-lg-4">
+                                Login to continue shopping from multiple trusted vendors. Discover new products, track
+                                your orders, and enjoy a seamless shopping experience.
+                            </p>
+
+                            <!-- Ecommerce Illustration Placeholder -->
+                            <div
+                                class="illustration-area glass-panel p-5 rounded-4 d-inline-block position-relative shadow-lg mt-3">
+                                <div class="floating-icons">
+                                    <i class="bi bi-bag-heart-fill fs-1 text-danger floating-icon-1"></i>
+                                    <i class="bi bi-cart-check-fill fs-1 text-info floating-icon-2"></i>
+                                    <i class="bi bi-box-seam-fill fs-1 text-warning floating-icon-3"></i>
+                                    <i class="bi bi-star-fill fs-3 text-warning floating-icon-4"></i>
+                                </div>
+                                <i class="bi bi-shop-window display-1 opacity-50 text-white d-block mb-2"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Login Card -->
+                    <div class="col-lg-5 col-md-8 fade-in-up delay-2">
+                        <div class="glass-card p-4 p-md-5 rounded-4 position-relative overflow-hidden group">
+                            <div class="card-glow glow-info"></div>
+
+                            <div class="text-center mb-4 pb-2">
+                                <h3 class="fw-bold text-white mb-2">Customer Login</h3>
+                                <p class="text-white-50 small mb-0">Access your customer account</p>
+                            </div>
+
+                            <!-- Validation Alerts (Placeholders) -->
+                            <div class="alert alert-danger alert-dismissible fade show d-none" role="alert"
+                                id="invalidUserAlert">
+                                <i class="bi bi-exclamation-triangle-fill me-2"></i> Invalid Username or Email
+                                <button type="button" class="btn-close btn-close-white shadow-none"
+                                    data-bs-dismiss="alert"></button>
+                            </div>
+                            <div class="alert alert-warning alert-dismissible fade show d-none" role="alert"
+                                id="invalidPassAlert">
+                                <i class="bi bi-shield-exclamation me-2"></i> Incorrect Password
+                                <button type="button" class="btn-close btn-close-white shadow-none"
+                                    data-bs-dismiss="alert"></button>
+                            </div>
+                            <div class="alert alert-success alert-dismissible fade show d-none" role="alert"
+                                id="successAlert">
+                                <i class="bi bi-check-circle-fill me-2"></i> Login Successful! Redirecting...
+                            </div>
+
+                            <form id="customerLoginForm">
+                                <div class="mb-4">
+                                    <label class="form-label text-white-50 small fw-medium">Email Address</label>
+                                    <div class="input-group glass-input-group">
+                                        <span class="input-group-text bg-transparent border-end-0 text-white-50">
+                                            <i class="bi bi-envelope"></i>
+                                        </span>
+                                        <input type="email" id="emailInput"
+                                            class="form-control bg-transparent border-start-0 text-white shadow-none ps-0"
+                                            placeholder="Enter your email" required>
+                                    </div>
+                                </div>
+
+                                <!-- Password Field -->
+                                <div class="mb-4">
+                                    <label class="form-label text-white-50 small fw-medium">Password</label>
+                                    <div class="input-group glass-input-group">
+                                        <span class="input-group-text bg-transparent border-end-0 text-white-50">
+                                            <i class="bi bi-lock"></i>
+                                        </span>
+                                        <input type="password"
+                                            class="form-control bg-transparent border-start-0 border-end-0 text-white shadow-none ps-0"
+                                            id="passwordInput" placeholder="Enter your password" required>
+                                        <span
+                                            class="input-group-text bg-transparent border-start-0 text-white-50 cursor-pointer"
+                                            id="togglePassword">
+                                            <i class="bi bi-eye-slash" id="toggleIcon"></i>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <!-- Remember Me & Forgot Password -->
+                                <div class="d-flex justify-content-between align-items-center mb-4 pb-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input custom-checkbox shadow-none" type="checkbox"
+                                            id="rememberMe">
+                                        <label class="form-check-label text-white-50 small cursor-pointer"
+                                            for="rememberMe">
+                                            Remember Me
+                                        </label>
+                                    </div>
+                                    <a href="#"
+                                        class="text-info text-decoration-none small fw-medium hover-underline">Forgot
+                                        Password?</a>
+                                </div>
+
+                                <!-- Login Button -->
+                                <button type="submit" id="loginBtn"
+                                    class="btn btn-info w-100 rounded-pill py-2 fw-semibold text-white shadow-sm mb-4 btn-login transition-all">
+                                    Login <i class="bi bi-box-arrow-in-right ms-1"></i>
+                                </button>
+                            </form>
+
+                            <!-- Create Account Link -->
+                            <div class="text-center mt-3 border-top border-light border-opacity-10 pt-4">
+                                <p class="text-white-50 small mb-3">Don't have an account?</p>
+                                <a href="customer-signup.html"
+                                    class="btn btn-outline-light rounded-pill px-4 py-2 btn-sm fw-medium transition-all w-100">
+                                    Create Account
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer
+            class="text-center text-white pb-4 pt-4 mt-auto border-top border-light border-opacity-10 footer-section fade-in-up delay-4">
+            <div class="container">
+                <h5 class="fw-bold mb-2">Multi-Vendor E-Commerce Platform</h5>
+                <p class="small text-white-50 mb-1">Academic Project • Department of Computer Science</p>
+                <p class="small text-white-50 mb-0">&copy; Academic Year 2025-2026. All Rights Reserved.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Supabase: must load BEFORE any script that calls signIn() / signUpCustomer() etc. -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/auth.js"></script>
+
+    <!-- Custom Script for Password Toggle and Login -->
+    <script>
+        // Toggle Password Visibility
+        const togglePassword = document.querySelector('#togglePassword');
+        const passwordInput = document.querySelector('#passwordInput');
+        const toggleIcon = document.querySelector('#toggleIcon');
+
+        togglePassword.addEventListener('click', function (e) {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            toggleIcon.classList.toggle('bi-eye');
+            toggleIcon.classList.toggle('bi-eye-slash');
+        });
+
+        // Real Supabase Login — redirect to customer-dashboard on success
+        document.getElementById('customerLoginForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const email = document.getElementById('emailInput').value;
+            const password = document.getElementById('passwordInput').value;
+
+            document.getElementById('invalidUserAlert').classList.add('d-none');
+            document.getElementById('invalidPassAlert').classList.add('d-none');
+            document.getElementById('successAlert').classList.add('d-none');
+
+            try {
+                const result = await signIn({ email, password });
+                // Verify the signed-in user is a customer (or admin)
+                const profile = await getCurrentProfile();
+                if (profile && profile.role === 'vendor') {
+                    // Vendor tried to log in here — redirect to vendor dashboard
+                    window.location.href = 'vendor-dashboard.html';
+                    return;
+                }
+                document.getElementById('successAlert').classList.remove('d-none');
+                setTimeout(() => {
+                    window.location.href = 'customer-dashboard.html';
+                }, 1000);
+            } catch (error) {
+                console.error(error);
+                if (error.message.includes('Invalid login credentials') || error.message.includes('invalid_credentials')) {
+                    document.getElementById('invalidPassAlert').classList.remove('d-none');
+                } else {
+                    document.getElementById('invalidUserAlert').classList.remove('d-none');
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

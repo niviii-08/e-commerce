@@ -1,0 +1,271 @@
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Global Styles */
+:root {
+    --primary-bg: #0f172a;
+    --primary-dark: #020617;
+    --gradient-1: #3b82f6;
+    --gradient-2: #8b5cf6;
+    --gradient-3: #6366f1;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--primary-bg);
+    overflow-x: hidden;
+    color: #f8fafc;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.02em;
+}
+
+/* Background Wrapper with animated gradient */
+.main-wrapper {
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #020617 100%);
+    background-size: 200% 200%;
+    animation: gradientBG 15s ease infinite;
+    position: relative;
+    z-index: 1;
+}
+
+.main-wrapper::before, .main-wrapper::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: -1;
+    animation: floatOrb 20s infinite alternate;
+}
+
+.main-wrapper::before {
+    top: -10%; left: -10%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+}
+
+.main-wrapper::after {
+    bottom: -10%; right: -10%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+    animation-delay: -10s;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes floatOrb {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(50px, 50px) scale(1.2); }
+}
+
+/* Navbar */
+.custom-navbar {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+    padding: 1rem 0;
+}
+
+.brand-text {
+    background: linear-gradient(to right, #60a5fa, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+}
+
+.text-primary-glow {
+    color: #60a5fa;
+    text-shadow: 0 0 15px rgba(96, 165, 250, 0.6);
+}
+
+.btn-back {
+    border-color: rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.05);
+}
+.btn-back:hover {
+    background: rgba(255,255,255,0.15);
+    color: white;
+    transform: translateX(-3px);
+}
+
+/* Text Gradient */
+.text-gradient {
+    background: linear-gradient(to right, #60a5fa, #c084fc, #818cf8, #60a5fa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 300% auto;
+    animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+    to { background-position: 300% center; }
+}
+
+.backdrop-blur {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* Login Card (Glassmorphism) */
+.glass-card {
+    background: linear-gradient(145deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1;
+}
+
+.glass-card:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Hover Glow Effect */
+.card-glow {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+.glass-card:hover .card-glow {
+    opacity: 1;
+}
+
+.glow-info { background: radial-gradient(circle at 50% 0%, rgba(13, 202, 240, 0.12) 0%, transparent 60%); }
+
+/* Form Inputs (Glass style) */
+.glass-input-group {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.glass-input-group:focus-within {
+    border-color: #0dcaf0;
+    box-shadow: 0 0 0 0.25rem rgba(13, 202, 240, 0.15);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.glass-input-group .form-control {
+    color: white;
+}
+
+.glass-input-group .form-control:focus {
+    background: transparent;
+    color: white;
+}
+
+.glass-input-group .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+.cursor-pointer:hover i {
+    color: white;
+}
+
+/* Custom Checkbox */
+.custom-checkbox {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+}
+.custom-checkbox:checked {
+    background-color: #0dcaf0;
+    border-color: #0dcaf0;
+}
+
+/* Links and Buttons */
+.hover-underline:hover {
+    text-decoration: underline !important;
+}
+
+.transition-all { transition: all 0.3s ease; }
+
+.btn-login {
+    background: linear-gradient(to right, #0891b2, #0284c7);
+    border: none;
+}
+
+.btn-login:hover {
+    background: linear-gradient(to right, #06b6d4, #0ea5e9);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(13, 202, 240, 0.3) !important;
+}
+
+.btn-login:active {
+    transform: translateY(0);
+}
+
+/* Alerts Validation UI Customization */
+.alert {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 0.9rem;
+}
+.alert-danger { border-color: rgba(220, 53, 69, 0.5); border-left: 4px solid #dc3545; }
+.alert-warning { border-color: rgba(255, 193, 7, 0.5); border-left: 4px solid #ffc107; }
+.alert-success { border-color: rgba(25, 135, 84, 0.5); border-left: 4px solid #198754; }
+
+/* Illustration Area */
+.illustration-area {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px dashed rgba(255, 255, 255, 0.15);
+}
+
+.floating-icon-1 { position: absolute; top: -20px; left: -20px; animation: float 4s ease-in-out infinite; }
+.floating-icon-2 { position: absolute; top: 40%; right: -30px; animation: float 3.5s ease-in-out infinite 1s; }
+.floating-icon-3 { position: absolute; bottom: -15px; left: 10%; animation: float 5s ease-in-out infinite 0.5s; }
+.floating-icon-4 { position: absolute; top: 10%; right: 20%; animation: float 4.5s ease-in-out infinite 0.8s; }
+
+/* Animations */
+.fade-in-up {
+    animation: fadeInUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.5s; }
+
+@keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-badge {
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .custom-navbar {
+        padding: 0.5rem 0;
+    }
+}

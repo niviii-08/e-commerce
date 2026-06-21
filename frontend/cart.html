@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Multi-Vendor Platform</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="customer-dashboard.css">
+    <link rel="stylesheet" href="product-details.css">
+    <link rel="stylesheet" href="cart.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <i class="bi bi-shop fs-3 me-2 text-primary-glow"></i>
+                <span class="fw-bold brand-text d-none d-sm-inline">Multi-Vendor Platform</span>
+                <span class="fw-bold brand-text d-inline d-sm-none">MVP</span>
+            </a>
+            
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="bi bi-list fs-1 text-white"></i>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto fw-medium">
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="customer-dashboard.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="product-listing.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active px-3" href="cart.html">Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="#">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="#">Profile</a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+                    <!-- Notification -->
+                    <a href="#" class="notification-icon text-decoration-none">
+                        <i class="bi bi-bell-fill"></i>
+                        <span class="notification-badge">5</span>
+                    </a>
+                    
+                    <!-- Profile Dropdown -->
+                    <div class="dropdown">
+                        <button class="btn profile-dropdown-toggle dropdown-toggle border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="profile-avatar text-white">JD</div>
+                            <span class="d-none d-md-inline ms-1 text-white fw-medium">John Doe</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-glass mt-2">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>My Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-box-seam me-2"></i>My Orders</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="index.html"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content wrapper -->
+    <div class="main-wrapper cart-content">
+        <div class="container">
+            
+            <!-- Breadcrumb Navigation -->
+            <nav aria-label="breadcrumb" class="glass-breadcrumb fade-in-up">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="customer-dashboard.html"><i class="bi bi-house-door me-1"></i>Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
+                </ol>
+            </nav>
+
+            <div class="d-flex justify-content-between align-items-end mb-4 fade-in-up delay-1">
+                <h2 class="fw-bold text-white mb-0">Shopping <span class="text-gradient">Cart</span></h2>
+                <span class="text-white-50">3 Items</span>
+            </div>
+
+            <div class="row g-5 mb-5">
+                
+                <!-- Left Side: Cart Items -->
+                <div class="col-lg-8 fade-in-up delay-2">
+                    <div class="glass-panel rounded-4 overflow-hidden">
+                        
+                        <!-- Cart Item 1 -->
+                        <div class="cart-item-card d-flex flex-column flex-sm-row gap-3">
+                            <div class="cart-product-img">
+                                <i class="bi bi-laptop"></i>
+                            </div>
+                            <div class="flex-grow-1 d-flex flex-column">
+                                <div class="d-flex justify-content-between align-items-start mb-1">
+                                    <a href="product-details.html" class="cart-product-title">ProX 15-inch Gaming Laptop</a>
+                                    <div class="cart-price text-end">₹89,999</div>
+                                </div>
+                                <div class="cart-product-vendor"><i class="bi bi-shop me-1"></i> Sold by: TechHub Store</div>
+                                
+                                <div class="d-flex justify-content-between align-items-end mt-auto">
+                                    <div class="quantity-selector">
+                                        <button class="qty-btn"><i class="bi bi-dash"></i></button>
+                                        <input type="text" class="qty-input" value="1" readonly>
+                                        <button class="qty-btn"><i class="bi bi-plus"></i></button>
+                                    </div>
+                                    <div class="d-flex gap-3">
+                                        <button class="cart-action-btn"><i class="bi bi-heart"></i> Save</button>
+                                        <span class="text-white-50 opacity-25">|</span>
+                                        <button class="cart-action-btn text-danger"><i class="bi bi-trash3"></i> Remove</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cart Item 2 -->
+                        <div class="cart-item-card d-flex flex-column flex-sm-row gap-3">
+                            <div class="cart-product-img">
+                                <i class="bi bi-headphones"></i>
+                            </div>
+                            <div class="flex-grow-1 d-flex flex-column">
+                                <div class="d-flex justify-content-between align-items-start mb-1">
+                                    <a href="product-details.html" class="cart-product-title">Noise Cancelling Wireless Headphones</a>
+                                    <div class="cart-price text-end">₹16,998</div>
+                                </div>
+                                <div class="cart-product-vendor"><i class="bi bi-shop me-1"></i> Sold by: AudioMax</div>
+                                
+                                <div class="d-flex justify-content-between align-items-end mt-auto">
+                                    <div class="quantity-selector">
+                                        <button class="qty-btn"><i class="bi bi-dash"></i></button>
+                                        <input type="text" class="qty-input" value="2" readonly>
+                                        <button class="qty-btn"><i class="bi bi-plus"></i></button>
+                                    </div>
+                                    <div class="d-flex gap-3">
+                                        <button class="cart-action-btn"><i class="bi bi-heart"></i> Save</button>
+                                        <span class="text-white-50 opacity-25">|</span>
+                                        <button class="cart-action-btn text-danger"><i class="bi bi-trash3"></i> Remove</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cart Item 3 -->
+                        <div class="cart-item-card d-flex flex-column flex-sm-row gap-3">
+                            <div class="cart-product-img">
+                                <i class="bi bi-mouse3"></i>
+                            </div>
+                            <div class="flex-grow-1 d-flex flex-column">
+                                <div class="d-flex justify-content-between align-items-start mb-1">
+                                    <a href="product-details.html" class="cart-product-title">Ergonomic Wireless Gaming Mouse</a>
+                                    <div class="cart-price text-end">₹2,999</div>
+                                </div>
+                                <div class="cart-product-vendor"><i class="bi bi-shop me-1"></i> Sold by: Game Haven</div>
+                                
+                                <div class="d-flex justify-content-between align-items-end mt-auto">
+                                    <div class="quantity-selector">
+                                        <button class="qty-btn"><i class="bi bi-dash"></i></button>
+                                        <input type="text" class="qty-input" value="1" readonly>
+                                        <button class="qty-btn"><i class="bi bi-plus"></i></button>
+                                    </div>
+                                    <div class="d-flex gap-3">
+                                        <button class="cart-action-btn"><i class="bi bi-heart"></i> Save</button>
+                                        <span class="text-white-50 opacity-25">|</span>
+                                        <button class="cart-action-btn text-danger"><i class="bi bi-trash3"></i> Remove</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <!-- Empty Cart Container (Hidden by default, shown when cart is empty) -->
+                    <div class="glass-panel rounded-4 d-none">
+                        <div class="empty-cart-container">
+                            <div class="empty-cart-icon">
+                                <i class="bi bi-cart-x"></i>
+                            </div>
+                            <h3 class="text-white fw-bold mb-3">Your cart is empty</h3>
+                            <p class="text-white-50 mb-4">Looks like you haven't added anything to your cart yet.</p>
+                            <a href="product-listing.html" class="btn btn-primary btn-hover-info rounded-pill px-4 py-2 fw-medium transition-all">
+                                <i class="bi bi-arrow-left me-2"></i> Continue Shopping
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side: Order Summary -->
+                <div class="col-lg-4 fade-in-up delay-3">
+                    
+                    <!-- Coupon Section -->
+                    <div class="glass-panel p-4 rounded-4 mb-4">
+                        <h6 class="text-white fw-bold mb-3"><i class="bi bi-tag me-2 text-info"></i> Apply Coupon</h6>
+                        <div class="coupon-input-group">
+                            <input type="text" placeholder="Enter coupon code">
+                            <button class="btn btn-info text-white px-3 fw-medium transition-all">Apply</button>
+                        </div>
+                    </div>
+
+                    <!-- Summary Card -->
+                    <div class="glass-panel p-4 rounded-4 summary-card">
+                        <h5 class="text-white fw-bold mb-4">Order Summary</h5>
+                        
+                        <div class="summary-row">
+                            <span>Subtotal (3 items)</span>
+                            <span class="text-white fw-medium">₹1,09,996</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Shipping Charges</span>
+                            <span class="text-white fw-medium">₹500</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Estimated Tax (18%)</span>
+                            <span class="text-white fw-medium">₹19,799</span>
+                        </div>
+                        <div class="summary-row discount">
+                            <span>Discount <i class="bi bi-check-circle-fill ms-1 small"></i></span>
+                            <span>-₹4,500</span>
+                        </div>
+                        
+                        <div class="summary-row total">
+                            <span>Grand Total</span>
+                            <span class="text-info">₹1,25,795</span>
+                        </div>
+                        
+                        <div class="d-flex flex-column gap-3 mt-4">
+                            <a href="checkout.html" class="btn btn-success text-white rounded-pill py-3 fw-bold transition-all text-decoration-none d-block text-center" style="background: linear-gradient(135deg, #10b981, #059669); border: none; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);">
+                                Proceed to Checkout <i class="bi bi-arrow-right ms-2"></i>
+                            </a>
+                            <a href="product-listing.html" class="btn btn-outline-light rounded-pill py-2 fw-medium transition-all btn-hover-info">
+                                Continue Shopping
+                            </a>
+                        </div>
+                        
+                        <div class="mt-4 text-center">
+                            <div class="d-flex justify-content-center gap-2 mb-2">
+                                <i class="bi bi-shield-lock text-success fs-5"></i>
+                            </div>
+                            <small class="text-white-50">Safe and Secure Payments. 100% Authentic Products.</small>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Recommended Products Section -->
+            <section class="similar-products-section mt-5 fade-in-up delay-4">
+                <div class="d-flex justify-content-between align-items-end mb-4">
+                    <h3 class="fw-bold mb-0 text-white">Recommended <span>For You</span></h3>
+                </div>
+                
+                <div class="row g-4">
+                    <!-- Product 1 -->
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="glass-card product-card rounded-4">
+                            <div class="product-img-wrapper">
+                                <span class="stock-badge">In Stock</span>
+                                <i class="bi bi-laptop product-img-placeholder"></i>
+                            </div>
+                            <div class="product-details">
+                                <a href="product-details.html" class="product-title">UltraBook Slim 14-inch</a>
+                                <div class="product-rating mb-2">
+                                    <i class="bi bi-star-fill text-warning"></i><span class="text-light opacity-75 ms-1 small">4.6 (120)</span>
+                                </div>
+                                <div class="product-price mb-3">₹75,500</div>
+                                <div class="product-actions mt-auto">
+                                    <a href="cart.html" class="btn btn-light btn-hover-info rounded-pill btn-cart fw-medium transition-all w-100 text-center"><i class="bi bi-cart-plus me-1"></i> Add to Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="glass-card product-card rounded-4">
+                            <div class="product-img-wrapper">
+                                <span class="discount-badge">-10% OFF</span>
+                                <i class="bi bi-display product-img-placeholder"></i>
+                            </div>
+                            <div class="product-details">
+                                <a href="product-details.html" class="product-title">UltraWide 34-inch Monitor</a>
+                                <div class="product-rating mb-2">
+                                    <i class="bi bi-star-fill text-warning"></i><span class="text-light opacity-75 ms-1 small">4.9 (18)</span>
+                                </div>
+                                <div class="product-price mb-3">₹32,499</div>
+                                <div class="product-actions mt-auto">
+                                    <a href="cart.html" class="btn btn-light btn-hover-info rounded-pill btn-cart fw-medium transition-all w-100 text-center"><i class="bi bi-cart-plus me-1"></i> Add to Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="glass-card product-card rounded-4">
+                            <div class="product-img-wrapper">
+                                <span class="stock-badge bg-danger">Low Stock</span>
+                                <i class="bi bi-keyboard product-img-placeholder"></i>
+                            </div>
+                            <div class="product-details">
+                                <a href="product-details.html" class="product-title">Mechanical Gaming Keyboard</a>
+                                <div class="product-rating mb-2">
+                                    <i class="bi bi-star-fill text-warning"></i><span class="text-light opacity-75 ms-1 small">4.5 (189)</span>
+                                </div>
+                                <div class="product-price mb-3">₹4,499</div>
+                                <div class="product-actions mt-auto">
+                                    <a href="cart.html" class="btn btn-light btn-hover-info rounded-pill btn-cart fw-medium transition-all w-100 text-center"><i class="bi bi-cart-plus me-1"></i> Add to Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="glass-card product-card rounded-4">
+                            <div class="product-img-wrapper">
+                                <i class="bi bi-camera product-img-placeholder"></i>
+                            </div>
+                            <div class="product-details">
+                                <a href="product-details.html" class="product-title">Mirrorless Digital Camera 4K</a>
+                                <div class="product-rating mb-2">
+                                    <i class="bi bi-star-fill text-warning"></i><span class="text-light opacity-75 ms-1 small">4.7 (432)</span>
+                                </div>
+                                <div class="product-price mb-3">₹45,999</div>
+                                <div class="product-actions mt-auto">
+                                    <a href="cart.html" class="btn btn-light btn-hover-info rounded-pill btn-cart fw-medium transition-all w-100 text-center"><i class="bi bi-cart-plus me-1"></i> Add to Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center text-white pb-4 pt-5 mt-5 border-top border-light border-opacity-10 footer-section fade-in-up delay-4">
+            <div class="container">
+                <div class="row g-4 text-start mb-4">
+                    <div class="col-lg-4">
+                        <h5 class="fw-bold mb-3"><i class="bi bi-shop text-info me-2"></i>Multi-Vendor Platform</h5>
+                        <p class="small text-white-50 lh-lg">A centralized marketplace connecting customers, vendors, and administrators through a single unified platform. Discover quality products with confidence.</p>
+                        <div class="d-flex gap-3 mt-3">
+                            <a href="#" class="text-white-50 text-hover-white transition-all"><i class="bi bi-facebook fs-5"></i></a>
+                            <a href="#" class="text-white-50 text-hover-white transition-all"><i class="bi bi-twitter-x fs-5"></i></a>
+                            <a href="#" class="text-white-50 text-hover-white transition-all"><i class="bi bi-instagram fs-5"></i></a>
+                            <a href="#" class="text-white-50 text-hover-white transition-all"><i class="bi bi-linkedin fs-5"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4">
+                        <h6 class="fw-bold mb-3">Quick Links</h6>
+                        <ul class="list-unstyled small text-white-50">
+                            <li class="mb-2"><a href="customer-dashboard.html" class="text-white-50 text-decoration-none">Home</a></li>
+                            <li class="mb-2"><a href="product-listing.html" class="text-white-50 text-decoration-none">Products</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Vendors</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Categories</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-4">
+                        <h6 class="fw-bold mb-3">Customer Support</h6>
+                        <ul class="list-unstyled small text-white-50">
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Help Center</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Order Tracking</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Returns & Refunds</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <h6 class="fw-bold mb-3">Contact Info</h6>
+                        <ul class="list-unstyled small text-white-50">
+                            <li class="mb-2"><i class="bi bi-geo-alt me-2 text-info"></i> 123 Tech Park, Innovation City</li>
+                            <li class="mb-2"><i class="bi bi-envelope me-2 text-info"></i> support@multivendor.com</li>
+                            <li class="mb-2"><i class="bi bi-telephone me-2 text-info"></i> +1 (555) 123-4567</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr class="border-light border-opacity-10 mb-4">
+                <p class="small text-white-50 mb-0">&copy; Academic Year 2025-2026. All Rights Reserved.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Supabase Integration -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart-checkout.js"></script>
+
+    <script>
+        // Auth guard
+        document.addEventListener('DOMContentLoaded', async function () {
+            try {
+                const profile = await getCurrentProfile();
+                if (!profile) {
+                    window.location.href = 'customer-login.html';
+                    return;
+                }
+                // Logout handler
+                document.querySelectorAll('[data-logout]').forEach(btn => {
+                    btn.addEventListener('click', async (e) => {
+                        e.preventDefault();
+                        await signOut();
+                        window.location.href = 'customer-login.html';
+                    });
+                });
+                // Load cart items
+                await loadCart();
+            } catch (err) {
+                console.error('Auth check failed', err);
+                window.location.href = 'customer-login.html';
+            }
+        });
+
+        async function loadCart() {
+            const cartContainer = document.getElementById('cartItemsContainer');
+            const cartSummary = document.getElementById('cartSummary');
+            try {
+                const items = await getCart();
+                if (!cartContainer) return;
+                if (!items || items.length === 0) {
+                    cartContainer.innerHTML = '<div class="text-center py-5 text-white-50"><i class="bi bi-cart-x fs-1 d-block mb-3"></i><p>Your cart is empty.</p><a href="product-listing.html" class="btn btn-info rounded-pill px-4">Browse Products</a></div>';
+                    return;
+                }
+                let subtotal = 0;
+                cartContainer.innerHTML = '';
+                items.forEach(item => {
+                    const prod = item.products;
+                    const img = prod.product_images && prod.product_images.length > 0
+                        ? prod.product_images.find(i => i.is_primary)?.image_url || prod.product_images[0].image_url
+                        : null;
+                    const lineTotal = prod.price * item.quantity;
+                    subtotal += lineTotal;
+                    cartContainer.innerHTML += `
+                        <div class="glass-card p-3 rounded-4 mb-3 d-flex align-items-center gap-3" id="cart-item-${item.id}">
+                            <div style="width:70px;height:70px;background:rgba(255,255,255,0.05);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                ${img ? `<img src="${img}" style="max-width:65px;max-height:65px;object-fit:contain;">` : '<i class="bi bi-box-seam text-white-50 fs-3"></i>'}
+                            </div>
+                            <div class="flex-grow-1">
+                                <div class="fw-semibold text-white">${prod.name}</div>
+                                <div class="text-white-50 small">₹${prod.price.toLocaleString()} each</div>
+                                <div class="d-flex align-items-center gap-2 mt-1">
+                                    <button class="btn btn-sm btn-outline-light rounded-circle" onclick="changeQty('${item.id}', -1)">-</button>
+                                    <span class="text-white" id="qty-${item.id}">${item.quantity}</span>
+                                    <button class="btn btn-sm btn-outline-light rounded-circle" onclick="changeQty('${item.id}', 1)">+</button>
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <div class="fw-bold text-white">₹${lineTotal.toLocaleString()}</div>
+                                <button class="btn btn-sm btn-outline-danger mt-1" onclick="removeItem('${item.id}')"><i class="bi bi-trash"></i></button>
+                            </div>
+                        </div>`;
+                });
+                // Update subtotal display
+                const subtotalEls = document.querySelectorAll('[data-cart-subtotal]');
+                subtotalEls.forEach(el => el.textContent = '₹' + subtotal.toLocaleString());
+                const totalEls = document.querySelectorAll('[data-cart-total]');
+                totalEls.forEach(el => el.textContent = '₹' + subtotal.toLocaleString());
+            } catch (err) {
+                console.error('Failed to load cart', err);
+                if (cartContainer) cartContainer.innerHTML = '<p class="text-danger">Failed to load cart.</p>';
+            }
+        }
+
+        async function changeQty(cartItemId, delta) {
+            const qtyEl = document.getElementById('qty-' + cartItemId);
+            if (!qtyEl) return;
+            const newQty = parseInt(qtyEl.textContent) + delta;
+            if (newQty < 1) { await removeItem(cartItemId); return; }
+            try {
+                await updateCartItemQuantity(cartItemId, newQty);
+                await loadCart();
+            } catch (err) { console.error(err); }
+        }
+
+        async function removeItem(cartItemId) {
+            try {
+                await removeCartItem(cartItemId);
+                await loadCart();
+            } catch (err) { console.error(err); }
+        }
+    </script>
+</body>
+
+</html>

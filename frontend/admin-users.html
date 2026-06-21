@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>User Management - Admin Panel | MultiMart E-Commerce</title>
+    <meta name="description"
+        content="Admin dashboard to manage customer accounts, monitor user activity and control account statuses on the MultiMart multi-vendor platform.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Global + Dashboard + Page Styles -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="vendor-dashboard.css">
+    <link rel="stylesheet" href="admin-users.css">
+</head>
+
+<body>
+
+    <!-- ============================================================
+         NAVBAR
+         ============================================================ -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar" id="mainNavbar">
+        <div class="container-fluid px-4">
+            <!-- Brand -->
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <i class="bi bi-shield-lock-fill fs-3 me-2" style="color:#f87171;"></i>
+                <span class="fw-bold brand-text d-none d-sm-inline">Admin Panel</span>
+                <span class="fw-bold brand-text d-inline d-sm-none">AP</span>
+            </a>
+
+            <!-- Toggler -->
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="bi bi-list fs-1 text-white"></i>
+            </button>
+
+            <!-- Nav Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto fw-medium">
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="#">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active px-3" href="admin-users.html">Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="#">Vendors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="#">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="#">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="#">Reports</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================================
+         MAIN WRAPPER
+         ============================================================ -->
+    <div class="main-wrapper users-content">
+        <div class="container-fluid px-4">
+
+            <!-- ===================================================
+                 1. ADMIN HEADER
+                 =================================================== -->
+            <div class="admin-header fade-in-up" id="adminHeader">
+                <!-- Left: Profile -->
+                <div class="admin-profile">
+                    <div class="admin-avatar">SA</div>
+                    <div>
+                        <div class="admin-role-badge">
+                            <i class="bi bi-circle-fill" style="font-size:0.5rem;"></i>
+                            Super Admin
+                        </div>
+                        <h2 class="fw-bold text-white mb-1">User Management</h2>
+                        <p class="text-white-50 small mb-0 d-none d-md-block">
+                            Manage customer accounts and monitor user activity.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right: Controls -->
+                <div class="d-flex align-items-center gap-3 mt-2 mt-md-0">
+                    <!-- Notifications -->
+                    <button class="btn btn-outline-light rounded-circle position-relative p-2"
+                        style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;"
+                        id="notifBtn" title="Notifications">
+                        <i class="bi bi-bell fs-5"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill"
+                            style="background:#f87171;font-size:0.6rem;">
+                            7<span class="visually-hidden">notifications</span>
+                        </span>
+                    </button>
+
+                    <!-- Admin Name Pill -->
+                    <div class="d-none d-md-flex align-items-center gap-2 px-3 py-2"
+                        style="background:rgba(255,255,255,0.05);border:1px solid var(--glass-border);border-radius:50px;">
+                        <i class="bi bi-person-fill" style="color:#f87171;"></i>
+                        <span class="text-white fw-medium small">Super Admin</span>
+                    </div>
+
+                    <!-- Logout -->
+                    <a href="admin-login.html"
+                        class="btn rounded-pill px-4 fw-medium transition-all shadow-sm"
+                        style="background:rgba(248,113,113,0.15);border:1px solid rgba(248,113,113,0.4);color:#f87171;"
+                        id="logoutBtn">
+                        <i class="bi bi-box-arrow-right me-2"></i>Logout
+                    </a>
+                </div>
+            </div>
+            <!-- /Admin Header -->
+
+
+            <!-- ===================================================
+                 2. USER STATISTICS CARDS
+                 =================================================== -->
+            <div class="row g-4 mb-4 fade-in-up delay-1" id="statsRow">
+
+                <!-- Total Users -->
+                <div class="col-sm-6 col-xl-3">
+                    <div class="stat-card card-blue">
+                        <div class="stat-icon bg-icon-primary"><i class="bi bi-people-fill"></i></div>
+                        <div class="growth-indicator growth-positive">
+                            <i class="bi bi-arrow-up-right"></i>12%
+                        </div>
+                        <div class="stat-value">12,485</div>
+                        <div class="stat-label">Total Users</div>
+                    </div>
+                </div>
+
+                <!-- Active Users -->
+                <div class="col-sm-6 col-xl-3">
+                    <div class="stat-card card-green">
+                        <div class="stat-icon bg-icon-success"><i class="bi bi-person-check-fill"></i></div>
+                        <div class="growth-indicator growth-positive">
+                            <i class="bi bi-arrow-up-right"></i>8%
+                        </div>
+                        <div class="stat-value text-success">10,921</div>
+                        <div class="stat-label">Active Users</div>
+                    </div>
+                </div>
+
+                <!-- New Registrations -->
+                <div class="col-sm-6 col-xl-3">
+                    <div class="stat-card card-purple">
+                        <div class="stat-icon bg-icon-info"><i class="bi bi-person-plus-fill"></i></div>
+                        <div class="growth-indicator growth-positive">
+                            <i class="bi bi-arrow-up-right"></i>24%
+                        </div>
+                        <div class="stat-value" style="color:#c084fc;">348</div>
+                        <div class="stat-label">New Registrations</div>
+                    </div>
+                </div>
+
+                <!-- Blocked Users -->
+                <div class="col-sm-6 col-xl-3">
+                    <div class="stat-card card-red">
+                        <div class="stat-icon bg-icon-danger"><i class="bi bi-person-x-fill"></i></div>
+                        <div class="growth-indicator growth-negative">
+                            <i class="bi bi-arrow-down-right"></i>3%
+                        </div>
+                        <div class="stat-value text-danger">216</div>
+                        <div class="stat-label">Blocked Users</div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /Stats Cards -->
+
+
+            <!-- ===================================================
+                 3. SEARCH & FILTER SECTION
+                 =================================================== -->
+            <div class="filter-bar fade-in-up delay-2" id="filterBar">
+                <div class="row align-items-center g-3">
+                    <div class="col-12 col-lg-10">
+                        <div class="d-flex flex-wrap gap-3">
+
+                            <!-- Search by ID -->
+                            <div class="search-wrapper" style="max-width:200px;flex-grow:1;">
+                                <i class="bi bi-hash"></i>
+                                <input type="text" class="form-control search-input" id="searchId"
+                                    placeholder="User ID..." title="Search by User ID">
+                            </div>
+
+                            <!-- Search by Name -->
+                            <div class="search-wrapper" style="max-width:220px;flex-grow:1;">
+                                <i class="bi bi-person"></i>
+                                <input type="text" class="form-control search-input" id="searchName"
+                                    placeholder="Search name..." title="Search by Name">
+                            </div>
+
+                            <!-- Search by Email -->
+                            <div class="search-wrapper" style="max-width:240px;flex-grow:1;">
+                                <i class="bi bi-envelope"></i>
+                                <input type="text" class="form-control search-input" id="searchEmail"
+                                    placeholder="Search email..." title="Search by Email">
+                            </div>
+
+                            <!-- Status Filter -->
+                            <select class="form-select filter-select" id="statusFilter" style="max-width:180px;">
+                                <option value="">All Users</option>
+                                <option value="active">Active Users</option>
+                                <option value="inactive">Inactive Users</option>
+                                <option value="blocked">Blocked Users</option>
+                                <option value="new">Recently Registered</option>
+                            </select>
+
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-2 d-flex gap-2 justify-content-lg-end">
+                        <!-- Search -->
+                        <button class="btn fw-medium rounded-pill px-3 flex-grow-1 flex-lg-grow-0"
+                            style="background:rgba(248,113,113,0.15);border:1px solid rgba(248,113,113,0.4);color:#f87171;"
+                            id="searchBtn" onclick="applyFilters()">
+                            <i class="bi bi-search me-1"></i>Search
+                        </button>
+                        <!-- Reset -->
+                        <button class="btn btn-outline-light fw-medium rounded-pill px-3"
+                            id="resetBtn" onclick="resetFilters()">
+                            <i class="bi bi-x-circle me-1"></i>Reset
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- /Filter Bar -->
+
+
+            <!-- ===================================================
+                 4. USERS TABLE
+                 =================================================== -->
+            <div class="users-table-card fade-in-up delay-3" id="usersTableCard">
+                <div class="d-flex justify-content-between align-items-center mb-3 pb-3
+                    border-bottom border-light border-opacity-10">
+                    <h5 class="section-title mb-0">
+                        <i class="bi bi-table" style="color:#f87171;"></i> All Customers
+                    </h5>
+                    <span class="text-white-50 small" id="tableCountLabel">Showing 15 of 12,485 users</span>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-borderless align-middle" id="usersTable">
+                        <thead>
+                            <tr>
+                                <th>Customer ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th class="d-none d-md-table-cell">Phone</th>
+                                <th class="d-none d-xl-table-cell">Address</th>
+                                <th class="d-none d-lg-table-cell">Reg. Date</th>
+                                <th>Status</th>
+                                <th class="text-end">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTableBody">
+
+                            <!-- User 1 -->
+                            <tr>
+                                <td class="fw-medium" style="color:#f87171;">#USR-1001</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="user-avatar-sm"
+                                            style="background:linear-gradient(135deg,#3b82f6,#6366f1);">AJ</div>
+                                        <span class="text-white">Alice Johnson</span>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">alice.johnson@email.com</td>
+                                <td class="text-white-50 d-none d-md-table-cell">+91 98765 43210</td>
+                                <td class="text-white-50 d-none d-xl-table-cell">B-12, Greenfield Colony, Mumbai</td>
+                                <td class="text-white-50 d-none d-lg-table-cell">15 Jan 2025</td>
+                                <td><span class="status-badge badge-active">Active</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-info me-1" title="View User"
+                                        onclick="viewUser('#USR-1001','Alice Johnson','alice.johnson@email.com','+91 98765 43210','B-12, Greenfield Colony, Mumbai - 400001','15 Jan 2025',24,'₹1,23,450','active')"
+                                        data-bs-toggle="modal" data-bs-target="#userDetailModal">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-outline-warning me-1" title="Edit User"
+                                        onclick="editUser('#USR-1001','Alice Johnson','alice.johnson@email.com','+91 98765 43210','B-12, Greenfield Colony, Mumbai')"
+                                        data-bs-toggle="modal" data-bs-target="#editUserModal">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-outline-danger" title="Delete User"
+                                        onclick="setDeleteUser('#USR-1001','Alice Johnson')"
+                                        data-bs-toggle="modal" data-bs-target="#deleteUserModal">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- User 2 -->
+                            <tr>
+                                <td class="fw-medium" style="color:#f87171;">#USR-1002</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="user-avatar-sm"
+                                            style="background:linear-gradient(135deg,#10b981,#059669);">MC</div>
+                                        <span class="text-white">Michael Chen</span>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">m.chen@techmail.com</td>
+                                <td class="text-white-50 d-none d-md-table-cell">+91 87654 32109</td>
+                                <td class="text-white-50 d-none d-xl-table-cell">C-45, Bandra West, Mumbai</td>
+                                <td class="text-white-50 d-none d-lg-table-cell">03 Feb 2025</td>
+                                <td><span class="status-badge badge-active">Active</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-info me-1" title="View User"
+                                        onclick="viewUser('#USR-1002','Michael Chen','m.chen@techmail.com','+91 87654 32109','C-45, Bandra West, Mumbai - 400050','03 Feb 2025',18,'₹85,200','active')"
+                                        data-bs-toggle="modal" data-bs-target="#userDetailModal">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-outline-warning me-1" title="Edit User"
+                                        onclick="editUser('#USR-1002','Michael Chen','m.chen@techmail.com','+91 87654 32109','C-45, Bandra West, Mumbai')"
+                                        data-bs-toggle="modal" data-bs-target="#editUserModal">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-outline-danger" title="Delete User"
+                                        onclick="setDeleteUser('#USR-1002','Michael Chen')"
+                                        data-bs-toggle="modal" data-bs-target="#deleteUserModal">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- User 3 -->
+                            <tr>
+                                <td class="fw-medium" style="color:#f87171;">#USR-1003</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="user-avatar-sm"
+                                            style="background:linear-gradient(135deg,#f59e0b,#d97706);">SS</div>
+                                        <span class="text-white">Sarah Smith</span>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">sarah.s@promail.com</td>
+                                <td class="text-white-50 d-none d-md-table-cell">+91 76543 21098</td>
+                                <td class="text-white-50 d-none d-xl-table-cell">D-8, Andheri East, Mumbai</td>
+                                <td class="text-white-50 d-none d-lg-table-cell">18 Feb 2025</td>
+                                <td><span class="status-badge badge-inactive">Inactive</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-info me-1" title="View User"
+                                        onclick="viewUser('#USR-1003','Sarah Smith','sarah.s@promail.com','+91 76543 21098','D-8, Andheri East, Mumbai - 400069','18 Feb 2025',7,'₹22,700','inactive')"
+                                        data-bs-toggle="modal" data-bs-target="#userDetailModal">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-outline-warning me-1" title="Edit User"
+                                        onclick="editUser('#USR-1003','Sarah Smith','sarah.s@promail.com','+91 76543 21098','D-8, Andheri East, Mumbai')"
+                                        data-bs-toggle="modal" data-bs-target="#editUserModal">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-outline-danger" title="Delete User"
+                                        onclick="setDeleteUser('#USR-1003','Sarah Smith')"
+                                        data-bs-toggle="modal" data-bs-target="#deleteUserModal">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- User 4 -->
+                            <tr>
+                                <td class="fw-medium" style="color:#f87171;">#USR-1004</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="user-avatar-sm"
+                                            style="background:linear-gradient(135deg,#8b5cf6,#6d28d9);">DM</div>
+                                        <span class="text-white">David Miller</span>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">david.miller@corp.net</td>
+                                <td class="text-white-50 d-none d-md-table-cell">+91 65432 10987</td>
+                                <td class="text-white-50 d-none d-xl-table-cell">E-22, Powai, Mumbai</td>
+                                <td class="text-white-50 d-none d-lg-table-cell">02 Mar 2025</td>
+                                <td><span class="status-badge badge-blocked">Blocked</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-info me-1" title="View User"
+                                        onclick="viewUser('#USR-1004','David Miller','david.miller@corp.net','+91 65432 10987','E-22, Powai, Mumbai - 400076','02 Mar 2025',3,'₹9,100','blocked')"
+                                        data-bs-toggle="modal" data-bs-target="#userDetailModal">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-outline-warning me-1" title="Edit User"
+                                        onclick="editUser('#USR-1004','David Miller','david.miller@corp.net','+91 65432 10987','E-22, Powai, Mumbai')"
+                                        data-bs-toggle="modal" data-bs-target="#editUserModal">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-outline-danger" title="Delete User"
+                                        onclick="setDeleteUser('#USR-1004','David Miller')"
+                                        data-bs-toggle="modal" data-bs-target="#deleteUserModal">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- User 5 -->
+                            <tr>
+                                <td class="fw-medium" style="color:#f87171;">#USR-1005</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="user-avatar-sm"
+                                            style="background:linear-gradient(135deg,#ec4899,#db2777);">PR</div>
+                                        <span class="text-white">Priya Rao</span>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">priya.rao@shopmail.com</td>
+                                <td class="text-white-50 d-none d-md-table-cell">+91 54321 09876</td>
+                                <td class="text-white-50 d-none d-xl-table-cell">F-3, Juhu, Mumbai</td>
+                                <td class="text-white-50 d-none d-lg-table-cell">10 Mar 2025</td>
+                                <td><span class="status-badge badge-active">Active</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-info me-1" title="View User"
+                                        onclick="viewUser('#USR-1005','Priya Rao','priya.rao@shopmail.com','+91 54321 09876','F-3, Juhu, Mumbai - 400049','10 Mar 2025',31,'₹2,05,800','active')"
+                                        data-bs-toggle="modal" data-bs-target="#userDetailModal">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-outline-warning me-1" title="Edit User"
+                                        onclick="editUser('#USR-1005','Priya Rao','priya.rao@shopmail.com','+91 54321 09876','F-3, Juhu, Mumbai')"
+                                        data-bs-toggle="modal" data-bs-target="#editUserModal">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-outline-danger" title="Delete User"
+                                        onclick="setDeleteUser('#USR-1005','Priya Rao')"
+                                        data-bs-toggle="modal" data-bs-target="#deleteUserModal">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- User 6 -->
+                            <tr>
+                                <td class="fw-medium" style="color:#f87171;">#USR-1006</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="user-avatar-sm"
+                                            style="background:linear-gradient(135deg,#14b8a6,#0d9488);">RK</div>
+                                        <span class="text-white">Rahul Kumar</span>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">rahul.k@gmail.com</td>
+                                <td class="text-white-50 d-none d-md-table-cell">+91 43210 98765</td>
+                                <td class="text-white-50 d-none d-xl-table-cell">G-55, Malad West, Mumbai</td>
+                                <td class="text-white-50 d-none d-lg-table-cell">25 Mar 2025</td>
+                                <td><span class="status-badge badge-active">Active</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-info me-1" title="View User"
+                                        onclick="viewUser('#USR-1006','Rahul Kumar','rahul.k@gmail.com','+91 43210 98765','G-55, Malad West, Mumbai - 400064','25 Mar 2025',15,'₹58,200','active')"
+                                        data-bs-toggle="modal" data-bs-target="#userDetailModal">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-outline-warning me-1" title="Edit User"
+                                        onclick="editUser('#USR-1006','Rahul Kumar','rahul.k@gmail.com','+91 43210 98765','G-55, Malad West, Mumbai')"
+                                        data-bs-toggle="modal" data-bs-target="#editUserModal">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-outline-danger" title="Delete User"
+                                        onclick="setDeleteUser('#USR-1006','Rahul Kumar')"
+                                        data-bs-toggle="modal" data-bs-target="#deleteUserModal">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- User 7 -->
+                            <tr>
+                                <td class="fw-medium" style="color:#f87171;">#USR-1007</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="user-avatar-sm"
+                                            style="background:linear-gradient(135deg,#f97316,#ea580c);">NP</div>
+                                        <span class="text-white">Neha Patil</span>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">neha.patil@ymail.com</td>
+                                <td class="text-white-50 d-none d-md-table-cell">+91 32109 87654</td>
+                                <td class="text-white-50 d-none d-xl-table-cell">H-1, Dadar, Mumbai</td>
+                                <td class="text-white-50 d-none d-lg-table-cell">08 Apr 2025</td>
+                                <td><span class="status-badge badge-inactive">Inactive</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-info me-1" title="View User"
+                                        onclick="viewUser('#USR-1007','Neha Patil','neha.patil@ymail.com','+91 32109 87654','H-1, Dadar, Mumbai - 400028','08 Apr 2025',4,'₹12,450','inactive')"
+                                        data-bs-toggle="modal" data-bs-target="#userDetailModal">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-outline-warning me-1" title="Edit User"
+                                        onclick="editUser('#USR-1007','Neha Patil','neha.patil@ymail.com','+91 32109 87654','H-1, Dadar, Mumbai')"
+                                        data-bs-toggle="modal" data-bs-target="#editUserModal">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-outline-danger" title="Delete User"
+                                        onclick="setDeleteUser('#USR-1007','Neha Patil')"
+                                        data-bs-toggle="modal" data-bs-target="#deleteUserModal">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- User 8 -->
+                            <tr>
+                                <td class="fw-medium" style="color:#f87171;">#USR-1008</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="user-avatar-sm"
+                                            style="background:linear-gradient(135deg,#64748b,#475569);">VG</div>
+                                        <span class="text-white">Vikram Gupta</span>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">vikramg@business.in</td>
+                                <td class="text-white-50 d-none d-md-table-cell">+91 21098 76543</td>
+                                <td class="text-white-50 d-none d-xl-table-cell">J-7, Kurla, Mumbai</td>
+                                <td class="text-white-50 d-none d-lg-table-cell">19 Apr 2025</td>
+                                <td><span class="status-badge badge-active">Active</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-info me-1" title="View User"
+                                        onclick="viewUser('#USR-1008','Vikram Gupta','vikramg@business.in','+91 21098 76543','J-7, Kurla, Mumbai - 400070','19 Apr 2025',11,'₹49,800','active')"
+                                        data-bs-toggle="modal" data-bs-target="#userDetailModal">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-outline-warning me-1" title="Edit User"
+                                        onclick="editUser('#USR-1008','Vikram Gupta','vikramg@business.in','+91 21098 76543','J-7, Kurla, Mumbai')"
+                                        data-bs-toggle="modal" data-bs-target="#editUserModal">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-outline-danger" title="Delete User"
+                                        onclick="setDeleteUser('#USR-1008','Vikram Gupta')"
+                                        data-bs-toggle="modal" data-bs-target="#deleteUserModal">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- User 9 -->
+                            <tr>
+                                <td class="fw-medium" style="color:#f87171;">#USR-1009</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="user-avatar-sm"
+                                            style="background:linear-gradient(135deg,#0ea5e9,#0284c7);">SN</div>
+                                        <span class="text-white">Sunita Nair</span>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">sunita.nair@inbox.com</td>
+                                <td class="text-white-50 d-none d-md-table-cell">+91 10987 65432</td>
+                                <td class="text-white-50 d-none d-xl-table-cell">K-11, Thane West</td>
+                                <td class="text-white-50 d-none d-lg-table-cell">30 Apr 2025</td>
+                                <td><span class="status-badge badge-active">Active</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-info me-1" title="View User"
+                                        onclick="viewUser('#USR-1009','Sunita Nair','sunita.nair@inbox.com','+91 10987 65432','K-11, Thane West, Thane - 400601','30 Apr 2025',9,'₹31,200','active')"
+                                        data-bs-toggle="modal" data-bs-target="#userDetailModal">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-outline-warning me-1" title="Edit User"
+                                        onclick="editUser('#USR-1009','Sunita Nair','sunita.nair@inbox.com','+91 10987 65432','K-11, Thane West')"
+                                        data-bs-toggle="modal" data-bs-target="#editUserModal">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-outline-danger" title="Delete User"
+                                        onclick="setDeleteUser('#USR-1009','Sunita Nair')"
+                                        data-bs-toggle="modal" data-bs-target="#deleteUserModal">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- User 10 -->
+                            <tr>
+                                <td class="fw-medium" style="color:#f87171;">#USR-1010</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="user-avatar-sm"
+                                            style="background:linear-gradient(135deg,#a855f7,#9333ea);">AM</div>
+                                        <span class="text-white">Arjun Mehta</span>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">arjun.m@fastmail.in</td>
+                                <td class="text-white-50 d-none d-md-table-cell">+91 99887 66554</td>
+                                <td class="text-white-50 d-none d-xl-table-cell">L-3, Vashi, Navi Mumbai</td>
+                                <td class="text-white-50 d-none d-lg-table-cell">12 May 2025</td>
+                                <td><span class="status-badge badge-active">Active</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-info me-1" title="View User"
+                                        onclick="viewUser('#USR-1010','Arjun Mehta','arjun.m@fastmail.in','+91 99887 66554','L-3, Vashi, Navi Mumbai - 400703','12 May 2025',22,'₹98,600','active')"
+                                        data-bs-toggle="modal" data-bs-target="#userDetailModal">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-outline-warning me-1" title="Edit User"
+                                        onclick="editUser('#USR-1010','Arjun Mehta','arjun.m@fastmail.in','+91 99887 66554','L-3, Vashi, Navi Mumbai')"
+                                        data-bs-toggle="modal" data-bs-target="#editUserModal">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-outline-danger" title="Delete User"
+                                        onclick="setDeleteUser('#USR-1010','Arjun Mehta')"
+                                        data-bs-toggle="modal" data-bs-target="#deleteUserModal">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- User 11 -->
+                            <tr>
+                                <td class="fw-medium" style="color:#f87171;">#USR-1011</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="user-avatar-sm"
+                                            style="background:linear-gradient(135deg,#84cc16,#65a30d);">KB</div>
+                                        <span class="text-white">Kavya Bhat</span>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">kavya.b@zmail.co</td>
+                                <td class="text-white-50 d-none d-md-table-cell">+91 88776 55443</td>
+                                <td class="text-white-50 d-none d-xl-table-cell">M-7, Borivali, Mumbai</td>
+                                <td class="text-white-50 d-none d-lg-table-cell">28 May 2025</td>
+                                <td><span class="status-badge badge-blocked">Blocked</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-info me-1" title="View User"
+                                        onclick="viewUser('#USR-1011','Kavya Bhat','kavya.b@zmail.co','+91 88776 55443','M-7, Borivali, Mumbai - 400066','28 May 2025',1,'₹3,200','blocked')"
+                                        data-bs-toggle="modal" data-bs-target="#userDetailModal">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-outline-warning me-1" title="Edit User"
+                                        onclick="editUser('#USR-1011','Kavya Bhat','kavya.b@zmail.co','+91 88776 55443','M-7, Borivali, Mumbai')"
+                                        data-bs-toggle="modal" data-bs-target="#editUserModal">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-outline-danger" title="Delete User"
+                                        onclick="setDeleteUser('#USR-1011','Kavya Bhat')"
+                                        data-bs-toggle="modal" data-bs-target="#deleteUserModal">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- User 12 -->
+                            <tr>
+                                <td class="fw-medium" style="color:#f87171;">#USR-1012</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="user-avatar-sm"
+                                            style="background:linear-gradient(135deg,#3b82f6,#6366f1);">RS</div>
+                                        <span class="text-white">Rohit Shah</span>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">rohit.shah@gmail.com</td>
+                                <td class="text-white-50 d-none d-md-table-cell">+91 77665 44332</td>
+                                <td class="text-white-50 d-none d-xl-table-cell">N-9, Santacruz, Mumbai</td>
+                                <td class="text-white-50 d-none d-lg-table-cell">05 Jun 2025</td>
+                                <td><span class="status-badge badge-active">Active</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-info me-1" title="View User"
+                                        onclick="viewUser('#USR-1012','Rohit Shah','rohit.shah@gmail.com','+91 77665 44332','N-9, Santacruz, Mumbai - 400054','05 Jun 2025',13,'₹62,800','active')"
+                                        data-bs-toggle="modal" data-bs-target="#userDetailModal">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-outline-warning me-1" title="Edit User"
+                                        onclick="editUser('#USR-1012','Rohit Shah','rohit.shah@gmail.com','+91 77665 44332','N-9, Santacruz, Mumbai')"
+                                        data-bs-toggle="modal" data-bs-target="#editUserModal">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-outline-danger" title="Delete User"
+                                        onclick="setDeleteUser('#USR-1012','Rohit Shah')"
+                                        data-bs-toggle="modal" data-bs-target="#deleteUserModal">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- User 13 -->
+                            <tr>
+                                <td class="fw-medium" style="color:#f87171;">#USR-1013</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="user-avatar-sm"
+                                            style="background:linear-gradient(135deg,#10b981,#059669);">LM</div>
+                                        <span class="text-white">Lakshmi Menon</span>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">lmenon@outlook.com</td>
+                                <td class="text-white-50 d-none d-md-table-cell">+91 66554 33221</td>
+                                <td class="text-white-50 d-none d-xl-table-cell">P-2, Goregaon, Mumbai</td>
+                                <td class="text-white-50 d-none d-lg-table-cell">10 Jun 2025</td>
+                                <td><span class="status-badge badge-new">New</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-info me-1" title="View User"
+                                        onclick="viewUser('#USR-1013','Lakshmi Menon','lmenon@outlook.com','+91 66554 33221','P-2, Goregaon, Mumbai - 400063','10 Jun 2025',2,'₹7,500','new')"
+                                        data-bs-toggle="modal" data-bs-target="#userDetailModal">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-outline-warning me-1" title="Edit User"
+                                        onclick="editUser('#USR-1013','Lakshmi Menon','lmenon@outlook.com','+91 66554 33221','P-2, Goregaon, Mumbai')"
+                                        data-bs-toggle="modal" data-bs-target="#editUserModal">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-outline-danger" title="Delete User"
+                                        onclick="setDeleteUser('#USR-1013','Lakshmi Menon')"
+                                        data-bs-toggle="modal" data-bs-target="#deleteUserModal">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- User 14 -->
+                            <tr>
+                                <td class="fw-medium" style="color:#f87171;">#USR-1014</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="user-avatar-sm"
+                                            style="background:linear-gradient(135deg,#f59e0b,#d97706);">AT</div>
+                                        <span class="text-white">Amit Tiwari</span>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">amit.t@techzone.in</td>
+                                <td class="text-white-50 d-none d-md-table-cell">+91 55443 22110</td>
+                                <td class="text-white-50 d-none d-xl-table-cell">Q-6, Vikhroli, Mumbai</td>
+                                <td class="text-white-50 d-none d-lg-table-cell">15 Jun 2025</td>
+                                <td><span class="status-badge badge-new">New</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-info me-1" title="View User"
+                                        onclick="viewUser('#USR-1014','Amit Tiwari','amit.t@techzone.in','+91 55443 22110','Q-6, Vikhroli, Mumbai - 400079','15 Jun 2025',1,'₹4,200','new')"
+                                        data-bs-toggle="modal" data-bs-target="#userDetailModal">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-outline-warning me-1" title="Edit User"
+                                        onclick="editUser('#USR-1014','Amit Tiwari','amit.t@techzone.in','+91 55443 22110','Q-6, Vikhroli, Mumbai')"
+                                        data-bs-toggle="modal" data-bs-target="#editUserModal">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-outline-danger" title="Delete User"
+                                        onclick="setDeleteUser('#USR-1014','Amit Tiwari')"
+                                        data-bs-toggle="modal" data-bs-target="#deleteUserModal">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- User 15 -->
+                            <tr>
+                                <td class="fw-medium" style="color:#f87171;">#USR-1015</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="user-avatar-sm"
+                                            style="background:linear-gradient(135deg,#8b5cf6,#6d28d9);">DJ</div>
+                                        <span class="text-white">Deepika Joshi</span>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">deepika.j@mail.com</td>
+                                <td class="text-white-50 d-none d-md-table-cell">+91 44332 11009</td>
+                                <td class="text-white-50 d-none d-xl-table-cell">R-1, Chembur, Mumbai</td>
+                                <td class="text-white-50 d-none d-lg-table-cell">18 Jun 2025</td>
+                                <td><span class="status-badge badge-new">New</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-info me-1" title="View User"
+                                        onclick="viewUser('#USR-1015','Deepika Joshi','deepika.j@mail.com','+91 44332 11009','R-1, Chembur, Mumbai - 400071','18 Jun 2025',0,'₹0','new')"
+                                        data-bs-toggle="modal" data-bs-target="#userDetailModal">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-outline-warning me-1" title="Edit User"
+                                        onclick="editUser('#USR-1015','Deepika Joshi','deepika.j@mail.com','+91 44332 11009','R-1, Chembur, Mumbai')"
+                                        data-bs-toggle="modal" data-bs-target="#editUserModal">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-outline-danger" title="Delete User"
+                                        onclick="setDeleteUser('#USR-1015','Deepika Joshi')"
+                                        data-bs-toggle="modal" data-bs-target="#deleteUserModal">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ---- Pagination ---- -->
+                <div class="d-flex justify-content-between align-items-center mt-4 pt-3
+                    border-top border-light border-opacity-10">
+                    <small class="text-white-50">Showing 15 of 12,485 users</small>
+                    <nav aria-label="Users pagination">
+                        <ul class="pagination pagination-sm mb-0">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" aria-label="Previous">Previous</a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <span class="page-link" style="background:transparent;border-color:var(--glass-border);color:rgba(255,255,255,0.3);">
+                                    ...
+                                </span>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">833</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+            <!-- /Users Table -->
+
+
+            <!-- ===================================================
+                 6 & 7. USER ACTIVITY + ACCOUNT STATUS MANAGEMENT
+                 =================================================== -->
+            <div class="row g-4 mb-4">
+
+                <!-- --- 6. Recent User Activity --- -->
+                <div class="col-xl-8 fade-in-up delay-2">
+                    <div class="activity-card">
+                        <h5 class="section-title mb-4">
+                            <i class="bi bi-activity" style="color:#60a5fa;"></i> Recent User Activity
+                        </h5>
+
+                        <div class="activity-feed">
+
+                            <!-- Activity 1 -->
+                            <div class="activity-item">
+                                <div class="activity-dot adot-login"></div>
+                                <div class="activity-user-name">Alice Johnson
+                                    <span class="badge-new-reg ms-2" style="vertical-align:middle;">Login</span>
+                                </div>
+                                <div class="activity-desc">
+                                    <i class="bi bi-box-arrow-in-right me-1"></i>User logged in from Mumbai, India
+                                </div>
+                                <div class="activity-time"><i class="bi bi-clock me-1"></i>2 minutes ago</div>
+                            </div>
+
+                            <!-- Activity 2 -->
+                            <div class="activity-item">
+                                <div class="activity-dot adot-order"></div>
+                                <div class="activity-user-name">Priya Rao
+                                    <span class="badge-new-reg ms-2"
+                                        style="vertical-align:middle;background:rgba(52,211,153,0.15);color:#34d399;border-color:rgba(52,211,153,0.3);">Order</span>
+                                </div>
+                                <div class="activity-desc">
+                                    <i class="bi bi-bag-check me-1"></i>Placed order #ORD-5024 worth ₹14,999
+                                </div>
+                                <div class="activity-time"><i class="bi bi-clock me-1"></i>18 minutes ago</div>
+                            </div>
+
+                            <!-- Activity 3 -->
+                            <div class="activity-item">
+                                <div class="activity-dot adot-review"></div>
+                                <div class="activity-user-name">Arjun Mehta
+                                    <span class="badge-new-reg ms-2"
+                                        style="vertical-align:middle;background:rgba(251,191,36,0.15);color:#fbbf24;border-color:rgba(251,191,36,0.3);">Review</span>
+                                </div>
+                                <div class="activity-desc">
+                                    <i class="bi bi-star-fill me-1" style="color:#fbbf24;font-size:0.7rem;"></i>Submitted a 5-star review for "ProX Gaming Laptop"
+                                </div>
+                                <div class="activity-time"><i class="bi bi-clock me-1"></i>45 minutes ago</div>
+                            </div>
+
+                            <!-- Activity 4 -->
+                            <div class="activity-item">
+                                <div class="activity-dot adot-profile"></div>
+                                <div class="activity-user-name">Michael Chen
+                                    <span class="badge-new-reg ms-2"
+                                        style="vertical-align:middle;background:rgba(192,132,252,0.15);color:#c084fc;border-color:rgba(192,132,252,0.3);">Profile</span>
+                                </div>
+                                <div class="activity-desc">
+                                    <i class="bi bi-pencil-square me-1"></i>Updated profile — changed shipping address
+                                </div>
+                                <div class="activity-time"><i class="bi bi-clock me-1"></i>1 hour ago</div>
+                            </div>
+
+                            <!-- Activity 5 -->
+                            <div class="activity-item">
+                                <div class="activity-dot adot-blocked"></div>
+                                <div class="activity-user-name">David Miller
+                                    <span class="badge-new-reg ms-2"
+                                        style="vertical-align:middle;background:rgba(248,113,113,0.15);color:#f87171;border-color:rgba(248,113,113,0.3);">Blocked</span>
+                                </div>
+                                <div class="activity-desc">
+                                    <i class="bi bi-shield-x me-1" style="color:#f87171;"></i>Account blocked — violated platform terms of service
+                                </div>
+                                <div class="activity-time"><i class="bi bi-clock me-1"></i>2 hours ago</div>
+                            </div>
+
+                            <!-- Activity 6 -->
+                            <div class="activity-item">
+                                <div class="activity-dot adot-login"></div>
+                                <div class="activity-user-name">Rahul Kumar
+                                    <span class="badge-new-reg ms-2" style="vertical-align:middle;">Login</span>
+                                </div>
+                                <div class="activity-desc">
+                                    <i class="bi bi-box-arrow-in-right me-1"></i>User logged in from Thane, India
+                                </div>
+                                <div class="activity-time"><i class="bi bi-clock me-1"></i>3 hours ago</div>
+                            </div>
+
+                            <!-- Activity 7 -->
+                            <div class="activity-item">
+                                <div class="activity-dot adot-order"></div>
+                                <div class="activity-user-name">Rohit Shah
+                                    <span class="badge-new-reg ms-2"
+                                        style="vertical-align:middle;background:rgba(52,211,153,0.15);color:#34d399;border-color:rgba(52,211,153,0.3);">Order</span>
+                                </div>
+                                <div class="activity-desc">
+                                    <i class="bi bi-bag-check me-1"></i>Placed order #ORD-5031 worth ₹8,999
+                                </div>
+                                <div class="activity-time"><i class="bi bi-clock me-1"></i>4 hours ago</div>
+                            </div>
+
+                            <!-- Activity 8 -->
+                            <div class="activity-item">
+                                <div class="activity-dot adot-profile"></div>
+                                <div class="activity-user-name">Lakshmi Menon
+                                    <span class="badge-new-reg ms-2"
+                                        style="vertical-align:middle;background:rgba(192,132,252,0.15);color:#c084fc;border-color:rgba(192,132,252,0.3);">Registered</span>
+                                </div>
+                                <div class="activity-desc">
+                                    <i class="bi bi-person-plus me-1"></i>New account registered on the platform
+                                </div>
+                                <div class="activity-time"><i class="bi bi-clock me-1"></i>6 hours ago</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- --- 7. Account Status Management --- -->
+                <div class="col-xl-4 fade-in-up delay-3">
+                    <div class="status-management-card">
+                        <h5 class="section-title mb-4">
+                            <i class="bi bi-toggles" style="color:#f87171;"></i> Status Management
+                        </h5>
+                        <p class="text-white-50 small mb-3">Select an action to apply to a chosen user account:</p>
+
+                        <!-- Activate -->
+                        <div class="status-option opt-activate" onclick="triggerStatusAction('activate')">
+                            <div class="status-opt-icon"
+                                style="background:rgba(16,185,129,0.12);color:#34d399;">
+                                <i class="bi bi-person-check-fill"></i>
+                            </div>
+                            <div>
+                                <div class="text-white fw-semibold small">Activate User</div>
+                                <div class="text-white-50" style="font-size:0.75rem;">Enable account access</div>
+                            </div>
+                            <span class="status-badge badge-active ms-auto">Active</span>
+                        </div>
+
+                        <!-- Deactivate -->
+                        <div class="status-option opt-deactivate" onclick="triggerStatusAction('deactivate')">
+                            <div class="status-opt-icon"
+                                style="background:rgba(245,158,11,0.12);color:#fbbf24;">
+                                <i class="bi bi-person-dash-fill"></i>
+                            </div>
+                            <div>
+                                <div class="text-white fw-semibold small">Deactivate User</div>
+                                <div class="text-white-50" style="font-size:0.75rem;">Suspend account temporarily</div>
+                            </div>
+                            <span class="status-badge badge-inactive ms-auto">Inactive</span>
+                        </div>
+
+                        <!-- Block -->
+                        <div class="status-option opt-block" onclick="triggerStatusAction('block')">
+                            <div class="status-opt-icon"
+                                style="background:rgba(248,113,113,0.12);color:#f87171;">
+                                <i class="bi bi-person-x-fill"></i>
+                            </div>
+                            <div>
+                                <div class="text-white fw-semibold small">Block User</div>
+                                <div class="text-white-50" style="font-size:0.75rem;">Permanently restrict access</div>
+                            </div>
+                            <span class="status-badge badge-blocked ms-auto">Blocked</span>
+                        </div>
+
+                        <!-- Unblock -->
+                        <div class="status-option opt-unblock" onclick="triggerStatusAction('unblock')">
+                            <div class="status-opt-icon"
+                                style="background:rgba(96,165,250,0.12);color:#60a5fa;">
+                                <i class="bi bi-person-fill-check"></i>
+                            </div>
+                            <div>
+                                <div class="text-white fw-semibold small">Unblock User</div>
+                                <div class="text-white-50" style="font-size:0.75rem;">Restore blocked account</div>
+                            </div>
+                            <span class="status-badge badge-new ms-auto">Restore</span>
+                        </div>
+
+                        <!-- Quick Summary -->
+                        <div class="mt-4 pt-3 border-top border-light border-opacity-10">
+                            <p class="text-white-50 small mb-2 fw-medium">Current Status Summary</p>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-white-50 small">Active</span>
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="progress flex-grow-1" style="width:80px;height:5px;background:rgba(255,255,255,0.08);">
+                                        <div class="progress-bar" style="width:87%;background:#34d399;border-radius:3px;"></div>
+                                    </div>
+                                    <span class="text-white small fw-medium">87%</span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-white-50 small">Inactive</span>
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="progress flex-grow-1" style="width:80px;height:5px;background:rgba(255,255,255,0.08);">
+                                        <div class="progress-bar" style="width:11%;background:#fbbf24;border-radius:3px;"></div>
+                                    </div>
+                                    <span class="text-white small fw-medium">11%</span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-white-50 small">Blocked</span>
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="progress flex-grow-1" style="width:80px;height:5px;background:rgba(255,255,255,0.08);">
+                                        <div class="progress-bar" style="width:2%;background:#f87171;border-radius:3px;"></div>
+                                    </div>
+                                    <span class="text-white small fw-medium">2%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <!-- /Activity + Status Management -->
+
+
+            <!-- ===================================================
+                 8. RECENT REGISTRATIONS
+                 =================================================== -->
+            <div class="row g-4 mb-4">
+                <div class="col-12 fade-in-up delay-2">
+                    <div class="registrations-card">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h5 class="section-title mb-0">
+                                <i class="bi bi-person-plus-fill" style="color:#c084fc;"></i> Recent Registrations
+                            </h5>
+                            <span class="text-white-50 small">Last 7 days — 48 new users</span>
+                        </div>
+
+                        <div class="row g-3">
+
+                            <!-- Reg Card 1 -->
+                            <div class="col-sm-6 col-lg-4 col-xl-3">
+                                <div class="reg-user-card">
+                                    <div class="reg-avatar"
+                                        style="background:linear-gradient(135deg,#8b5cf6,#6d28d9);">DJ</div>
+                                    <div class="flex-grow-1 min-w-0">
+                                        <div class="reg-user-name">Deepika Joshi</div>
+                                        <div class="reg-user-email">deepika.j@mail.com</div>
+                                        <div class="reg-user-date"><i class="bi bi-calendar3 me-1"></i>18 Jun 2025</div>
+                                    </div>
+                                    <span class="badge-new-reg">New</span>
+                                </div>
+                            </div>
+
+                            <!-- Reg Card 2 -->
+                            <div class="col-sm-6 col-lg-4 col-xl-3">
+                                <div class="reg-user-card">
+                                    <div class="reg-avatar"
+                                        style="background:linear-gradient(135deg,#f59e0b,#d97706);">AT</div>
+                                    <div class="flex-grow-1 min-w-0">
+                                        <div class="reg-user-name">Amit Tiwari</div>
+                                        <div class="reg-user-email">amit.t@techzone.in</div>
+                                        <div class="reg-user-date"><i class="bi bi-calendar3 me-1"></i>15 Jun 2025</div>
+                                    </div>
+                                    <span class="badge-new-reg">New</span>
+                                </div>
+                            </div>
+
+                            <!-- Reg Card 3 -->
+                            <div class="col-sm-6 col-lg-4 col-xl-3">
+                                <div class="reg-user-card">
+                                    <div class="reg-avatar"
+                                        style="background:linear-gradient(135deg,#10b981,#059669);">LM</div>
+                                    <div class="flex-grow-1 min-w-0">
+                                        <div class="reg-user-name">Lakshmi Menon</div>
+                                        <div class="reg-user-email">lmenon@outlook.com</div>
+                                        <div class="reg-user-date"><i class="bi bi-calendar3 me-1"></i>10 Jun 2025</div>
+                                    </div>
+                                    <span class="badge-new-reg">New</span>
+                                </div>
+                            </div>
+
+                            <!-- Reg Card 4 -->
+                            <div class="col-sm-6 col-lg-4 col-xl-3">
+                                <div class="reg-user-card">
+                                    <div class="reg-avatar"
+                                        style="background:linear-gradient(135deg,#3b82f6,#6366f1);">RS</div>
+                                    <div class="flex-grow-1 min-w-0">
+                                        <div class="reg-user-name">Rohit Shah</div>
+                                        <div class="reg-user-email">rohit.shah@gmail.com</div>
+                                        <div class="reg-user-date"><i class="bi bi-calendar3 me-1"></i>05 Jun 2025</div>
+                                    </div>
+                                    <span class="badge-new-reg">New</span>
+                                </div>
+                            </div>
+
+                            <!-- Reg Card 5 -->
+                            <div class="col-sm-6 col-lg-4 col-xl-3">
+                                <div class="reg-user-card">
+                                    <div class="reg-avatar"
+                                        style="background:linear-gradient(135deg,#a855f7,#9333ea);">AM</div>
+                                    <div class="flex-grow-1 min-w-0">
+                                        <div class="reg-user-name">Arjun Mehta</div>
+                                        <div class="reg-user-email">arjun.m@fastmail.in</div>
+                                        <div class="reg-user-date"><i class="bi bi-calendar3 me-1"></i>12 May 2025</div>
+                                    </div>
+                                    <span class="badge-new-reg">New</span>
+                                </div>
+                            </div>
+
+                            <!-- Reg Card 6 -->
+                            <div class="col-sm-6 col-lg-4 col-xl-3">
+                                <div class="reg-user-card">
+                                    <div class="reg-avatar"
+                                        style="background:linear-gradient(135deg,#0ea5e9,#0284c7);">SN</div>
+                                    <div class="flex-grow-1 min-w-0">
+                                        <div class="reg-user-name">Sunita Nair</div>
+                                        <div class="reg-user-email">sunita.nair@inbox.com</div>
+                                        <div class="reg-user-date"><i class="bi bi-calendar3 me-1"></i>30 Apr 2025</div>
+                                    </div>
+                                    <span class="badge-new-reg">New</span>
+                                </div>
+                            </div>
+
+                            <!-- Reg Card 7 -->
+                            <div class="col-sm-6 col-lg-4 col-xl-3">
+                                <div class="reg-user-card">
+                                    <div class="reg-avatar"
+                                        style="background:linear-gradient(135deg,#14b8a6,#0d9488);">RK</div>
+                                    <div class="flex-grow-1 min-w-0">
+                                        <div class="reg-user-name">Rahul Kumar</div>
+                                        <div class="reg-user-email">rahul.k@gmail.com</div>
+                                        <div class="reg-user-date"><i class="bi bi-calendar3 me-1"></i>25 Mar 2025</div>
+                                    </div>
+                                    <span class="badge-new-reg">New</span>
+                                </div>
+                            </div>
+
+                            <!-- Reg Card 8 -->
+                            <div class="col-sm-6 col-lg-4 col-xl-3">
+                                <div class="reg-user-card">
+                                    <div class="reg-avatar"
+                                        style="background:linear-gradient(135deg,#ec4899,#db2777);">PR</div>
+                                    <div class="flex-grow-1 min-w-0">
+                                        <div class="reg-user-name">Priya Rao</div>
+                                        <div class="reg-user-email">priya.rao@shopmail.com</div>
+                                        <div class="reg-user-date"><i class="bi bi-calendar3 me-1"></i>10 Mar 2025</div>
+                                    </div>
+                                    <span class="badge-new-reg">New</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /Recent Registrations -->
+
+        </div>
+        <!-- /container-fluid -->
+
+
+        <!-- ============================================================
+             10. FOOTER
+             ============================================================ -->
+        <footer class="admin-footer" id="adminFooter">
+            <div class="container-fluid px-4">
+                <div class="row g-4">
+
+                    <!-- Brand -->
+                    <div class="col-lg-4">
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <i class="bi bi-shield-lock-fill fs-4" style="color:#f87171;"></i>
+                            <span class="footer-brand">MultiMart Admin</span>
+                        </div>
+                        <p class="text-white-50 small" style="line-height:1.7;">
+                            The MultiMart Admin Panel provides powerful tools to manage users,
+                            vendors, products, orders, and platform analytics from a single,
+                            unified dashboard.
+                        </p>
+                        <div class="d-flex gap-3 mt-3">
+                            <a href="#" class="text-white-50 fs-5 transition-all"
+                                style="text-decoration:none;" aria-label="Twitter"
+                                onmouseover="this.style.color='#f87171'" onmouseout="this.style.color=''">
+                                <i class="bi bi-twitter-x"></i>
+                            </a>
+                            <a href="#" class="text-white-50 fs-5 transition-all"
+                                style="text-decoration:none;" aria-label="LinkedIn"
+                                onmouseover="this.style.color='#60a5fa'" onmouseout="this.style.color=''">
+                                <i class="bi bi-linkedin"></i>
+                            </a>
+                            <a href="#" class="text-white-50 fs-5 transition-all"
+                                style="text-decoration:none;" aria-label="GitHub"
+                                onmouseover="this.style.color='#c084fc'" onmouseout="this.style.color=''">
+                                <i class="bi bi-github"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div class="col-sm-6 col-lg-2">
+                        <div class="footer-section-title">Quick Links</div>
+                        <a href="#" class="footer-link">Dashboard</a>
+                        <a href="admin-users.html" class="footer-link">User Management</a>
+                        <a href="#" class="footer-link">Vendor Management</a>
+                        <a href="#" class="footer-link">Product Catalog</a>
+                        <a href="#" class="footer-link">Order Management</a>
+                        <a href="#" class="footer-link">Analytics &amp; Reports</a>
+                    </div>
+
+                    <!-- Admin Tools -->
+                    <div class="col-sm-6 col-lg-2">
+                        <div class="footer-section-title">Admin Tools</div>
+                        <a href="#" class="footer-link">Platform Settings</a>
+                        <a href="#" class="footer-link">Role Management</a>
+                        <a href="#" class="footer-link">Coupon Manager</a>
+                        <a href="#" class="footer-link">Notification Logs</a>
+                        <a href="#" class="footer-link">Audit Trails</a>
+                        <a href="#" class="footer-link">System Health</a>
+                    </div>
+
+                    <!-- Contact -->
+                    <div class="col-lg-4">
+                        <div class="footer-section-title">Contact Information</div>
+                        <div class="footer-contact-item">
+                            <i class="bi bi-geo-alt-fill"></i>
+                            <span>MultiMart HQ, Bandra Kurla Complex, Mumbai - 400051</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="bi bi-telephone-fill"></i>
+                            <span>+91 22 4000 1200</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="bi bi-envelope-fill"></i>
+                            <span>admin@multimart.in</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="bi bi-headset"></i>
+                            <span>Support: Mon–Sat, 9 AM – 8 PM IST</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Divider & Copyright -->
+                <div class="footer-divider d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+                    <small class="text-white-50">
+                        &copy; 2025 MultiMart. All rights reserved. Built with
+                        <i class="bi bi-heart-fill" style="color:#f87171;font-size:0.7rem;"></i>
+                        for seamless commerce.
+                    </small>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="footer-link mb-0" style="font-size:0.78rem;">Privacy Policy</a>
+                        <a href="#" class="footer-link mb-0" style="font-size:0.78rem;">Terms of Use</a>
+                        <a href="#" class="footer-link mb-0" style="font-size:0.78rem;">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /main-wrapper -->
+
+
+    <!-- ============================================================
+         MODALS
+         ============================================================ -->
+
+    <!-- ---- 5. USER DETAIL MODAL ---- -->
+    <div class="modal fade" id="userDetailModal" tabindex="-1" aria-labelledby="userDetailModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content glass-modal">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="userDetailModalLabel">
+                        <i class="bi bi-person-vcard me-2" style="color:#f87171;"></i>
+                        Customer Details
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body px-4 py-3">
+                    <div class="text-center mb-4">
+                        <div class="modal-user-avatar" id="modalUserAvatar"
+                            style="background:linear-gradient(135deg,#3b82f6,#6366f1);">AJ</div>
+                        <h5 class="text-white fw-bold mb-1" id="modalUserName">Alice Johnson</h5>
+                        <span class="status-badge badge-active" id="modalUserStatus">Active</span>
+                    </div>
+
+                    <!-- Info Grid -->
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="detail-info-row">
+                                <div class="detail-label"><i class="bi bi-hash me-1"></i>Customer ID</div>
+                                <div class="detail-value" id="modalUserId">#USR-1001</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="detail-info-row">
+                                <div class="detail-label"><i class="bi bi-envelope me-1"></i>Email</div>
+                                <div class="detail-value" id="modalUserEmail">alice.johnson@email.com</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="detail-info-row">
+                                <div class="detail-label"><i class="bi bi-telephone me-1"></i>Phone Number</div>
+                                <div class="detail-value" id="modalUserPhone">+91 98765 43210</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="detail-info-row">
+                                <div class="detail-label"><i class="bi bi-calendar3 me-1"></i>Registration Date</div>
+                                <div class="detail-value" id="modalUserRegDate">15 Jan 2025</div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="detail-info-row">
+                                <div class="detail-label"><i class="bi bi-geo-alt me-1"></i>Address</div>
+                                <div class="detail-value" id="modalUserAddress">B-12, Greenfield Colony, Mumbai - 400001</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stats Row -->
+                    <div class="row g-3 mt-1">
+                        <div class="col-6">
+                            <div class="modal-stat-box">
+                                <div class="detail-label mb-1"><i class="bi bi-bag me-1"></i>Total Orders</div>
+                                <div class="stat-value" id="modalUserOrders" style="font-size:1.6rem;">24</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="modal-stat-box">
+                                <div class="detail-label mb-1"><i class="bi bi-currency-rupee me-1"></i>Total Spending</div>
+                                <div class="stat-value" id="modalUserSpending" style="font-size:1.6rem;color:#34d399;">₹1,23,450</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-light rounded-pill px-4"
+                        data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn rounded-pill px-4 fw-medium"
+                        style="background:rgba(248,113,113,0.15);border:1px solid rgba(248,113,113,0.4);color:#f87171;"
+                        data-bs-dismiss="modal">
+                        <i class="bi bi-pencil me-2"></i>Edit User
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ---- EDIT USER MODAL ---- -->
+    <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content glass-modal">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editUserModalLabel">
+                        <i class="bi bi-pencil-square me-2" style="color:#fbbf24;"></i>
+                        Edit Customer
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body px-4 py-3">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label" for="editName">Full Name</label>
+                            <input type="text" class="form-control form-control-glass" id="editName"
+                                placeholder="Full name">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="editEmail">Email Address</label>
+                            <input type="email" class="form-control form-control-glass" id="editEmail"
+                                placeholder="Email">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="editPhone">Phone Number</label>
+                            <input type="text" class="form-control form-control-glass" id="editPhone"
+                                placeholder="Phone number">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="editStatus">Account Status</label>
+                            <select class="form-select form-control-glass" id="editStatus">
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                                <option value="blocked">Blocked</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label" for="editAddress">Address</label>
+                            <textarea class="form-control form-control-glass" id="editAddress" rows="2"
+                                placeholder="Full address"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-light rounded-pill px-4"
+                        data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn rounded-pill px-4 fw-medium"
+                        style="background:rgba(251,191,36,0.15);border:1px solid rgba(251,191,36,0.4);color:#fbbf24;"
+                        onclick="saveEdit()">
+                        <i class="bi bi-check2 me-2"></i>Save Changes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ---- DELETE USER MODAL ---- -->
+    <div class="modal fade" id="deleteUserModal" tabindex="-1" aria-labelledby="deleteUserModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content glass-modal">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center px-4 pt-2 pb-4">
+                    <div class="delete-confirm-icon">
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+                    </div>
+                    <h5 class="text-white fw-bold mb-2">Confirm Deletion</h5>
+                    <p class="text-white-50 mb-0">
+                        Are you sure you want to permanently delete
+                        <strong class="text-white" id="deleteUserName">Alice Johnson</strong>
+                        (<span id="deleteUserId" style="color:#f87171;">#USR-1001</span>)?
+                    </p>
+                    <p class="text-white-50 small mt-2">This action <strong class="text-danger">cannot</strong> be undone.</p>
+                </div>
+                <div class="modal-footer justify-content-center border-0 pt-0">
+                    <button type="button" class="btn btn-outline-light rounded-pill px-4"
+                        data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger rounded-pill px-4 fw-medium"
+                        onclick="confirmDelete()">
+                        <i class="bi bi-trash me-2"></i>Yes, Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ---- TOAST NOTIFICATION ---- -->
+    <div class="admin-toast d-flex align-items-center gap-3" id="adminToast" role="alert">
+        <div id="toastIcon" class="fs-4"></div>
+        <div>
+            <div id="toastTitle" class="text-white fw-semibold small"></div>
+            <div id="toastMsg" class="text-white-50" style="font-size:0.8rem;"></div>
+        </div>
+    </div>
+
+
+    <!-- ============================================================
+         Bootstrap 5 JS Bundle
+         ============================================================ -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- ============================================================
+         PAGE SCRIPTS
+         ============================================================ -->
+    <script>
+        /* ================================================
+           NAVBAR — Scroll effect
+           ================================================ */
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('mainNavbar');
+            if (window.scrollY > 40) {
+                nav.style.background = 'rgba(15, 23, 42, 0.95)';
+                nav.style.boxShadow = '0 4px 24px rgba(0,0,0,0.3)';
+            } else {
+                nav.style.background = 'rgba(15, 23, 42, 0.6)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+
+        /* ================================================
+           TOAST HELPER
+           ================================================ */
+        function showToast(title, msg, type = 'success') {
+            const toast = document.getElementById('adminToast');
+            const icons = { success: '✅', warning: '⚠️', danger: '❌', info: 'ℹ️' };
+            document.getElementById('toastIcon').textContent = icons[type] || 'ℹ️';
+            document.getElementById('toastTitle').textContent = title;
+            document.getElementById('toastMsg').textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3500);
+        }
+
+        /* ================================================
+           SECTION 5 — VIEW USER DETAIL MODAL
+           ================================================ */
+        function viewUser(id, name, email, phone, address, regDate, orders, spending, status) {
+            // Populate initials
+            const initials = name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+            const gradients = {
+                active: 'linear-gradient(135deg,#3b82f6,#6366f1)',
+                inactive: 'linear-gradient(135deg,#f59e0b,#d97706)',
+                blocked: 'linear-gradient(135deg,#f87171,#dc2626)',
+                new: 'linear-gradient(135deg,#60a5fa,#3b82f6)'
+            };
+            const badgeMap = {
+                active: '<span class="status-badge badge-active">Active</span>',
+                inactive: '<span class="status-badge badge-inactive">Inactive</span>',
+                blocked: '<span class="status-badge badge-blocked">Blocked</span>',
+                new: '<span class="status-badge badge-new">New</span>'
+            };
+
+            document.getElementById('modalUserAvatar').textContent = initials;
+            document.getElementById('modalUserAvatar').style.background = gradients[status] || gradients.active;
+            document.getElementById('modalUserName').textContent = name;
+            document.getElementById('modalUserStatus').outerHTML =
+                '<span id="modalUserStatus">' + (badgeMap[status] || badgeMap.active) + '</span>';
+            document.getElementById('modalUserId').textContent = id;
+            document.getElementById('modalUserEmail').textContent = email;
+            document.getElementById('modalUserPhone').textContent = phone;
+            document.getElementById('modalUserAddress').textContent = address;
+            document.getElementById('modalUserRegDate').textContent = regDate;
+            document.getElementById('modalUserOrders').textContent = orders;
+            document.getElementById('modalUserSpending').textContent = spending;
+        }
+
+        /* ================================================
+           EDIT USER MODAL — Pre-fill
+           ================================================ */
+        function editUser(id, name, email, phone, address) {
+            document.getElementById('editName').value = name;
+            document.getElementById('editEmail').value = email;
+            document.getElementById('editPhone').value = phone;
+            document.getElementById('editAddress').value = address;
+        }
+
+        function saveEdit() {
+            const modal = bootstrap.Modal.getInstance(document.getElementById('editUserModal'));
+            modal.hide();
+            showToast('User Updated', 'Customer details have been saved successfully.', 'success');
+        }
+
+        /* ================================================
+           DELETE USER
+           ================================================ */
+        function setDeleteUser(id, name) {
+            document.getElementById('deleteUserId').textContent = id;
+            document.getElementById('deleteUserName').textContent = name;
+        }
+
+        function confirmDelete() {
+            const id = document.getElementById('deleteUserId').textContent;
+            const modal = bootstrap.Modal.getInstance(document.getElementById('deleteUserModal'));
+            modal.hide();
+            showToast('User Deleted', id + ' has been removed from the platform.', 'danger');
+        }
+
+        /* ================================================
+           SECTION 7 — STATUS MANAGEMENT ACTIONS
+           ================================================ */
+        function triggerStatusAction(action) {
+            const messages = {
+                activate:   ['User Activated',   'Account has been successfully activated.', 'success'],
+                deactivate: ['User Deactivated', 'Account has been suspended temporarily.', 'warning'],
+                block:      ['User Blocked',     'Account access has been permanently restricted.', 'danger'],
+                unblock:    ['User Unblocked',   'Account has been restored successfully.', 'info']
+            };
+            const m = messages[action];
+            if (m) showToast(m[0], m[1], m[2]);
+        }
+
+        /* ================================================
+           SECTION 3 — SEARCH & FILTER (client-side demo)
+           ================================================ */
+        function applyFilters() {
+            const idVal     = document.getElementById('searchId').value.toLowerCase().trim();
+            const nameVal   = document.getElementById('searchName').value.toLowerCase().trim();
+            const emailVal  = document.getElementById('searchEmail').value.toLowerCase().trim();
+            const statusVal = document.getElementById('statusFilter').value.toLowerCase();
+
+            const rows = document.querySelectorAll('#usersTableBody tr');
+            let visible = 0;
+
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                const rowId     = cells[0]?.textContent.toLowerCase() || '';
+                const rowName   = cells[1]?.textContent.toLowerCase() || '';
+                const rowEmail  = cells[2]?.textContent.toLowerCase() || '';
+                const rowStatus = cells[6]?.textContent.toLowerCase().trim() || '';
+
+                const matchId     = !idVal    || rowId.includes(idVal);
+                const matchName   = !nameVal  || rowName.includes(nameVal);
+                const matchEmail  = !emailVal || rowEmail.includes(emailVal);
+                const matchStatus = !statusVal || rowStatus.includes(statusVal);
+
+                const show = matchId && matchName && matchEmail && matchStatus;
+                row.style.display = show ? '' : 'none';
+                if (show) visible++;
+            });
+
+            document.getElementById('tableCountLabel').textContent =
+                `Showing ${visible} of 12,485 users`;
+        }
+
+        function resetFilters() {
+            document.getElementById('searchId').value    = '';
+            document.getElementById('searchName').value  = '';
+            document.getElementById('searchEmail').value = '';
+            document.getElementById('statusFilter').value = '';
+            applyFilters();
+            document.getElementById('tableCountLabel').textContent = 'Showing 15 of 12,485 users';
+        }
+
+        /* Listen for live input changes */
+        ['searchId', 'searchName', 'searchEmail', 'statusFilter'].forEach(id => {
+            document.getElementById(id).addEventListener('input', applyFilters);
+            document.getElementById(id).addEventListener('change', applyFilters);
+        });
+
+        /* ================================================
+           NOTIFICATIONS BUTTON DEMO
+           ================================================ */
+        document.getElementById('notifBtn').addEventListener('click', () => {
+            showToast('Notifications', 'You have 7 unread admin alerts.', 'info');
+        });
+
+        /* ================================================
+           PAGINATION (demo click feedback)
+           ================================================ */
+        document.querySelectorAll('.page-link').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                if (this.closest('.page-item').classList.contains('disabled')) return;
+                // Visual update
+                document.querySelectorAll('.page-item').forEach(pi => pi.classList.remove('active'));
+                if (!['Previous', 'Next', '...'].includes(this.textContent.trim())) {
+                    this.closest('.page-item').classList.add('active');
+                }
+            });
+        });
+    </script>
+
+    <!-- Supabase Integration -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/vendor-admin.js"></script>
+
+    <script>
+        // Admin auth guard
+        document.addEventListener('DOMContentLoaded', async function () {
+            try {
+                const profile = await getCurrentProfile();
+                if (!profile || profile.role !== 'admin') {
+                    window.location.href = 'admin-login.html';
+                    return;
+                }
+
+                // Logout handler
+                document.querySelectorAll('[data-logout]').forEach(btn => {
+                    btn.addEventListener('click', async (e) => {
+                        e.preventDefault();
+                        await signOut();
+                        window.location.href = 'admin-login.html';
+                    });
+                });
+
+                // Load all users from Supabase
+                try {
+                    const users = await fetchAllUsers();
+                    const tbody = document.querySelector('table tbody');
+                    if (tbody && users && users.length > 0) {
+                        tbody.innerHTML = '';
+                        users.forEach(u => {
+                            const statusBadge = u.account_status === 'active'
+                                ? '<span class="badge bg-success">Active</span>'
+                                : u.account_status === 'blocked'
+                                    ? '<span class="badge bg-danger">Blocked</span>'
+                                    : '<span class="badge bg-warning text-dark">Inactive</span>';
+                            const roleBadge = u.role === 'admin'
+                                ? '<span class="badge bg-danger">Admin</span>'
+                                : u.role === 'vendor'
+                                    ? '<span class="badge bg-warning text-dark">Vendor</span>'
+                                    : '<span class="badge bg-info">Customer</span>';
+                            tbody.innerHTML += `
+                                <tr>
+                                    <td><input type="checkbox" class="form-check-input"></td>
+                                    <td>${u.full_name || 'N/A'}</td>
+                                    <td>${u.email}</td>
+                                    <td>${roleBadge}</td>
+                                    <td>${statusBadge}</td>
+                                    <td>${u.total_orders || 0}</td>
+                                    <td>&#8377;${(u.total_spending || 0).toLocaleString()}</td>
+                                    <td>${new Date(u.created_at).toLocaleDateString()}</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-warning me-1" onclick="blockUser('${u.id}', '${u.account_status}')"><i class="bi bi-person-slash"></i></button>
+                                        <button class="btn btn-sm btn-outline-info" onclick="viewUser('${u.id}')"><i class="bi bi-eye"></i></button>
+                                    </td>
+                                </tr>`;
+                        });
+                    }
+                } catch (usersErr) {
+                    console.warn('Could not load users:', usersErr);
+                }
+
+            } catch (err) {
+                console.error('Admin auth failed', err);
+                window.location.href = 'admin-login.html';
+            }
+        });
+
+        async function blockUser(userId, currentStatus) {
+            const newStatus = currentStatus === 'active' ? 'blocked' : 'active';
+            try {
+                await setUserAccountStatus(userId, newStatus);
+                location.reload();
+            } catch (err) {
+                alert('Failed to update user status: ' + err.message);
+            }
+        }
+
+        function viewUser(userId) {
+            // Could open a modal or navigate to user detail page
+            alert('User ID: ' + userId);
+        }
+    </script>
+
+</body>
+</html>

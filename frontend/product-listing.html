@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Multi-Vendor Platform</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="customer-dashboard.css">
+    <link rel="stylesheet" href="product-listing.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <i class="bi bi-shop fs-3 me-2 text-primary-glow"></i>
+                <span class="fw-bold brand-text d-none d-sm-inline">Multi-Vendor Platform</span>
+                <span class="fw-bold brand-text d-inline d-sm-none">MVP</span>
+            </a>
+            
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="bi bi-list fs-1 text-white"></i>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto fw-medium">
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="customer-dashboard.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active px-3" href="product-listing.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="cart.html">Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="#">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="#">Profile</a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+                    <!-- Notification -->
+                    <a href="#" class="notification-icon text-decoration-none">
+                        <i class="bi bi-bell-fill"></i>
+                        <span class="notification-badge">5</span>
+                    </a>
+                    
+                    <!-- Profile Dropdown -->
+                    <div class="dropdown">
+                        <button class="btn profile-dropdown-toggle dropdown-toggle border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="profile-avatar text-white">JD</div>
+                            <span class="d-none d-md-inline ms-1 text-white fw-medium">John Doe</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-glass mt-2">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>My Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-box-seam me-2"></i>My Orders</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="index.html"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content wrapper for gradient background -->
+    <div class="main-wrapper listing-content">
+        <div class="container">
+            
+            <!-- Breadcrumb Navigation -->
+            <nav aria-label="breadcrumb" class="glass-breadcrumb fade-in-up">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="customer-dashboard.html"><i class="bi bi-house-door me-1"></i>Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Products</li>
+                </ol>
+            </nav>
+
+            <div class="row g-4">
+                <!-- Filter Sidebar -->
+                <div class="col-lg-3 fade-in-up delay-1">
+                    <div class="glass-panel p-4 rounded-4 filter-sidebar">
+                        
+                        <!-- Category Filter -->
+                        <div class="filter-group">
+                            <h6 class="filter-title">Categories <i class="bi bi-chevron-down fs-6 opacity-50"></i></h6>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="catElectronics" checked>
+                                <label class="form-check-label d-flex justify-content-between" for="catElectronics">
+                                    Electronics <span class="badge bg-secondary bg-opacity-25 text-light rounded-pill">124</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="catFashion">
+                                <label class="form-check-label d-flex justify-content-between" for="catFashion">
+                                    Fashion <span class="badge bg-secondary bg-opacity-25 text-light rounded-pill">89</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="catBooks">
+                                <label class="form-check-label d-flex justify-content-between" for="catBooks">
+                                    Books <span class="badge bg-secondary bg-opacity-25 text-light rounded-pill">56</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="catSports">
+                                <label class="form-check-label d-flex justify-content-between" for="catSports">
+                                    Sports <span class="badge bg-secondary bg-opacity-25 text-light rounded-pill">42</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="catHome">
+                                <label class="form-check-label d-flex justify-content-between" for="catHome">
+                                    Home & Kitchen <span class="badge bg-secondary bg-opacity-25 text-light rounded-pill">78</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Price Range Filter -->
+                        <div class="filter-group">
+                            <h6 class="filter-title">Price Range <i class="bi bi-chevron-down fs-6 opacity-50"></i></h6>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="priceFilter" id="price1">
+                                <label class="form-check-label" for="price1">Below ₹500</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="priceFilter" id="price2" checked>
+                                <label class="form-check-label" for="price2">₹500 - ₹2000</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="priceFilter" id="price3">
+                                <label class="form-check-label" for="price3">₹2000 - ₹5000</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="priceFilter" id="price4">
+                                <label class="form-check-label" for="price4">Above ₹5000</label>
+                            </div>
+                        </div>
+
+                        <!-- Vendor Filter -->
+                        <div class="filter-group">
+                            <h6 class="filter-title">Vendors <i class="bi bi-chevron-down fs-6 opacity-50"></i></h6>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="vendorA">
+                                <label class="form-check-label" for="vendorA">TechHub Store</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="vendorB">
+                                <label class="form-check-label" for="vendorB">AudioMax</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="vendorC">
+                                <label class="form-check-label" for="vendorC">Gadget Galaxy</label>
+                            </div>
+                        </div>
+
+                        <!-- Rating Filter -->
+                        <div class="filter-group">
+                            <h6 class="filter-title">Rating <i class="bi bi-chevron-down fs-6 opacity-50"></i></h6>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="ratingFilter" id="rating5">
+                                <label class="form-check-label text-warning" for="rating5">
+                                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="ratingFilter" id="rating4" checked>
+                                <label class="form-check-label text-warning" for="rating4">
+                                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i> & Up
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="ratingFilter" id="rating3">
+                                <label class="form-check-label text-warning" for="rating3">
+                                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star"></i> & Up
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Availability Filter -->
+                        <div class="filter-group">
+                            <h6 class="filter-title">Availability <i class="bi bi-chevron-down fs-6 opacity-50"></i></h6>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="inStock" checked>
+                                <label class="form-check-label" for="inStock">In Stock</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="outOfStock">
+                                <label class="form-check-label" for="outOfStock">Out of Stock</label>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-outline-light w-100 mt-2 rounded-pill transition-all btn-hover-danger">Clear All Filters</button>
+
+                    </div>
+                </div>
+
+                <!-- Product Main Area -->
+                <div class="col-lg-9 fade-in-up delay-2">
+                    
+                    <!-- Search & Sort Top Bar -->
+                    <div class="glass-panel p-3 rounded-4 d-flex flex-column flex-md-row justify-content-between align-items-center gap-3 mb-4">
+                        <div class="flex-grow-1 w-100">
+                            <form class="glass-input-group d-flex w-100 shadow-none bg-transparent p-0 border-0">
+                                <input type="text" class="form-control border-0 bg-transparent text-white shadow-none ps-4" style="background: rgba(255,255,255,0.05) !important; border-radius: 50px 0 0 50px;" placeholder="Search products...">
+                                <button class="btn btn-primary px-4" style="border-radius: 0 50px 50px 0;" type="button">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="d-flex align-items-center gap-2 w-100 w-md-auto justify-content-md-end text-nowrap">
+                            <span class="text-white-50 small">Sort by:</span>
+                            <select class="form-select sort-select shadow-none">
+                                <option value="popular">Most Popular</option>
+                                <option value="newest">Newest Products</option>
+                                <option value="price-low">Price Low to High</option>
+                                <option value="price-high">Price High to Low</option>
+                                <option value="rating">Highest Rated</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Products Grid -->
+                    <div class="row g-4 mb-5" id="productsGrid">
+                        <div class="col-12 text-center py-5">
+                            <div class="spinner-border text-info" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <nav aria-label="Page navigation" class="mt-4 fade-in-up delay-3">
+                        <ul class="pagination justify-content-center glass-pagination">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><i class="bi bi-chevron-left me-1"></i> Previous</a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><span class="page-link border-0 bg-transparent text-white-50">...</span></li>
+                            <li class="page-item"><a class="page-link" href="#">8</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next <i class="bi bi-chevron-right ms-1"></i></a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Recommended Products Section -->
+        <section class="recommended-section py-5 mt-4">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-end mb-4 fade-in-up delay-3">
+                    <h3 class="section-heading mb-0 text-white">Recommended <span>For You</span></h3>
+                </div>
+                
+                <div class="row g-4 fade-in-up delay-4">
+                    <!-- Rec Product 1 -->
+                    <div class="col-sm-6 col-md-3">
+                        <div class="glass-card product-card rounded-4">
+                            <div class="product-img-wrapper">
+                                <div class="wishlist-btn"><i class="bi bi-heart"></i></div>
+                                <span class="stock-badge">In Stock</span>
+                                <i class="bi bi-mouse product-img-placeholder"></i>
+                            </div>
+                            <div class="product-details">
+                                <div class="product-category">Accessories</div>
+                                <a href="#" class="product-title">Ergonomic Wireless Mouse</a>
+                                <div class="product-vendor"><i class="bi bi-shop me-1"></i> TechHub Store</div>
+                                <div class="product-rating mb-2">
+                                    <i class="bi bi-star-fill text-warning"></i><span class="text-light opacity-75 ms-1 small">4.8 (412)</span>
+                                </div>
+                                <div class="product-price mb-3">₹1,999</div>
+                                <div class="product-actions mt-auto">
+                                    <button class="btn btn-light btn-hover-info rounded-pill btn-cart fw-medium transition-all w-100"><i class="bi bi-cart-plus me-1"></i> Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rec Product 2 -->
+                    <div class="col-sm-6 col-md-3">
+                        <div class="glass-card product-card rounded-4">
+                            <div class="product-img-wrapper">
+                                <div class="wishlist-btn"><i class="bi bi-heart"></i></div>
+                                <span class="stock-badge bg-danger">Low Stock</span>
+                                <i class="bi bi-keyboard product-img-placeholder"></i>
+                            </div>
+                            <div class="product-details">
+                                <div class="product-category">Accessories</div>
+                                <a href="#" class="product-title">Mechanical Gaming Keyboard RGB</a>
+                                <div class="product-vendor"><i class="bi bi-shop me-1"></i> Game Haven</div>
+                                <div class="product-rating mb-2">
+                                    <i class="bi bi-star-fill text-warning"></i><span class="text-light opacity-75 ms-1 small">4.5 (189)</span>
+                                </div>
+                                <div class="product-price mb-3">₹4,499</div>
+                                <div class="product-actions mt-auto">
+                                    <button class="btn btn-light btn-hover-info rounded-pill btn-cart fw-medium transition-all w-100"><i class="bi bi-cart-plus me-1"></i> Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rec Product 3 -->
+                    <div class="col-sm-6 col-md-3">
+                        <div class="glass-card product-card rounded-4">
+                            <div class="product-img-wrapper">
+                                <span class="discount-badge">-15% OFF</span>
+                                <div class="wishlist-btn"><i class="bi bi-heart"></i></div>
+                                <span class="stock-badge">In Stock</span>
+                                <i class="bi bi-usb-drive product-img-placeholder"></i>
+                            </div>
+                            <div class="product-details">
+                                <div class="product-category">Storage</div>
+                                <a href="#" class="product-title">USB-C Flash Drive 256GB</a>
+                                <div class="product-vendor"><i class="bi bi-shop me-1"></i> TechHub Store</div>
+                                <div class="product-rating mb-2">
+                                    <i class="bi bi-star-fill text-warning"></i><span class="text-light opacity-75 ms-1 small">4.7 (340)</span>
+                                </div>
+                                <div class="product-price mb-3">₹2,549</div>
+                                <div class="product-actions mt-auto">
+                                    <button class="btn btn-light btn-hover-info rounded-pill btn-cart fw-medium transition-all w-100"><i class="bi bi-cart-plus me-1"></i> Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rec Product 4 -->
+                    <div class="col-sm-6 col-md-3">
+                        <div class="glass-card product-card rounded-4">
+                            <div class="product-img-wrapper">
+                                <div class="wishlist-btn"><i class="bi bi-heart"></i></div>
+                                <span class="stock-badge">In Stock</span>
+                                <i class="bi bi-plug product-img-placeholder"></i>
+                            </div>
+                            <div class="product-details">
+                                <div class="product-category">Accessories</div>
+                                <a href="#" class="product-title">Smart Plug Wi-Fi Enabled</a>
+                                <div class="product-vendor"><i class="bi bi-shop me-1"></i> HomeTech</div>
+                                <div class="product-rating mb-2">
+                                    <i class="bi bi-star-fill text-warning"></i><span class="text-light opacity-75 ms-1 small">4.6 (562)</span>
+                                </div>
+                                <div class="product-price mb-3">₹1,299</div>
+                                <div class="product-actions mt-auto">
+                                    <button class="btn btn-light btn-hover-info rounded-pill btn-cart fw-medium transition-all w-100"><i class="bi bi-cart-plus me-1"></i> Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center text-white pb-4 pt-5 mt-auto border-top border-light border-opacity-10 footer-section fade-in-up delay-4">
+            <div class="container">
+                <div class="row g-4 text-start mb-4">
+                    <div class="col-lg-4">
+                        <h5 class="fw-bold mb-3"><i class="bi bi-shop text-info me-2"></i>Multi-Vendor Platform</h5>
+                        <p class="small text-white-50 lh-lg">A centralized marketplace connecting customers, vendors, and administrators through a single unified platform. Discover quality products with confidence.</p>
+                        <div class="d-flex gap-3 mt-3">
+                            <a href="#" class="text-white-50 text-hover-white transition-all"><i class="bi bi-facebook fs-5"></i></a>
+                            <a href="#" class="text-white-50 text-hover-white transition-all"><i class="bi bi-twitter-x fs-5"></i></a>
+                            <a href="#" class="text-white-50 text-hover-white transition-all"><i class="bi bi-instagram fs-5"></i></a>
+                            <a href="#" class="text-white-50 text-hover-white transition-all"><i class="bi bi-linkedin fs-5"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4">
+                        <h6 class="fw-bold mb-3">Quick Links</h6>
+                        <ul class="list-unstyled small text-white-50">
+                            <li class="mb-2"><a href="customer-dashboard.html" class="text-white-50 text-decoration-none">Home</a></li>
+                            <li class="mb-2"><a href="product-listing.html" class="text-white-50 text-decoration-none">Products</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Vendors</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Categories</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-4">
+                        <h6 class="fw-bold mb-3">Customer Support</h6>
+                        <ul class="list-unstyled small text-white-50">
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Help Center</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Order Tracking</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Returns & Refunds</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <h6 class="fw-bold mb-3">Contact Info</h6>
+                        <ul class="list-unstyled small text-white-50">
+                            <li class="mb-2"><i class="bi bi-geo-alt me-2 text-info"></i> 123 Tech Park, Innovation City</li>
+                            <li class="mb-2"><i class="bi bi-envelope me-2 text-info"></i> support@multivendor.com</li>
+                            <li class="mb-2"><i class="bi bi-telephone me-2 text-info"></i> +1 (555) 123-4567</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr class="border-light border-opacity-10 mb-4">
+                <p class="small text-white-50 mb-0">&copy; Academic Year 2025-2026. All Rights Reserved.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Supabase integration -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/products.js"></script>
+    
+    <script>
+        async function loadProducts() {
+            const grid = document.getElementById('productsGrid');
+            try {
+                const products = await fetchProducts();
+                grid.innerHTML = '';
+                
+                if (products.length === 0) {
+                    grid.innerHTML = '<div class="col-12 text-center py-5 text-white-50">No products found.</div>';
+                    return;
+                }
+
+                products.forEach(p => {
+                    const priceStr = '₹' + p.price.toLocaleString();
+                    const stockBadge = p.stock_quantity > 0 
+                        ? `<span class="stock-badge">In Stock</span>`
+                        : `<span class="stock-badge bg-secondary">Out of Stock</span>`;
+
+                    grid.innerHTML += `
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="glass-card product-card rounded-4">
+                                <div class="product-img-wrapper">
+                                    <div class="wishlist-btn"><i class="bi bi-heart"></i></div>
+                                    ${stockBadge}
+                                    ${p.primary_image_url 
+                                        ? `<img src="${p.primary_image_url}" class="img-fluid" style="max-height:180px; object-fit:contain;" alt="${p.name}">`
+                                        : `<i class="bi bi-box-seam product-img-placeholder"></i>`}
+                                </div>
+                                <div class="product-details">
+                                    <div class="product-category">${p.category_name || 'Uncategorized'}</div>
+                                    <a href="product-details.html?id=${p.id}" class="product-title">${p.name}</a>
+                                    <div class="product-vendor"><i class="bi bi-shop me-1"></i> ${p.vendor_name || 'Unknown'}</div>
+                                    <p class="product-desc">${p.description ? p.description.substring(0, 80) + '...' : ''}</p>
+                                    <div class="d-flex align-items-center gap-2 mb-3">
+                                        <div class="product-price mb-0">${priceStr}</div>
+                                    </div>
+                                    <div class="product-actions mt-auto">
+                                        <a href="product-details.html?id=${p.id}" class="btn btn-outline-info rounded-pill px-3"><i class="bi bi-eye"></i></a>
+                                        <button class="btn btn-light btn-hover-info rounded-pill btn-cart fw-medium transition-all" ${p.stock_quantity <= 0 ? 'disabled' : ''} onclick="window.location.href='product-details.html?id=${p.id}'"><i class="bi bi-cart-plus me-1"></i> View Details</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            } catch (err) {
+                console.error(err);
+                grid.innerHTML = '<div class="col-12 text-center py-5 text-danger">Error loading products.</div>';
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', loadProducts);
+    </script>
+</body>
+
+</html>

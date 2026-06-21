@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Management - Multi-Vendor Platform</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="vendor-dashboard.css">
+    <link rel="stylesheet" href="vendor-orders.css">
+</head>
+
+<body>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <i class="bi bi-shop fs-3 me-2 text-primary-glow"></i>
+                <span class="fw-bold brand-text d-none d-sm-inline">Vendor Central</span>
+                <span class="fw-bold brand-text d-inline d-sm-none">VC</span>
+            </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+                <i class="bi bi-list fs-1 text-white"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto fw-medium">
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="vendor-dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="vendor-products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="vendor-inventory.html">Inventory</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active px-3" href="vendor-orders.html">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="#">Analytics</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== MAIN WRAPPER ========== -->
+    <div class="main-wrapper orders-content">
+        <div class="container-fluid px-4">
+
+            <!-- ===== 1. PAGE HEADER ===== -->
+            <div class="vendor-header fade-in-up">
+                <div class="vendor-profile">
+                    <div class="vendor-avatar">TS</div>
+                    <div>
+                        <h2 class="fw-bold text-white mb-1">Order Management</h2>
+                        <h6 class="text-white-50 mb-2">TechStore Hub</h6>
+                        <p class="text-white-50 small mb-0 d-none d-md-block">
+                            Track, manage and update all customer orders from a single dashboard.
+                        </p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center gap-3 mt-3 mt-md-0">
+                    <a href="#" class="btn btn-outline-light rounded-circle position-relative p-2"
+                        style="width:45px;height:45px;display:flex;align-items:center;justify-content:center;">
+                        <i class="bi bi-bell fs-5"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            5<span class="visually-hidden">alerts</span>
+                        </span>
+                    </a>
+                    <a href="index.html" class="btn btn-danger rounded-pill px-4 fw-medium transition-all shadow-sm">
+                        <i class="bi bi-box-arrow-right me-2"></i>Logout
+                    </a>
+                </div>
+            </div>
+
+            <!-- ===== 2. ORDER OVERVIEW CARDS ===== -->
+            <div class="row g-4 mb-4 fade-in-up delay-1">
+                <div class="col-sm-6 col-xl-3">
+                    <div class="stat-card">
+                        <div class="stat-icon bg-icon-primary"><i class="bi bi-cart3"></i></div>
+                        <div class="growth-indicator growth-positive">
+                            <i class="bi bi-arrow-up-right"></i> 10%
+                        </div>
+                        <div class="stat-value">850</div>
+                        <div class="stat-label">Total Orders</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="stat-card">
+                        <div class="stat-icon bg-icon-warning"><i class="bi bi-hourglass-split"></i></div>
+                        <div class="growth-indicator growth-neutral">
+                            <i class="bi bi-dash"></i> 2%
+                        </div>
+                        <div class="stat-value text-warning">42</div>
+                        <div class="stat-label">Pending Orders</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="stat-card">
+                        <div class="stat-icon bg-icon-info"><i class="bi bi-truck"></i></div>
+                        <div class="growth-indicator growth-positive">
+                            <i class="bi bi-arrow-up-right"></i> 5%
+                        </div>
+                        <div class="stat-value text-info">128</div>
+                        <div class="stat-label">Shipped Orders</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="stat-card">
+                        <div class="stat-icon bg-icon-success"><i class="bi bi-bag-check"></i></div>
+                        <div class="growth-indicator growth-positive">
+                            <i class="bi bi-arrow-up-right"></i> 18%
+                        </div>
+                        <div class="stat-value text-success">680</div>
+                        <div class="stat-label">Delivered Orders</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== 3. SEARCH & FILTER BAR ===== -->
+            <div class="filter-bar fade-in-up delay-2">
+                <div class="row align-items-center g-3">
+                    <div class="col-lg-10">
+                        <div class="d-flex flex-wrap gap-3">
+                            <div class="search-wrapper flex-grow-1" style="max-width:280px;">
+                                <i class="bi bi-search"></i>
+                                <input type="text" class="form-control search-input"
+                                    placeholder="Search Order ID or Customer...">
+                            </div>
+                            <select class="form-select filter-select" style="max-width:180px;">
+                                <option value="" selected>Order Status</option>
+                                <option>Pending</option>
+                                <option>Packed</option>
+                                <option>Shipped</option>
+                                <option>Delivered</option>
+                                <option>Cancelled</option>
+                            </select>
+                            <select class="form-select filter-select" style="max-width:180px;">
+                                <option value="" selected>Payment Status</option>
+                                <option>Paid</option>
+                                <option>Pending</option>
+                                <option>Failed</option>
+                            </select>
+                            <input type="date" class="form-control date-input" style="max-width:175px;" title="Start Date">
+                            <input type="date" class="form-control date-input" style="max-width:175px;" title="End Date">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 d-flex justify-content-lg-end">
+                        <button class="btn btn-outline-light rounded-pill px-4">
+                            <i class="bi bi-download me-2"></i>Export
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== 4. ORDERS TABLE ===== -->
+            <div class="orders-table-card fade-in-up delay-3">
+                <div class="d-flex justify-content-between align-items-center mb-3 pb-3
+                    border-bottom border-light border-opacity-10">
+                    <h5 class="dashboard-section-title mb-0">
+                        <i class="bi bi-table text-info"></i> All Orders
+                    </h5>
+                    <span class="text-white-50 small">Showing 15 of 850 orders</span>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-borderless align-middle">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Product</th>
+                                <th class="text-center">Qty</th>
+                                <th>Order Date</th>
+                                <th>Amount</th>
+                                <th>Payment</th>
+                                <th>Delivery</th>
+                                <th class="text-end">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <!-- Order 1 -->
+                            <tr>
+                                <td class="text-info fw-medium">#ORD-1024</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="order-avatar" style="width:34px;height:34px;font-size:0.75rem;">AJ</div>
+                                        <span class="text-white">Alice Johnson</span>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">ProX Gaming Laptop</td>
+                                <td class="text-center text-white">1</td>
+                                <td class="text-white-50">20 Jun 2025</td>
+                                <td class="fw-bold text-white">₹89,999</td>
+                                <td><span class="status-badge badge-paid">Paid</span></td>
+                                <td><span class="status-badge badge-delivered">Delivered</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-info me-1" title="View Order"
+                                        data-bs-toggle="modal" data-bs-target="#orderDetailModal"
+                                        onclick="showOrder('#ORD-1024','Alice Johnson','ProX Gaming Laptop',1,'₹89,999','Paid','Delivered','B-12, Greenfield Colony, Mumbai - 400001')">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-outline-warning" title="Update Status"
+                                        data-bs-toggle="modal" data-bs-target="#statusModal"
+                                        onclick="setStatusOrder('#ORD-1024','Delivered')">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Order 2 -->
+                            <tr>
+                                <td class="text-info fw-medium">#ORD-1023</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="order-avatar" style="width:34px;height:34px;font-size:0.75rem;background:linear-gradient(135deg,#10b981,#059669);">MC</div>
+                                        <span class="text-white">Michael Chen</span>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">Wireless Headphones</td>
+                                <td class="text-center text-white">2</td>
+                                <td class="text-white-50">19 Jun 2025</td>
+                                <td class="fw-bold text-white">₹16,998</td>
+                                <td><span class="status-badge badge-paid">Paid</span></td>
+                                <td><span class="status-badge badge-shipped">Shipped</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-info me-1" data-bs-toggle="modal"
+                                        data-bs-target="#orderDetailModal"
+                                        onclick="showOrder('#ORD-1023','Michael Chen','Wireless Headphones x2',2,'₹16,998','Paid','Shipped','C-45, Bandra West, Mumbai - 400050')">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-outline-warning" data-bs-toggle="modal"
+                                        data-bs-target="#statusModal"
+                                        onclick="setStatusOrder('#ORD-1023','Shipped')">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Order 3 -->
+                            <tr>
+                                <td class="text-info fw-medium">#ORD-1022</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="order-avatar" style="width:34px;height:34px;font-size:0.75rem;background:linear-gradient(135deg,#f59e0b,#d97706);">SS</div>
+                                        <span class="text-white">Sarah Smith</span>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">Mechanical Keyboard</td>
+                                <td class="text-center text-white">1</td>
+                                <td class="text-white-50">19 Jun 2025</td>
+                                <td class="fw-bold text-white">₹4,499</td>
+                                <td><span class="status-badge badge-pending">Pending</span></td>
+                                <td><span class="status-badge badge-pending">Pending</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-info me-1" data-bs-toggle="modal"
+                                        data-bs-target="#orderDetailModal"
+                                        onclick="showOrder('#ORD-1022','Sarah Smith','Mechanical Keyboard',1,'₹4,499','Pending','Pending','D-8, Andheri East, Mumbai - 400069')">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-outline-warning" data-bs-toggle="modal"
+                                        data-bs-target="#statusModal"
+                                        onclick="setStatusOrder('#ORD-1022','Pending')">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Order 4 -->
+                            <tr>
+                                <td class="text-info fw-medium">#ORD-1021</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="order-avatar" style="width:34px;height:34px;font-size:0.75rem;background:linear-gradient(135deg,#8b5cf6,#6d28d9);">DM</div>
+                                        <span class="text-white">David Miller</span>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">4K Monitor</td>
+                                <td class="text-center text-white">1</td>
+                                <td class="text-white-50">18 Jun 2025</td>
+                                <td class="fw-bold text-white">₹32,499</td>
+                                <td><span class="status-badge badge-paid">Paid</span></td>
+                                <td><span class="status-badge badge-ofd">Out for Delivery</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-info me-1" data-bs-toggle="modal"
+                                        data-bs-target="#orderDetailModal"
+                                        onclick="showOrder('#ORD-1021','David Miller','4K Monitor',1,'₹32,499','Paid','Out for Delivery','E-22, Powai, Mumbai - 400076')">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-outline-warning" data-bs-toggle="modal"
+                                        data-bs-target="#statusModal"
+                                        onclick="setStatusOrder('#ORD-1021','Out for Delivery')">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Order 5 -->
+                            <tr>
+                                <td class="text-info fw-medium">#ORD-1020</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="order-avatar" style="width:34px;height:34px;font-size:0.75rem;background:linear-gradient(135deg,#ec4899,#db2777);">PR</div>
+                                        <span class="text-white">Priya Rao</span>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">SmartWatch Series 7</td>
+                                <td class="text-center text-white">1</td>
+                                <td class="text-white-50">18 Jun 2025</td>
+                                <td class="fw-bold text-white">₹14,999</td>
+                                <td><span class="status-badge badge-paid">Paid</span></td>
+                                <td><span class="status-badge badge-packed">Packed</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-info me-1" data-bs-toggle="modal"
+                                        data-bs-target="#orderDetailModal"
+                                        onclick="showOrder('#ORD-1020','Priya Rao','SmartWatch Series 7',1,'₹14,999','Paid','Packed','F-3, Juhu, Mumbai - 400049')">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-outline-warning" data-bs-toggle="modal"
+                                        data-bs-target="#statusModal"
+                                        onclick="setStatusOrder('#ORD-1020','Packed')">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Order 6 -->
+                            <tr>
+                                <td class="text-info fw-medium">#ORD-1019</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="order-avatar" style="width:34px;height:34px;font-size:0.75rem;background:linear-gradient(135deg,#14b8a6,#0d9488);">RK</div>
+                                        <span class="text-white">Rahul Kumar</span>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">Bluetooth Speaker</td>
+                                <td class="text-center text-white">3</td>
+                                <td class="text-white-50">17 Jun 2025</td>
+                                <td class="fw-bold text-white">₹10,497</td>
+                                <td><span class="status-badge badge-paid">Paid</span></td>
+                                <td><span class="status-badge badge-delivered">Delivered</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-info me-1" data-bs-toggle="modal"
+                                        data-bs-target="#orderDetailModal"
+                                        onclick="showOrder('#ORD-1019','Rahul Kumar','Bluetooth Speaker x3',3,'₹10,497','Paid','Delivered','G-55, Malad West, Mumbai - 400064')">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-outline-warning" data-bs-toggle="modal"
+                                        data-bs-target="#statusModal"
+                                        onclick="setStatusOrder('#ORD-1019','Delivered')">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Order 7 -->
+                            <tr>
+                                <td class="text-info fw-medium">#ORD-1018</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="order-avatar" style="width:34px;height:34px;font-size:0.75rem;background:linear-gradient(135deg,#f97316,#ea580c);">NP</div>
+                                        <span class="text-white">Neha Patil</span>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">Wireless Mouse</td>
+                                <td class="text-center text-white">2</td>
+                                <td class="text-white-50">16 Jun 2025</td>
+                                <td class="fw-bold text-white">₹5,998</td>
+                                <td><span class="status-badge badge-paid">Paid</span></td>
+                                <td><span class="status-badge badge-shipped">Shipped</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-info me-1" data-bs-toggle="modal"
+                                        data-bs-target="#orderDetailModal"
+                                        onclick="showOrder('#ORD-1018','Neha Patil','Wireless Mouse x2',2,'₹5,998','Paid','Shipped','H-1, Dadar, Mumbai - 400028')">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-outline-warning" data-bs-toggle="modal"
+                                        data-bs-target="#statusModal"
+                                        onclick="setStatusOrder('#ORD-1018','Shipped')">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Order 8 -->
+                            <tr>
+                                <td class="text-info fw-medium">#ORD-1017</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="order-avatar" style="width:34px;height:34px;font-size:0.75rem;background:linear-gradient(135deg,#64748b,#475569);">VG</div>
+                                        <span class="text-white">Vikram Gupta</span>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">Mirrorless Camera 4K</td>
+                                <td class="text-center text-white">1</td>
+                                <td class="text-white-50">15 Jun 2025</td>
+                                <td class="fw-bold text-white">₹45,999</td>
+                                <td><span class="status-badge badge-paid">Paid</span></td>
+                                <td><span class="status-badge badge-delivered">Delivered</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-info me-1" data-bs-toggle="modal"
+                                        data-bs-target="#orderDetailModal"
+                                        onclick="showOrder('#ORD-1017','Vikram Gupta','Mirrorless Camera 4K',1,'₹45,999','Paid','Delivered','J-7, Kurla, Mumbai - 400070')">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-outline-warning" data-bs-toggle="modal"
+                                        data-bs-target="#statusModal"
+                                        onclick="setStatusOrder('#ORD-1017','Delivered')">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Order 9 -->
+                            <tr>
+                                <td class="text-info fw-medium">#ORD-1016</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="order-avatar" style="width:34px;height:34px;font-size:0.75rem;background:linear-gradient(135deg,#0ea5e9,#0284c7);">SN</div>
+                                        <span class="text-white">Sunita Nair</span>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">Wi-Fi Mesh System</td>
+                                <td class="text-center text-white">1</td>
+                                <td class="text-white-50">14 Jun 2025</td>
+                                <td class="fw-bold text-white">₹18,500</td>
+                                <td><span class="status-badge badge-pending">Pending</span></td>
+                                <td><span class="status-badge badge-pending">Pending</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-info me-1" data-bs-toggle="modal"
+                                        data-bs-target="#orderDetailModal"
+                                        onclick="showOrder('#ORD-1016','Sunita Nair','Wi-Fi Mesh System',1,'₹18,500','Pending','Pending','K-11, Thane West, Thane - 400601')">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-outline-warning" data-bs-toggle="modal"
+                                        data-bs-target="#statusModal"
+                                        onclick="setStatusOrder('#ORD-1016','Pending')">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Order 10 -->
+                            <tr>
+                                <td class="text-info fw-medium">#ORD-1015</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="order-avatar" style="width:34px;height:34px;font-size:0.75rem;background:linear-gradient(135deg,#a855f7,#9333ea);">AM</div>
+                                        <span class="text-white">Arjun Mehta</span>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">Gaming Laptop</td>
+                                <td class="text-center text-white">1</td>
+                                <td class="text-white-50">13 Jun 2025</td>
+                                <td class="fw-bold text-white">₹89,999</td>
+                                <td><span class="status-badge badge-paid">Paid</span></td>
+                                <td><span class="status-badge badge-delivered">Delivered</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-info me-1" data-bs-toggle="modal"
+                                        data-bs-target="#orderDetailModal"
+                                        onclick="showOrder('#ORD-1015','Arjun Mehta','Gaming Laptop',1,'₹89,999','Paid','Delivered','L-3, Vashi, Navi Mumbai - 400703')">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-outline-warning" data-bs-toggle="modal"
+                                        data-bs-target="#statusModal"
+                                        onclick="setStatusOrder('#ORD-1015','Delivered')">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Order 11 -->
+                            <tr>
+                                <td class="text-info fw-medium">#ORD-1014</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="order-avatar" style="width:34px;height:34px;font-size:0.75rem;background:linear-gradient(135deg,#84cc16,#65a30d);">KB</div>
+                                        <span class="text-white">Kavya Bhat</span>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">UltraWide Monitor</td>
+                                <td class="text-center text-white">1</td>
+                                <td class="text-white-50">12 Jun 2025</td>
+                                <td class="fw-bold text-white">₹32,499</td>
+                                <td><span class="status-badge badge-failed">Failed</span></td>
+                                <td><span class="status-badge badge-cancelled">Cancelled</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-info me-1" data-bs-toggle="modal"
+                                        data-bs-target="#orderDetailModal"
+                                        onclick="showOrder('#ORD-1014','Kavya Bhat','UltraWide Monitor',1,'₹32,499','Failed','Cancelled','M-7, Borivali, Mumbai - 400066')">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-outline-warning" data-bs-toggle="modal"
+                                        data-bs-target="#statusModal"
+                                        onclick="setStatusOrder('#ORD-1014','Cancelled')">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Order 12 -->
+                            <tr>
+                                <td class="text-info fw-medium">#ORD-1013</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="order-avatar" style="width:34px;height:34px;font-size:0.75rem;">RS</div>
+                                        <span class="text-white">Rohit Shah</span>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">Smartphone Ultra 5G</td>
+                                <td class="text-center text-white">1</td>
+                                <td class="text-white-50">11 Jun 2025</td>
+                                <td class="fw-bold text-white">₹64,999</td>
+                                <td><span class="status-badge badge-paid">Paid</span></td>
+                                <td><span class="status-badge badge-shipped">Shipped</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-info me-1" data-bs-toggle="modal"
+                                        data-bs-target="#orderDetailModal"
+                                        onclick="showOrder('#ORD-1013','Rohit Shah','Smartphone Ultra 5G',1,'₹64,999','Paid','Shipped','N-9, Santacruz, Mumbai - 400054')">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-outline-warning" data-bs-toggle="modal"
+                                        data-bs-target="#statusModal"
+                                        onclick="setStatusOrder('#ORD-1013','Shipped')">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Order 13 -->
+                            <tr>
+                                <td class="text-info fw-medium">#ORD-1012</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="order-avatar" style="width:34px;height:34px;font-size:0.75rem;background:linear-gradient(135deg,#10b981,#059669);">LM</div>
+                                        <span class="text-white">Lakshmi Menon</span>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">Headphones Pro</td>
+                                <td class="text-center text-white">1</td>
+                                <td class="text-white-50">10 Jun 2025</td>
+                                <td class="fw-bold text-white">₹8,499</td>
+                                <td><span class="status-badge badge-paid">Paid</span></td>
+                                <td><span class="status-badge badge-delivered">Delivered</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-info me-1" data-bs-toggle="modal"
+                                        data-bs-target="#orderDetailModal"
+                                        onclick="showOrder('#ORD-1012','Lakshmi Menon','Headphones Pro',1,'₹8,499','Paid','Delivered','P-2, Goregaon, Mumbai - 400063')">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-outline-warning" data-bs-toggle="modal"
+                                        data-bs-target="#statusModal"
+                                        onclick="setStatusOrder('#ORD-1012','Delivered')">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Order 14 -->
+                            <tr>
+                                <td class="text-info fw-medium">#ORD-1011</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="order-avatar" style="width:34px;height:34px;font-size:0.75rem;background:linear-gradient(135deg,#f59e0b,#d97706);">AT</div>
+                                        <span class="text-white">Amit Tiwari</span>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">RGB Keyboard</td>
+                                <td class="text-center text-white">2</td>
+                                <td class="text-white-50">09 Jun 2025</td>
+                                <td class="fw-bold text-white">₹8,998</td>
+                                <td><span class="status-badge badge-paid">Paid</span></td>
+                                <td><span class="status-badge badge-packed">Packed</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-info me-1" data-bs-toggle="modal"
+                                        data-bs-target="#orderDetailModal"
+                                        onclick="showOrder('#ORD-1011','Amit Tiwari','RGB Keyboard x2',2,'₹8,998','Paid','Packed','Q-6, Vikhroli, Mumbai - 400079')">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-outline-warning" data-bs-toggle="modal"
+                                        data-bs-target="#statusModal"
+                                        onclick="setStatusOrder('#ORD-1011','Packed')">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Order 15 -->
+                            <tr>
+                                <td class="text-info fw-medium">#ORD-1010</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="order-avatar" style="width:34px;height:34px;font-size:0.75rem;background:linear-gradient(135deg,#8b5cf6,#6d28d9);">DJ</div>
+                                        <span class="text-white">Deepika Joshi</span>
+                                    </div>
+                                </td>
+                                <td class="text-white-50">SmartWatch + Charger</td>
+                                <td class="text-center text-white">2</td>
+                                <td class="text-white-50">08 Jun 2025</td>
+                                <td class="fw-bold text-white">₹17,499</td>
+                                <td><span class="status-badge badge-paid">Paid</span></td>
+                                <td><span class="status-badge badge-delivered">Delivered</span></td>
+                                <td class="text-end table-actions">
+                                    <button class="btn btn-outline-info me-1" data-bs-toggle="modal"
+                                        data-bs-target="#orderDetailModal"
+                                        onclick="showOrder('#ORD-1010','Deepika Joshi','SmartWatch + Charger',2,'₹17,499','Paid','Delivered','R-1, Chembur, Mumbai - 400071')">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-outline-warning" data-bs-toggle="modal"
+                                        data-bs-target="#statusModal"
+                                        onclick="setStatusOrder('#ORD-1010','Delivered')">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Table Pagination -->
+                <div class="d-flex justify-content-between align-items-center mt-4 pt-3
+                    border-top border-light border-opacity-10">
+                    <small class="text-white-50">Showing 15 of 850 orders</small>
+                    <nav>
+                        <ul class="pagination pagination-sm mb-0">
+                            <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- ===== 7 & 8. RECENT ORDERS + SALES SUMMARY ===== -->
+            <div class="row g-4 mb-4">
+
+                <!-- Recent Orders -->
+                <div class="col-xl-6 fade-in-up delay-2">
+                    <div class="dashboard-table-card">
+                        <h5 class="dashboard-section-title mb-4">
+                            <i class="bi bi-clock-history text-info"></i> Recent Orders
+                        </h5>
+
+                        <!-- Card 1 -->
+                        <div class="recent-order-card">
+                            <div class="order-avatar">AJ</div>
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <h6 class="text-white mb-0 fw-semibold">Alice Johnson</h6>
+                                        <small class="text-white-50">ProX Gaming Laptop</small>
+                                    </div>
+                                    <span class="status-badge badge-delivered">Delivered</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mt-1">
+                                    <small class="text-info">#ORD-1024</small>
+                                    <small class="fw-bold text-white">₹89,999</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="recent-order-card">
+                            <div class="order-avatar" style="background:linear-gradient(135deg,#10b981,#059669);">MC</div>
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <h6 class="text-white mb-0 fw-semibold">Michael Chen</h6>
+                                        <small class="text-white-50">Wireless Headphones</small>
+                                    </div>
+                                    <span class="status-badge badge-shipped">Shipped</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mt-1">
+                                    <small class="text-info">#ORD-1023</small>
+                                    <small class="fw-bold text-white">₹16,998</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="recent-order-card">
+                            <div class="order-avatar" style="background:linear-gradient(135deg,#f59e0b,#d97706);">SS</div>
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <h6 class="text-white mb-0 fw-semibold">Sarah Smith</h6>
+                                        <small class="text-white-50">Mechanical Keyboard</small>
+                                    </div>
+                                    <span class="status-badge badge-pending">Pending</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mt-1">
+                                    <small class="text-info">#ORD-1022</small>
+                                    <small class="fw-bold text-white">₹4,499</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="recent-order-card">
+                            <div class="order-avatar" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9);">DM</div>
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <h6 class="text-white mb-0 fw-semibold">David Miller</h6>
+                                        <small class="text-white-50">4K Monitor</small>
+                                    </div>
+                                    <span class="status-badge badge-ofd">Out for Delivery</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mt-1">
+                                    <small class="text-info">#ORD-1021</small>
+                                    <small class="fw-bold text-white">₹32,499</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="recent-order-card">
+                            <div class="order-avatar" style="background:linear-gradient(135deg,#ec4899,#db2777);">PR</div>
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <h6 class="text-white mb-0 fw-semibold">Priya Rao</h6>
+                                        <small class="text-white-50">SmartWatch Series 7</small>
+                                    </div>
+                                    <span class="status-badge badge-packed">Packed</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mt-1">
+                                    <small class="text-info">#ORD-1020</small>
+                                    <small class="fw-bold text-white">₹14,999</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sales Summary + Timeline -->
+                <div class="col-xl-6 fade-in-up delay-3">
+                    <!-- Sales Summary Cards -->
+                    <div class="row g-3 mb-4">
+                        <div class="col-6">
+                            <div class="summary-card">
+                                <div class="summary-icon bg-icon-primary"><i class="bi bi-calendar-day"></i></div>
+                                <h5 class="text-white fw-bold mb-1">24</h5>
+                                <span class="text-white-50 small">Today's Orders</span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="summary-card">
+                                <div class="summary-icon bg-icon-info"><i class="bi bi-calendar-week"></i></div>
+                                <h5 class="text-white fw-bold mb-1">148</h5>
+                                <span class="text-white-50 small">This Week's Orders</span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="summary-card">
+                                <div class="summary-icon bg-icon-success"><i class="bi bi-currency-rupee"></i></div>
+                                <h5 class="text-white fw-bold mb-1">₹12.5L</h5>
+                                <span class="text-white-50 small">Monthly Revenue</span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="summary-card">
+                                <div class="summary-icon bg-icon-warning"><i class="bi bi-calculator"></i></div>
+                                <h5 class="text-white fw-bold mb-1">₹8,420</h5>
+                                <span class="text-white-50 small">Avg. Order Value</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Order Timeline -->
+                    <div class="dashboard-table-card">
+                        <h5 class="dashboard-section-title mb-4">
+                            <i class="bi bi-activity text-warning"></i> Order Activity Timeline
+                        </h5>
+                        <div class="order-timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-dot tdot-received"></div>
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <p class="text-white mb-0 fw-medium">Order #ORD-1024 Received</p>
+                                        <small class="text-white-50">Alice Johnson • ProX Gaming Laptop</small>
+                                    </div>
+                                    <small class="text-white-50 text-nowrap ms-3">2 hrs ago</small>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot tdot-shipped"></div>
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <p class="text-white mb-0 fw-medium">Order #ORD-1023 Shipped</p>
+                                        <small class="text-white-50">Michael Chen • Wireless Headphones</small>
+                                    </div>
+                                    <small class="text-white-50 text-nowrap ms-3">4 hrs ago</small>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot tdot-delivered"></div>
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <p class="text-white mb-0 fw-medium">Order #ORD-1019 Delivered</p>
+                                        <small class="text-white-50">Rahul Kumar • Bluetooth Speaker</small>
+                                    </div>
+                                    <small class="text-white-50 text-nowrap ms-3">Yesterday</small>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot tdot-received"></div>
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <p class="text-white mb-0 fw-medium">Order #ORD-1018 Packed</p>
+                                        <small class="text-white-50">Neha Patil • Wireless Mouse x2</small>
+                                    </div>
+                                    <small class="text-white-50 text-nowrap ms-3">Yesterday</small>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot tdot-cancelled"></div>
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <p class="text-white mb-0 fw-medium">Order #ORD-1014 Cancelled</p>
+                                        <small class="text-white-50">Kavya Bhat • UltraWide Monitor (Payment Failed)</small>
+                                    </div>
+                                    <small class="text-white-50 text-nowrap ms-3">2 days ago</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /container -->
+
+
+        <!-- ===== 5. ORDER DETAIL MODAL ===== -->
+        <div class="modal fade" id="orderDetailModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content glass-modal">
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            <i class="bi bi-receipt me-2 text-info"></i>
+                            Order Details — <span id="modalOrderId" class="text-info"></span>
+                        </h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body p-4">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <p class="detail-label">Customer Name</p>
+                                <p class="detail-value" id="modalCustomer">—</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="detail-label">Product Ordered</p>
+                                <p class="detail-value" id="modalProduct">—</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p class="detail-label">Quantity</p>
+                                <p class="detail-value" id="modalQty">—</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p class="detail-label">Total Amount</p>
+                                <p class="detail-value fw-bold text-success" id="modalAmount">—</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p class="detail-label">Payment Status</p>
+                                <p class="detail-value" id="modalPayment">—</p>
+                            </div>
+                            <div class="col-12">
+                                <p class="detail-label">Delivery Address</p>
+                                <p class="detail-value" id="modalAddress">—</p>
+                            </div>
+                            <div class="col-12">
+                                <p class="detail-label">Delivery Status</p>
+                                <p class="detail-value" id="modalDelivery">—</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-light rounded-pill px-4"
+                            data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-info rounded-pill px-4 fw-medium border-0">
+                            <i class="bi bi-printer me-2"></i>Print Invoice
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== 6. UPDATE DELIVERY STATUS MODAL ===== -->
+        <div class="modal fade" id="statusModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content glass-modal">
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            <i class="bi bi-truck me-2 text-warning"></i>
+                            Update Status — <span id="statusOrderId" class="text-warning"></span>
+                        </h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body p-4">
+                        <p class="text-white-50 small mb-3">Select the new delivery status for this order:</p>
+                        <div class="status-option" onclick="selectStatus(this,'Pending')">
+                            <input type="radio" name="deliveryStatus" id="sPending">
+                            <div class="status-dot dot-pending"></div>
+                            <label for="sPending" class="text-white mb-0" style="cursor:pointer;">Pending</label>
+                        </div>
+                        <div class="status-option" onclick="selectStatus(this,'Packed')">
+                            <input type="radio" name="deliveryStatus" id="sPacked">
+                            <div class="status-dot dot-packed"></div>
+                            <label for="sPacked" class="text-white mb-0" style="cursor:pointer;">Packed</label>
+                        </div>
+                        <div class="status-option" onclick="selectStatus(this,'Shipped')">
+                            <input type="radio" name="deliveryStatus" id="sShipped">
+                            <div class="status-dot dot-shipped"></div>
+                            <label for="sShipped" class="text-white mb-0" style="cursor:pointer;">Shipped</label>
+                        </div>
+                        <div class="status-option" onclick="selectStatus(this,'Out for Delivery')">
+                            <input type="radio" name="deliveryStatus" id="sOfd">
+                            <div class="status-dot dot-ofd"></div>
+                            <label for="sOfd" class="text-white mb-0" style="cursor:pointer;">Out for Delivery</label>
+                        </div>
+                        <div class="status-option" onclick="selectStatus(this,'Delivered')">
+                            <input type="radio" name="deliveryStatus" id="sDelivered">
+                            <div class="status-dot dot-delivered"></div>
+                            <label for="sDelivered" class="text-white mb-0" style="cursor:pointer;">Delivered</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-light rounded-pill px-4"
+                            data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-warning rounded-pill px-4 fw-medium border-0 text-dark"
+                            onclick="confirmStatus()">
+                            <i class="bi bi-check-lg me-1"></i>Update Status
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== FOOTER ========== -->
+        <footer class="text-center text-white pb-4 pt-4 mt-5
+            border-top border-light border-opacity-10 footer-section">
+            <div class="container">
+                <div class="d-flex justify-content-center gap-4 mb-3">
+                    <a href="#" class="text-white-50 text-decoration-none transition-all">Vendor Support</a>
+                    <a href="#" class="text-white-50 text-decoration-none transition-all">Terms of Service</a>
+                    <a href="#" class="text-white-50 text-decoration-none transition-all">Contact Us</a>
+                </div>
+                <p class="small text-white-50 mb-0">
+                    &copy; Multi-Vendor E-Commerce Platform | Academic Project 2025-2026
+                </p>
+            </div>
+        </footer>
+
+    </div><!-- /main-wrapper -->
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        /* ---- Order Detail Modal ---- */
+        function showOrder(id, customer, product, qty, amount, payment, delivery, address) {
+            document.getElementById('modalOrderId').textContent  = id;
+            document.getElementById('modalCustomer').textContent = customer;
+            document.getElementById('modalProduct').textContent  = product;
+            document.getElementById('modalQty').textContent      = qty + ' unit(s)';
+            document.getElementById('modalAmount').textContent   = amount;
+            document.getElementById('modalPayment').textContent  = payment;
+            document.getElementById('modalDelivery').textContent = delivery;
+            document.getElementById('modalAddress').textContent  = address;
+        }
+
+        /* ---- Status Update Modal ---- */
+        function setStatusOrder(id, currentStatus) {
+            document.getElementById('statusOrderId').textContent = id;
+            // Pre-select current status
+            document.querySelectorAll('.status-option').forEach(el => el.classList.remove('active'));
+            const map = {
+                'Pending': 'sPending', 'Packed': 'sPacked',
+                'Shipped': 'sShipped', 'Out for Delivery': 'sOfd', 'Delivered': 'sDelivered'
+            };
+            const radio = document.getElementById(map[currentStatus]);
+            if (radio) {
+                radio.checked = true;
+                radio.closest('.status-option').classList.add('active');
+            }
+        }
+
+        function selectStatus(el, label) {
+            document.querySelectorAll('.status-option').forEach(o => o.classList.remove('active'));
+            el.classList.add('active');
+            el.querySelector('input[type=radio]').checked = true;
+        }
+
+        function confirmStatus() {
+            const modal = bootstrap.Modal.getInstance(document.getElementById('statusModal'));
+            if (modal) modal.hide();
+            // In a real app, AJAX call would update the backend here
+        }
+    </script>
+
+</body>
+</html>

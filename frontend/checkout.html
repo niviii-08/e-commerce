@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Checkout - Multi-Vendor Platform</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="customer-dashboard.css">
+    <link rel="stylesheet" href="cart.css">
+    <link rel="stylesheet" href="checkout.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <i class="bi bi-shop fs-3 me-2 text-primary-glow"></i>
+                <span class="fw-bold brand-text d-none d-sm-inline">Multi-Vendor Platform</span>
+                <span class="fw-bold brand-text d-inline d-sm-none">MVP</span>
+            </a>
+            
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="bi bi-list fs-1 text-white"></i>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto fw-medium">
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="customer-dashboard.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="product-listing.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="cart.html">Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="#">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="#">Profile</a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+                    <!-- Notification -->
+                    <a href="#" class="notification-icon text-decoration-none">
+                        <i class="bi bi-bell-fill"></i>
+                        <span class="notification-badge">5</span>
+                    </a>
+                    
+                    <!-- Profile Dropdown -->
+                    <div class="dropdown">
+                        <button class="btn profile-dropdown-toggle dropdown-toggle border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="profile-avatar text-white">JD</div>
+                            <span class="d-none d-md-inline ms-1 text-white fw-medium">John Doe</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-glass mt-2">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>My Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-box-seam me-2"></i>My Orders</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="index.html"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content wrapper -->
+    <div class="main-wrapper checkout-content">
+        <div class="container">
+            
+            <!-- Breadcrumb Navigation -->
+            <nav aria-label="breadcrumb" class="glass-breadcrumb fade-in-up">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="customer-dashboard.html"><i class="bi bi-house-door me-1"></i>Home</a></li>
+                    <li class="breadcrumb-item"><a href="cart.html">Cart</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+                </ol>
+            </nav>
+
+            <div class="d-flex justify-content-between align-items-end mb-4 fade-in-up delay-1">
+                <h2 class="fw-bold text-white mb-0">Secure <span class="text-gradient">Checkout</span></h2>
+                <div class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 px-3 py-2 rounded-pill">
+                    <i class="bi bi-lock-fill me-1"></i> 256-bit Encryption
+                </div>
+            </div>
+
+            <div class="row g-4 g-xl-5 mb-5">
+                
+                <!-- Left Side: Checkout Form Details -->
+                <div class="col-lg-7 col-xl-8 fade-in-up delay-2">
+                    
+                    <!-- 1. Shipping Address -->
+                    <div class="glass-panel checkout-section-card rounded-4">
+                        <h4 class="checkout-step-title">
+                            <span class="checkout-step-number">1</span> Shipping Address
+                        </h4>
+                        
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="fullName" placeholder="John Doe" value="John Doe">
+                                        <label for="fullName">Full Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="tel" class="form-control" id="phone" placeholder="+1 234 567 8900" value="+1 234 567 8900">
+                                        <label for="phone">Phone Number</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" id="email" placeholder="name@example.com" value="john.doe@example.com">
+                                        <label for="email">Email Address</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="address1" placeholder="123 Main St">
+                                        <label for="address1">Address Line 1</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="address2" placeholder="Apartment, studio, or floor">
+                                        <label for="address2">Address Line 2 (Optional)</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="city" placeholder="City">
+                                        <label for="city">City</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="state" aria-label="State">
+                                            <option selected disabled>Select State</option>
+                                            <option value="CA">California</option>
+                                            <option value="NY">New York</option>
+                                            <option value="TX">Texas</option>
+                                        </select>
+                                        <label for="state">State</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="zip" placeholder="Zip">
+                                        <label for="zip">Zip Code</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="country" aria-label="Country">
+                                            <option selected>United States</option>
+                                            <option value="CA">Canada</option>
+                                            <option value="UK">United Kingdom</option>
+                                            <option value="IN">India</option>
+                                        </select>
+                                        <label for="country">Country</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex gap-3 mt-4">
+                                <button type="button" class="btn btn-primary btn-hover-info rounded-pill px-4 transition-all">Save Address</button>
+                                <button type="button" class="btn btn-outline-light rounded-pill px-4 transition-all">Use Existing Address</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- 2. Delivery Options -->
+                    <div class="glass-panel checkout-section-card rounded-4">
+                        <h4 class="checkout-step-title">
+                            <span class="checkout-step-number">2</span> Delivery Options
+                        </h4>
+                        
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <label class="delivery-option active w-100 h-100 d-block">
+                                    <input type="radio" name="deliveryMethod" class="form-check-input delivery-radio" checked>
+                                    <div class="delivery-icon"><i class="bi bi-truck"></i></div>
+                                    <h6 class="text-white mb-1">Standard Delivery</h6>
+                                    <p class="small text-white-50 mb-2">3-5 Business Days</p>
+                                    <span class="fw-bold text-info">Free</span>
+                                </label>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="delivery-option w-100 h-100 d-block">
+                                    <input type="radio" name="deliveryMethod" class="form-check-input delivery-radio">
+                                    <div class="delivery-icon text-warning"><i class="bi bi-airplane"></i></div>
+                                    <h6 class="text-white mb-1">Express Delivery</h6>
+                                    <p class="small text-white-50 mb-2">1-2 Business Days</p>
+                                    <span class="fw-bold text-warning">+ ₹250</span>
+                                </label>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="delivery-option w-100 h-100 d-block">
+                                    <input type="radio" name="deliveryMethod" class="form-check-input delivery-radio">
+                                    <div class="delivery-icon text-danger"><i class="bi bi-lightning-charge"></i></div>
+                                    <h6 class="text-white mb-1">Same Day Delivery</h6>
+                                    <p class="small text-white-50 mb-2">By 8:00 PM Today</p>
+                                    <span class="fw-bold text-danger">+ ₹500</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Payment Method -->
+                    <div class="glass-panel checkout-section-card rounded-4">
+                        <h4 class="checkout-step-title">
+                            <span class="checkout-step-number">3</span> Payment Method
+                        </h4>
+                        
+                        <div class="row g-3 mb-4">
+                            <div class="col-6 col-md-3">
+                                <div class="payment-method-card active">
+                                    <div class="payment-icon"><i class="bi bi-credit-card"></i></div>
+                                    <span class="text-white small fw-medium">Credit/Debit Card</span>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="payment-method-card">
+                                    <div class="payment-icon"><i class="bi bi-phone"></i></div>
+                                    <span class="text-white small fw-medium">UPI App</span>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="payment-method-card">
+                                    <div class="payment-icon"><i class="bi bi-bank"></i></div>
+                                    <span class="text-white small fw-medium">Net Banking</span>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="payment-method-card">
+                                    <div class="payment-icon"><i class="bi bi-wallet2"></i></div>
+                                    <span class="text-white small fw-medium">Cash on Delivery</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Active Payment Details (Credit Card Default) -->
+                        <div class="payment-details-panel fade-in-up">
+                            <h6 class="text-white mb-3">Enter Card Details</h6>
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="cardName" placeholder="Name on Card">
+                                        <label for="cardName">Card Holder Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="cardNumber" placeholder="0000 0000 0000 0000">
+                                        <label for="cardNumber">Card Number</label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="expiry" placeholder="MM/YY">
+                                        <label for="expiry">Expiry Date (MM/YY)</label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-floating">
+                                        <input type="password" class="form-control" id="cvv" placeholder="CVV">
+                                        <label for="cvv">CVV</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-check mt-2">
+                                        <input class="form-check-input" type="checkbox" id="saveCard" checked>
+                                        <label class="form-check-label text-white-50" for="saveCard">
+                                            Save this card for future payments securely
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Terms & Action Buttons -->
+                    <div class="mb-4 ps-2">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="termsCondition">
+                            <label class="form-check-label text-white-50" for="termsCondition">
+                                I agree to the <a href="#" class="text-info text-decoration-none">Terms and Conditions</a>, <a href="#" class="text-info text-decoration-none">Privacy Policy</a> and <a href="#" class="text-info text-decoration-none">Return Policy</a>.
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-column flex-sm-row gap-3">
+                        <a href="cart.html" class="btn btn-outline-light rounded-pill px-5 py-3 fw-medium transition-all text-center">
+                            <i class="bi bi-arrow-left me-2"></i> Back to Cart
+                        </a>
+                        <a href="order-confirmation.html" class="btn btn-success rounded-pill px-5 py-3 fw-bold transition-all flex-grow-1 text-decoration-none text-center text-white" style="background: linear-gradient(135deg, #10b981, #059669); border: none; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);">
+                            Place Order <i class="bi bi-check-circle ms-2"></i>
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- Right Side: Order Summary -->
+                <div class="col-lg-5 col-xl-4 fade-in-up delay-3">
+                    
+                    <div class="glass-panel p-4 rounded-4 checkout-summary-card">
+                        <h5 class="text-white fw-bold mb-4">Order Summary</h5>
+                        
+                        <!-- Mini Cart Items -->
+                        <div class="checkout-items-list mb-4">
+                            <!-- Item 1 -->
+                            <div class="checkout-item">
+                                <div class="checkout-item-img">
+                                    <i class="bi bi-laptop"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <span class="checkout-item-title">ProX 15-inch Gaming Laptop</span>
+                                    <p class="checkout-item-vendor">TechHub Store</p>
+                                    <div class="d-flex justify-content-between align-items-center mt-1">
+                                        <span class="text-white-50 small">Qty: 1</span>
+                                        <span class="fw-bold text-white">₹89,999</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Item 2 -->
+                            <div class="checkout-item">
+                                <div class="checkout-item-img">
+                                    <i class="bi bi-headphones"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <span class="checkout-item-title">Noise Cancelling Wireless Headphones</span>
+                                    <p class="checkout-item-vendor">AudioMax</p>
+                                    <div class="d-flex justify-content-between align-items-center mt-1">
+                                        <span class="text-white-50 small">Qty: 2</span>
+                                        <span class="fw-bold text-white">₹16,998</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Item 3 -->
+                            <div class="checkout-item">
+                                <div class="checkout-item-img">
+                                    <i class="bi bi-mouse3"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <span class="checkout-item-title">Ergonomic Wireless Mouse</span>
+                                    <p class="checkout-item-vendor">Game Haven</p>
+                                    <div class="d-flex justify-content-between align-items-center mt-1">
+                                        <span class="text-white-50 small">Qty: 1</span>
+                                        <span class="fw-bold text-white">₹2,999</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Coupon Input (Repeated for convenience if not added in cart) -->
+                        <div class="coupon-input-group mb-4">
+                            <input type="text" placeholder="Coupon code" value="WELCOME500">
+                            <button class="btn btn-success text-white px-3 fw-medium transition-all"><i class="bi bi-check2"></i></button>
+                        </div>
+
+                        <!-- Calculations -->
+                        <div class="summary-row">
+                            <span>Subtotal (3 items)</span>
+                            <span class="text-white fw-medium">₹1,09,996</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Shipping Charges</span>
+                            <span class="text-success fw-medium">Free</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Estimated Tax</span>
+                            <span class="text-white fw-medium">₹19,799</span>
+                        </div>
+                        <div class="summary-row discount">
+                            <span>Discount <i class="bi bi-tag-fill ms-1 small"></i></span>
+                            <span>-₹4,500</span>
+                        </div>
+                        
+                        <div class="summary-row total mb-0 border-light border-opacity-25">
+                            <span>Grand Total</span>
+                            <span class="text-info fs-3">₹1,25,295</span>
+                        </div>
+                        
+                        <!-- Security Badges -->
+                        <div class="security-features row g-2">
+                            <div class="col-6">
+                                <div class="security-badge">
+                                    <i class="bi bi-shield-lock"></i>
+                                    <h6>Secure Payment</h6>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="security-badge">
+                                    <i class="bi bi-patch-check"></i>
+                                    <h6>Verified Vendors</h6>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="security-badge">
+                                    <i class="bi bi-truck"></i>
+                                    <h6>Fast Delivery</h6>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="security-badge">
+                                    <i class="bi bi-arrow-return-left"></i>
+                                    <h6>Easy Returns</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center text-white pb-4 pt-5 mt-5 border-top border-light border-opacity-10 footer-section fade-in-up delay-4">
+            <div class="container">
+                <div class="row g-4 text-start mb-4">
+                    <div class="col-lg-4">
+                        <h5 class="fw-bold mb-3"><i class="bi bi-shop text-info me-2"></i>Multi-Vendor Platform</h5>
+                        <p class="small text-white-50 lh-lg">A centralized marketplace connecting customers, vendors, and administrators through a single unified platform. Discover quality products with confidence.</p>
+                        <div class="d-flex gap-3 mt-3">
+                            <a href="#" class="text-white-50 text-hover-white transition-all"><i class="bi bi-facebook fs-5"></i></a>
+                            <a href="#" class="text-white-50 text-hover-white transition-all"><i class="bi bi-twitter-x fs-5"></i></a>
+                            <a href="#" class="text-white-50 text-hover-white transition-all"><i class="bi bi-instagram fs-5"></i></a>
+                            <a href="#" class="text-white-50 text-hover-white transition-all"><i class="bi bi-linkedin fs-5"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4">
+                        <h6 class="fw-bold mb-3">Quick Links</h6>
+                        <ul class="list-unstyled small text-white-50">
+                            <li class="mb-2"><a href="customer-dashboard.html" class="text-white-50 text-decoration-none">Home</a></li>
+                            <li class="mb-2"><a href="product-listing.html" class="text-white-50 text-decoration-none">Products</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Vendors</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Categories</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-4">
+                        <h6 class="fw-bold mb-3">Customer Support</h6>
+                        <ul class="list-unstyled small text-white-50">
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Help Center</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Order Tracking</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Returns & Refunds</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <h6 class="fw-bold mb-3">Contact Info</h6>
+                        <ul class="list-unstyled small text-white-50">
+                            <li class="mb-2"><i class="bi bi-geo-alt me-2 text-info"></i> 123 Tech Park, Innovation City</li>
+                            <li class="mb-2"><i class="bi bi-envelope me-2 text-info"></i> support@multivendor.com</li>
+                            <li class="mb-2"><i class="bi bi-telephone me-2 text-info"></i> +1 (555) 123-4567</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr class="border-light border-opacity-10 mb-4">
+                <p class="small text-white-50 mb-0">&copy; Academic Year 2025-2026. All Rights Reserved.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Supabase Integration -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart-checkout.js"></script>
+
+    <script>
+        // Auth guard
+        document.addEventListener('DOMContentLoaded', async function () {
+            try {
+                const profile = await getCurrentProfile();
+                if (!profile) {
+                    window.location.href = 'customer-login.html';
+                    return;
+                }
+
+                // Logout handler
+                document.querySelectorAll('[data-logout]').forEach(btn => {
+                    btn.addEventListener('click', async (e) => {
+                        e.preventDefault();
+                        await signOut();
+                        window.location.href = 'customer-login.html';
+                    });
+                });
+
+                // Wire up Place Order button
+                const placeOrderBtn = document.getElementById('placeOrderBtn');
+                if (placeOrderBtn) {
+                    placeOrderBtn.addEventListener('click', async function(e) {
+                        e.preventDefault();
+                        const addressId = document.getElementById('selectedAddressId')?.value;
+                        const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked')?.value || 'cod';
+                        const couponCode = document.getElementById('couponCodeInput')?.value?.trim() || null;
+
+                        if (!addressId) {
+                            alert('Please select a delivery address.');
+                            return;
+                        }
+
+                        try {
+                            placeOrderBtn.disabled = true;
+                            placeOrderBtn.textContent = 'Placing Order...';
+                            const orderId = await placeOrder({ addressId, paymentMethod, couponCode });
+                            window.location.href = 'order-confirmation.html?order=' + orderId;
+                        } catch (err) {
+                            console.error(err);
+                            alert('Order failed: ' + err.message);
+                            placeOrderBtn.disabled = false;
+                            placeOrderBtn.textContent = 'Place Order';
+                        }
+                    });
+                }
+
+            } catch (err) {
+                console.error('Auth check failed', err);
+                window.location.href = 'customer-login.html';
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,159 @@
+/* Vendor Login Specific Styles */
+.vendor-auth-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding-top: 100px; /* Accounts for fixed navbar */
+    padding-bottom: 60px;
+}
+
+.vendor-welcome-text h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #60a5fa, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.vendor-welcome-text p {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+}
+
+.auth-illustration {
+    font-size: 8rem;
+    color: rgba(255, 255, 255, 0.1);
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.4), rgba(192, 132, 252, 0.4));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 2rem;
+    display: inline-block;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+.auth-card {
+    padding: 3rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1.5rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.form-floating > .form-control {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    color: white;
+    border-radius: 0.75rem;
+}
+
+.form-floating > .form-control:focus {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: #60a5fa;
+    box-shadow: 0 0 15px rgba(96, 165, 250, 0.2);
+    color: white;
+}
+
+.form-floating > label {
+    color: rgba(255, 255, 255, 0.5);
+    padding-left: 1.25rem;
+}
+
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+    color: #60a5fa;
+    transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+}
+
+.password-toggle {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    z-index: 10;
+}
+
+.password-toggle:hover {
+    color: white;
+}
+
+.form-check-input {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--glass-border);
+}
+
+.form-check-input:checked {
+    background-color: #60a5fa;
+    border-color: #60a5fa;
+}
+
+/* Validation UI */
+.validation-feedback {
+    display: none;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    padding-left: 0.5rem;
+}
+.is-invalid ~ .validation-feedback.invalid-feedback {
+    display: block;
+    color: #f87171;
+}
+.is-valid ~ .validation-feedback.valid-feedback {
+    display: block;
+    color: #34d399;
+}
+.form-control.is-invalid {
+    border-color: #f87171;
+}
+.form-control.is-valid {
+    border-color: #34d399;
+}
+
+/* Benefits Section */
+.vendor-benefits {
+    padding: 5rem 0;
+    background: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid var(--glass-border);
+}
+
+.benefit-card {
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.benefit-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    border-color: rgba(96, 165, 250, 0.3);
+}
+
+.benefit-icon {
+    font-size: 3rem;
+    color: #60a5fa;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+}
